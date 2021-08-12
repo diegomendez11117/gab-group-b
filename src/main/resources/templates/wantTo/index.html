@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>Inventory Application</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<nav th:replace="fragments :: nav"></nav>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Categories</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="wantTo : ${listWantTo}">
+        <tr>
+            <td>[[${wantTo.id}]]</td>
+            <td th:text="${wantTo.title}"></td>
+            <td th:text="${wantTo.description}"></td>
+        </tr>
+
+    </th:block>
+
+    </tbody>
+
+
+</table>
+
+
+
+</body>
+</html>
