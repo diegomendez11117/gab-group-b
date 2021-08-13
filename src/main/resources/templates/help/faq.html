@@ -8,6 +8,11 @@
 </head>
 <body>
 <nav th:replace="fragments :: nav"></nav>
-<p>You are now OK... bye bye</p>
+    <div>
+        <p th:text="${faq.question}"></p>
+    </div>
+    <div>
+        <p th:text="${faq.answer}"></p>
+    </div>
 </body>
 </html>

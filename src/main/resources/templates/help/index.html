@@ -12,17 +12,17 @@
 <table class="table table-bordered">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>I Want to Know</th>
-        <th>Details</th>
+        <!-- <th>ID</th> -->
+        <th>Question</th>
+        <!-- <th>Answer</th> -->
     </tr>
     </thead>
     <tbody>
-    <th:block th:each="wantTo : ${listWantTo}">
+    <th:block th:each="faqDetail : ${listFaq}">
         <tr>
-            <td>[[${wantTo.id}]]</td>
-            <td th:text="${wantTo.title}"></td>
-            <td th:text="${wantTo.description}"></td>
+            <td>[[${faqDetail.id}]]</td>
+            <td th:text="${faqDetail.question}"></td>
+            <td> <a th:href="@{'/help/faq/' + ${faqDetail.id}}">View</a> </td>
         </tr>
 
     </th:block>

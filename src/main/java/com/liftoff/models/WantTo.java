@@ -10,16 +10,29 @@ public class WantTo {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     private String title;
-
 
     private String description;
 
+//    public enum Priority {
+//        HIGH,
+//        MEDIUM,
+//        LOW,
+//        HIDDEN,
+//    }
+//
+//    private Priority priority;
+
+
     public WantTo(){}
 
-    public WantTo(Integer id, String title, String description) {
-        this.id = id;
+//    public WantTo(String title, String description, Priority priority) {
+//        this.title = title;
+//        this.description = description;
+//        this.priority = priority;
+//    }
+
+    public WantTo(String title, String description) {
         this.title = title;
         this.description = description;
     }
