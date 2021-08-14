@@ -17,6 +17,7 @@
         <tr>
             <!-- <td>[[${wantTo.id}]]</td> -->
             <td th:text="${wantTo.title}"></td>
+            <td th:text="${wantTo.priority}"></td>
             <!-- <td th:text="${wantTo.description}"></td> -->
             <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
         </tr>

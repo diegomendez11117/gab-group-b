@@ -47,10 +47,10 @@ public class WelcomeController {
 
     @GetMapping ("about")
     public String displayAboutUs(Model model) {
-    String aboutMessage = "Enrique walked on water to texas, camped in a closet," +
-            " visited New Mexico, camped in another closet, traveled to California," +
-            " and camped in another closet." +
-            " There has to be a better way of camping for over a year";
+    String aboutMessage = "Enrique SUPed from Cuba to Texas, camped in a closet," +
+            " visited the aliens in New Mexico, camped in another closet, " +
+            "traveled to California to eat raisins, and then camped in yet another closet." +
+            " There has to be an easier way to eat raisins with an Alien.";
 
         model.addAttribute("aboutMessage", aboutMessage);
         model.addAttribute("title", "About Us!");
