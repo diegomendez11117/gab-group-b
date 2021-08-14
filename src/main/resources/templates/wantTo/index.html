@@ -6,24 +6,48 @@
 
 <table class="table table-bordered">
     <thead>
-    <tr>
-        <!-- <th>ID</th> -->
-        <!-- <th>I Want to Know</th> -->
-        <!-- <th>Details</th> -->
-    </tr>
+        <tr>
+            <th>Have to Do!</th>
+        </tr>
     </thead>
     <tbody>
-    <th:block th:each="wantTo : ${listWantTo}">
+        <th:block th:each="wantTo : ${listWantTo}" class="container">
+           <tr th:if="${wantTo.priority.name() == 'HIGH'}">
+                <td th:text="${wantTo.title}"></td>
+                <td th:text="${wantTo.priority}"></td>
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
+           </tr>
+        </th:block>
+    </tbody>
+
+    <thead>
         <tr>
-            <!-- <td>[[${wantTo.id}]]</td> -->
-            <td th:text="${wantTo.title}"></td>
-            <td th:text="${wantTo.priority}"></td>
-            <!-- <td th:text="${wantTo.description}"></td> -->
-            <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
+            <th>Should Do!</th>
         </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}">
+            <tr th:if="${wantTo.priority.name() == 'MEDIUM'}">
+                <td th:text="${wantTo.title}"></td>
+                <td th:text="${wantTo.priority}"></td>
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
+            </tr>
+        </th:block>
+    </tbody>
 
-    </th:block>
-
+    <thead>
+        <tr>
+            <th>Could Do!</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}">
+            <tr th:if="${wantTo.priority.name() == 'LOW'}">
+                <td th:text="${wantTo.title}"></td>
+                <td th:text="${wantTo.priority}"></td>
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
+            </tr>
+        </th:block>
     </tbody>
 
 
