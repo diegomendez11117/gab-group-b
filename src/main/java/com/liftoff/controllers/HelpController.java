@@ -31,6 +31,7 @@ public class HelpController {
     public String displayFaq (@PathVariable("id") Integer id, Model model) {
         Faq faq = faqRepository.findById(id).get();
         model.addAttribute("faq",faq);
+        model.addAttribute("title", "FAQ");
         return "/help/faq";
     }
 

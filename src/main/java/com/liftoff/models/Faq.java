@@ -9,8 +9,6 @@ import javax.persistence.Id;
 @Entity
 public class Faq {
 
-
-
     @Id@GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 

@@ -6,11 +6,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body >
     <header th:fragment="header">
-        <h1 th:text = "${title}">Please bind a title variable this page!</h1>
-        <nav >
-            <ul class="nav text-center">
+        <h1 th:text = "${title}"></h1>
+        <nav>
+            <ul class="nav justify-content-center">
                 <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/wantTo}">I Want To</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/about}">About Us</a></li>

@@ -3,8 +3,11 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
-<div>
-    <p th:text="${aboutMessage}"></p>
-</div>
+    <div>
+        <p th:text="${wantTo.title}"></p>
+    </div>
+    <div>
+        <p th:text="${wantTo.description}"></p>
+    </div>
 </body>
 </html>
