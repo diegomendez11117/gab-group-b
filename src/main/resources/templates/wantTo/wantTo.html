@@ -5,12 +5,16 @@
 <header th:replace="fragments :: header"></header>
     <div>
         <p th:text="${wantTo.title}"></p>
-    </div>
-    <div>
+        <p th:text="${wantTo.priority}+' Priority'"></p>
         <p th:text="${wantTo.description}"></p>
+
+        <p> Links:
+        <ul>
+            <li th:each="link : ${wantTo.links}">
+                <a th:href="@{${link.url}}" th:text="${link.name}"></a>
+            </li>
+        </ul>
+        </p>
     </div>
-<div>
-    <p th:text="${wantTo.priority}+' Priority'"></p>
-</div>
 </body>
 </html>

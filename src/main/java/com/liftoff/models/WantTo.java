@@ -2,6 +2,8 @@ package com.liftoff.models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -10,6 +12,9 @@ public class WantTo {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToMany (mappedBy = "wantTo", cascade = CascadeType.ALL)
+    private List<Link> links = new ArrayList<>();
 
     private String title;
 
@@ -68,6 +73,14 @@ public class WantTo {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
 
     @Override
