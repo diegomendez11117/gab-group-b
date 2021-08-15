@@ -13,9 +13,7 @@
     <tbody>
         <th:block th:each="wantTo : ${listWantTo}" class="container">
            <tr th:if="${wantTo.priority.name() == 'HIGH'}">
-                <td th:text="${wantTo.title}"></td>
-                <td th:text="${wantTo.priority}"></td>
-                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
            </tr>
         </th:block>
     </tbody>
@@ -28,9 +26,7 @@
     <tbody>
         <th:block th:each="wantTo : ${listWantTo}">
             <tr th:if="${wantTo.priority.name() == 'MEDIUM'}">
-                <td th:text="${wantTo.title}"></td>
-                <td th:text="${wantTo.priority}"></td>
-                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
             </tr>
         </th:block>
     </tbody>
@@ -43,9 +39,7 @@
     <tbody>
         <th:block th:each="wantTo : ${listWantTo}">
             <tr th:if="${wantTo.priority.name() == 'LOW'}">
-                <td th:text="${wantTo.title}"></td>
-                <td th:text="${wantTo.priority}"></td>
-                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}">View</a> </td>
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
             </tr>
         </th:block>
     </tbody>
