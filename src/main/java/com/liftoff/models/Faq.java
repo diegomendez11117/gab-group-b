@@ -1,36 +1,33 @@
 package com.liftoff.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Faq {
 
-    @Id@GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToMany (mappedBy = "faq", cascade = CascadeType.ALL)
+    private List<Link> links = new ArrayList<>();
 
     private String question;
 
     private String answer;
 
-    private String link;
-
     public Faq(){}
+
 
     public Faq(String question, String answer) {
         this.question = question;
         this.answer = answer;
-    }
 
-    public Faq(String question, String answer, String link) {
-        this.question = question;
-        this.answer = answer;
-        this.link = link;
     }
-
 
 
     public Integer getId() {
@@ -57,11 +54,34 @@ public class Faq {
         this.answer = answer;
     }
 
-    public String getLink() {
-        return link;
+
+    public List<Link> getLinks() {
+        return links;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Faq faq = (Faq) o;
+        return Objects.equals(id, faq.id) && Objects.equals(question, faq.question) && Objects.equals(answer, faq.answer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, question, answer);
+    }
+
+    @Override
+    public String toString() {
+        return "Faq{" +
+                "id=" + id +
+                ", question='" + question + '\'' +
+                ", answer='" + answer + '\'' +
+                '}';
     }
 }

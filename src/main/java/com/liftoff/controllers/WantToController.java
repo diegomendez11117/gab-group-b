@@ -1,7 +1,6 @@
 package com.liftoff.controllers;
 
 import com.liftoff.data.WantToRepository;
-import com.liftoff.models.Faq;
 import com.liftoff.models.WantTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

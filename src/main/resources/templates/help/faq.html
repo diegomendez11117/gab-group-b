@@ -5,9 +5,16 @@
 <header th:replace="fragments :: header"></header>
     <div>
         <p th:text="${faq.question}"></p>
-    </div>
-    <div>
         <p th:text="${faq.answer}"></p>
+        <p> Links:
+        <ul>
+            <li th:each="link : ${faq.links}">
+                <a th:href="@{${link.url}}" th:text="${link.name}"></a>
+            </li>
+        </ul>
+        </p>
+
+
     </div>
 </body>
 </html>

@@ -13,6 +13,10 @@ public class Link {
     @JoinColumn (name = "wantTo_id")
     private WantTo wantTo;
 
+    @ManyToOne
+    @JoinColumn (name = "faq_id")
+    private Faq faq;
+
     private String name;
 
     private String url;
