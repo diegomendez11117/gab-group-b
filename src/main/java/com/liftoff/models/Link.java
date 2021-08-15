@@ -21,6 +21,8 @@ public class Link {
 
     private String url;
 
+    private String guideStarUrl;
+
 
     public Link(){}
 
@@ -34,9 +36,6 @@ public class Link {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public WantTo getWantTo() {
         return wantTo;
@@ -60,5 +59,21 @@ public class Link {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Faq getFaq() {
+        return faq;
+    }
+
+    public void setFaq(Faq faq) {
+        this.faq = faq;
+    }
+
+    public String getGuideStarUrl() {
+        return guideStarUrl;
+    }
+
+    public void setGuideStarUrl(String guideStarUrl) {
+        this.guideStarUrl = guideStarUrl;
     }
 }
