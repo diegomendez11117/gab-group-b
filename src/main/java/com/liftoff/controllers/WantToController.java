@@ -22,7 +22,7 @@ public class WantToController {
     @GetMapping ("")
     public String displayAllWantTo (Model model) {
         List<WantTo> listWantTo = wantToRepository.findAll();
-        model.addAttribute("title", "I want to do this shit");
+        model.addAttribute("title", "What to do Next...");
         model.addAttribute("listWantTo", listWantTo);
 
         return "wantTo/index";
