@@ -13,11 +13,9 @@
     </tr>
     </thead>
     <tbody>
-    <th:block th:each="faqDetail : ${listFaq}">
+    <th:block th:each="faq : ${listFaq}">
         <tr>
-            <!-- <td>[[${faqDetail.id}]]</td> -->
-            <td th:text="${faqDetail.question}"></td>
-            <td> <a th:href="@{'/help/faq/' + ${faqDetail.id}}">View</a> </td>
+            <td> <a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}">></a> </td>
         </tr>
 
     </th:block>
