@@ -7,11 +7,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Faq {
+public class Faq extends AbstractEntity{
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     @OneToMany (mappedBy = "faq", cascade = CascadeType.ALL)
     private List<Link> links = new ArrayList<>();
@@ -29,14 +26,6 @@ public class Faq {
 
     }
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getQuestion() {
         return question;
@@ -63,23 +52,10 @@ public class Faq {
         this.links = links;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Faq faq = (Faq) o;
-        return Objects.equals(id, faq.id) && Objects.equals(question, faq.question) && Objects.equals(answer, faq.answer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, question, answer);
-    }
 
     @Override
     public String toString() {
         return "Faq{" +
-                "id=" + id +
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
                 '}';

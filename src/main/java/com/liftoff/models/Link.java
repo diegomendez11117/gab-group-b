@@ -3,11 +3,8 @@ package com.liftoff.models;
 import javax.persistence.*;
 
 @Entity
-public class Link {
+public class Link extends AbstractEntity{
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     @ManyToOne
     @JoinColumn (name = "wantTo_id")
@@ -31,11 +28,6 @@ public class Link {
         this.name = name;
         this.url = url;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
 
     public WantTo getWantTo() {
         return wantTo;
@@ -75,5 +67,13 @@ public class Link {
 
     public void setGuideStarUrl(String guideStarUrl) {
         this.guideStarUrl = guideStarUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Link{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

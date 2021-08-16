@@ -7,11 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class WantTo {
-
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class WantTo extends AbstractEntity{
 
     @OneToMany (mappedBy = "wantTo", cascade = CascadeType.ALL)
     private List<Link> links = new ArrayList<>();
@@ -43,13 +39,6 @@ public class WantTo {
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -83,26 +72,12 @@ public class WantTo {
         this.links = links;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        WantTo wantTo = (WantTo) o;
-        return Objects.equals(id, wantTo.id) && Objects.equals(title, wantTo.title) && Objects.equals(description, wantTo.description) && priority == wantTo.priority;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, description, priority);
-    }
 
     @Override
     public String toString() {
         return "WantTo{" +
-                "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", priority=" + priority +
                 '}';
     }
 }

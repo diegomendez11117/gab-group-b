@@ -42,7 +42,7 @@ public class WelcomeController {
 
         model.addAttribute("welcomeMessage", welcomeMessage);
         model.addAttribute("title", "Welcome!");
-        return "welcome/index";
+        return "index";
     }
 
     @GetMapping ("about")
@@ -55,6 +55,6 @@ public class WelcomeController {
         model.addAttribute("aboutMessage", aboutMessage);
         model.addAttribute("title", "About Us!");
 
-        return "welcome/about";
+        return "about";
     }
 }

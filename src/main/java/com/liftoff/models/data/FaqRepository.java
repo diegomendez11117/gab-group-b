@@ -1,4 +1,4 @@
-package com.liftoff.data;
+package com.liftoff.models.data;
 
 import com.liftoff.models.Faq;
 import org.springframework.data.jpa.repository.JpaRepository;
