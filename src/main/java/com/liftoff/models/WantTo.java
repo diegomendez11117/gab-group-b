@@ -1,13 +1,12 @@
 package com.liftoff.models;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class WantTo extends AbstractEntity{
+
 
     @OneToMany (mappedBy = "wantTo", cascade = CascadeType.ALL)
     private List<Link> links = new ArrayList<>();
@@ -16,14 +15,14 @@ public class WantTo extends AbstractEntity{
 
     private String description;
 
+    private Priority priority;
+
     public enum Priority {
         HIGH,
         MEDIUM,
         LOW,
         HIDDEN,
     }
-
-    private Priority priority;
 
 
     public WantTo(){}

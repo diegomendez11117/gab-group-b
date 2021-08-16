@@ -33,8 +33,8 @@ public class WelcomeController {
                 " to obtain a job, government aid, financial information" +
                 " for obtaining loans and credit. These are some of the many other" +
                 " problems that can affect the development of the life of a refugee" +
-                " in the United States and specifically in the city of Saint Louis.\n" +
-                "Due to the problem of lack of information, we can consider" +
+                " in the United States and specifically in the city of Saint Louis." +
+                " Due to the problem of lack of information, we can consider" +
                 " the idea of creating an information help center for immigrants," +
                 " which interacts with each user, providing all the information" +
                 " tools (links, phone numbers, addresses, and tips) so that they can" +
@@ -42,7 +42,7 @@ public class WelcomeController {
 
         model.addAttribute("welcomeMessage", welcomeMessage);
         model.addAttribute("title", "Welcome!");
-        return "index";
+        return "/index";
     }
 
     @GetMapping ("about")
@@ -55,6 +55,6 @@ public class WelcomeController {
         model.addAttribute("aboutMessage", aboutMessage);
         model.addAttribute("title", "About Us!");
 
-        return "about";
+        return "/about";
     }
 }

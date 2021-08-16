@@ -1,10 +1,8 @@
 package com.liftoff.models;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Faq extends AbstractEntity{
@@ -17,8 +15,8 @@ public class Faq extends AbstractEntity{
 
     private String answer;
 
-    public Faq(){}
 
+    public Faq(){}
 
     public Faq(String question, String answer) {
         this.question = question;
@@ -42,7 +40,6 @@ public class Faq extends AbstractEntity{
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-
 
     public List<Link> getLinks() {
         return links;
