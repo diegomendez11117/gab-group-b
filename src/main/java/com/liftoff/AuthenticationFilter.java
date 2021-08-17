@@ -21,11 +21,22 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css", "/about", "/want", "/help", "/welcome" );
+    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css", "/about", "/want", "/help");
 
-    private static boolean isWhitelisted(String path) {
-        for (String pathRoot : whitelist) {
-            if (path.startsWith(pathRoot)) {
+    private static final List<String> blacklist = Arrays.asList("/admin");
+
+//    private static boolean isWhitelisted(String path) {
+//        for (String pathRoot : whitelist) {
+//            if (path.startsWith(pathRoot)){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
+    private static boolean notBlacklisted(String path) {
+        for (String pathRoot : blacklist) {
+            if (!path.startsWith (pathRoot)){
                 return true;
             }
         }
@@ -38,11 +49,18 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
                              HttpServletResponse response,
                              Object handler) throws IOException {
 
+//        // Don't require sign-in for whitelisted pages
+//        if (isWhitelisted(request.getRequestURI())) {
+//            // returning true indicates that the request may proceed
+//            return true;
+//        }
+
         // Don't require sign-in for whitelisted pages
-        if (isWhitelisted(request.getRequestURI())) {
+        if (notBlacklisted(request.getRequestURI())) {
             // returning true indicates that the request may proceed
             return true;
         }
+
 
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);

@@ -42,7 +42,7 @@ public class WelcomeController {
 
         model.addAttribute("welcomeMessage", welcomeMessage);
         model.addAttribute("title", "Welcome!");
-        return "/index";
+        return "/welcome/index";
     }
 
     @GetMapping ("about")
