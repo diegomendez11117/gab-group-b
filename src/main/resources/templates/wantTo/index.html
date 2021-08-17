@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Have to Do!</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}" class="container">
+           <tr th:if="${wantTo.priority.name() == 'HIGH'}">
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
+           </tr>
+        </th:block>
+    </tbody>
+
+    <thead>
+        <tr>
+            <th>Should Do!</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}">
+            <tr th:if="${wantTo.priority.name() == 'MEDIUM'}">
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
+            </tr>
+        </th:block>
+    </tbody>
+
+    <thead>
+        <tr>
+            <th>Could Do!</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}">
+            <tr th:if="${wantTo.priority.name() == 'LOW'}">
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
+            </tr>
+        </th:block>
+    </tbody>
+
+
+</table>
+
+
+
+</body>
+</html>

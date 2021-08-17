@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <!-- <th>ID</th> -->
+        <th>FAQ</th>
+        <!-- <th>Answer</th> -->
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="faq : ${listFaq}">
+        <tr>
+            <td> <a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}">></a> </td>
+        </tr>
+
+    </th:block>
+
+    </tbody>
+
+
+</table>
+
+
+
+</body>
+</html>
