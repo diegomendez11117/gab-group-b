@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #14c871;
+  color: #206bfb;
   text-decoration: none;
 }
 
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #16df7e;
+  background: #206bfb;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .navbar .getstarted {
@@ -192,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .navbar .dropdown:hover > ul {
@@ -287,7 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .navbar-mobile .getstarted {
@@ -320,7 +320,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .navbar-mobile .dropdown > .dropdown-active {
@@ -361,8 +361,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
   transition: 0.5s;
   color: #fff;
-  background: #16df7e;
-  box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
+  background: #206bfb;
+  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
 }
 
 #hero .btn-get-started:hover {
@@ -389,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-watch-video:hover i {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 #hero .animated {
@@ -534,7 +534,7 @@ section {
 }
 
 .featured-services .icon i {
-  color: #16df7e;
+  color: #206bfb;
   font-size: 36px;
 }
 
@@ -554,7 +554,7 @@ section {
 }
 
 .featured-services .icon-box:hover .title a {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .featured-services .description {
@@ -583,7 +583,7 @@ section {
 .about .content ul i {
   font-size: 20px;
   padding-right: 4px;
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .about .content p:last-child {
@@ -600,7 +600,7 @@ section {
 .counts .counters span {
   font-size: 48px;
   display: block;
-  color: #16df7e;
+  color: #206bfb;
   font-weight: 700;
 }
 
@@ -633,7 +633,7 @@ section {
 }
 
 .services .icon-box .icon i {
-  color: #16df7e;
+  color: #206bfb;
   font-size: 36px;
   transition: 0.3s;
 }
@@ -660,7 +660,7 @@ section {
 }
 
 .services .icon-box:hover h4 a {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 /*--------------------------------------------------------------
@@ -687,7 +687,7 @@ section {
 }
 
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -733,7 +733,7 @@ section {
 }
 
 .portfolio .portfolio-item .portfolio-info .preview-link:hover, .portfolio .portfolio-item .portfolio-info .details-link:hover {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .portfolio .portfolio-item .portfolio-info .details-link {
@@ -766,11 +766,11 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #16df7e;
+  border: 1px solid #206bfb;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #16df7e;
+  background-color: #206bfb;
 }
 
 .portfolio-details .portfolio-info {
@@ -879,18 +879,18 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #16df7e;
+  border: 1px solid #206bfb;
 }
 
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #16df7e;
+  background-color: #206bfb;
 }
 
 /*--------------------------------------------------------------
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: #16df7e;
+  background: #206bfb;
   background-size: cover;
   padding: 60px 0;
 }
@@ -969,7 +969,7 @@ section {
 }
 
 .team .member .social a:hover {
-  color: #16df7e;
+  color: #206bfb;
 }
 
 .team .member .social i {
@@ -981,8 +981,8 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact .info {
-  border-top: 3px solid #16df7e;
-  border-bottom: 3px solid #16df7e;
+  border-top: 3px solid #206bfb;
+  border-bottom: 3px solid #206bfb;
   padding: 30px;
   width: 100%;
   background-color: #f9f9fa;
@@ -990,7 +990,7 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #16df7e;
+  color: #206bfb;
   float: left;
   width: 44px;
   height: 44px;
@@ -1037,19 +1037,19 @@ section {
 }
 
 .contact .info .social-links a:hover {
-  background: #16df7e;
+  background: #206bfb;
   color: #fff;
 }
 
 .contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-  background: #16df7e;
+  background: #206bfb;
   color: #fff;
 }
 
 .contact .php-email-form {
   width: 100%;
-  border-top: 3px solid #16df7e;
-  border-bottom: 3px solid #16df7e;
+  border-top: 3px solid #206bfb;
+  border-bottom: 3px solid #206bfb;
   padding: 30px;
   background-color: #f9f9fa;
 }
@@ -1108,7 +1108,7 @@ section {
 }
 
 .contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
-  border-color: #16df7e;
+  border-color: #206bfb;
 }
 
 .contact .php-email-form input {
@@ -1120,7 +1120,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"] {
-  background: #16df7e;
+  background: #206bfb;
   border: 0;
   padding: 10px 24px;
   color: #fff;
@@ -1263,7 +1263,7 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #16df7e;
+  background: #206bfb;
   color: #fff;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
@@ -1294,7 +1294,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #16df7e;
+  background: #206bfb;
   color: #fff;
   text-decoration: none;
 }
@@ -1322,4 +1322,22 @@ section {
     -moz-text-align-last: center;
     text-align-last: center;
   }
+}
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://wextor.eu/wextor/en/hero_login.png');
+  background-size: cover;
+  background-position: center center;
 }

@@ -37,11 +37,11 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                <li><a class="nav-link scrollto active" th:href="@{/}">Home</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/wantTo}">I Want To</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/about}">About Us</a></li>
+                <li><a class="nav-link scrollto " th:href="@{/help}">Help</a></li>
+              <!--  <li><a class="nav-link scrollto" th:href="@{/login}">login</a></li>
                 <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
@@ -58,9 +58,10 @@
                         <li><a href="#">Drop Down 3</a></li>
                         <li><a href="#">Drop Down 4</a></li>
                     </ul>
-                </li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+                </li>-->
+
+                <li><a class="nav-link scrollto" th:href="@{/login}">login</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/admin}">Admin</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -137,21 +138,6 @@
 <!-- Vendor JS Files -->
 
 <!--
-
-    <header th:fragment="header">
-        <h1 th:text = "${title}"></h1>
-        <nav>
-            <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/wantTo}">I Want To</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/about}">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/help}">Help</a></li>
-                 <li class="nav-item"><a class="nav-link" th:href="@{/login}">login</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/admin}">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <nav th:fragment="adminNav">
         <ul class="nav justify-content-center">
             <li class="nav-item"><a class="nav-link" th:href="@{/admin/}">Admin Tools</a></li>

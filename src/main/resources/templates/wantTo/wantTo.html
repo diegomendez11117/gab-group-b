@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
-    <header th:replace="fragments :: header"></header>
-
+<body>
+<header th:replace="fragments :: header"></header>
+<div class="container">
     <table class="table table-bordered">
         <thead>
-            <tr>
-                <th th:text="${wantTo.title}"></th>
-            </tr>
+        <tr>
+            <th th:text="${wantTo.title}"></th>
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td th:text="${wantTo.priority}+' Priority'"></td>
-            </tr>
-            <tr>
-                <td th:text="${wantTo.description}"></td>
-            </tr>
+        <tr>
+            <td th:text="${wantTo.priority}+' Priority'"></td>
+        </tr>
+        <tr>
+            <td th:text="${wantTo.description}"></td>
+        </tr>
         </tbody>
     </table>
 
     <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>Links</th>
-            </tr>
+        <tr>
+            <th>Links</th>
+        </tr>
         </thead>
         <tbody>
-            <th:block th:each="link : ${wantTo.links}">
-                <tr>
-                    <td><a th:href="@{${link.url}}" th:text="${link.name}"></a></td>
-                </tr>
-            </th:block>
+        <th:block th:each="link : ${wantTo.links}">
+            <tr>
+                <td><a th:href="@{${link.url}}" th:text="${link.name}"></a></td>
+            </tr>
+        </th:block>
         </tbody>
     </table>
+</div>
+
+
+<!-- ======= Scripts ======= -->
+<section th:replace="fragments :: scripts"></section>
+
+<!-- ======= Footer ======= -->
+<footer th:replace="fragments :: footer"></footer>
+
 </body>
 </html>
