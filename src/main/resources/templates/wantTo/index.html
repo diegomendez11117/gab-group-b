@@ -1,54 +1,133 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body>
+<!-- ======= Header ======= -->
 <header th:replace="fragments :: header"></header>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>High Priority</th>
-        </tr>
-    </thead>
-    <tbody>
-        <th:block th:each="wantTo : ${listWantTo}" class="container">
-           <tr th:if="${wantTo.priority.name() == 'HIGH'}">
-                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
-           </tr>
-        </th:block>
-    </tbody>
 
-    <thead>
-        <tr>
-            <th>Medium Priority</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <th:block th:each="wantTo : ${listWantTo}">
-            <tr th:if="${wantTo.priority.name() == 'MEDIUM'}">
-                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
-            </tr>
-        </th:block>
-    </tbody>
-
-    <thead>
-        <tr>
-            <th>Low Priority</th>
-        </tr>
-    </thead>
-    <tbody>
-        <th:block th:each="wantTo : ${listWantTo}">
-            <tr th:if="${wantTo.priority.name() == 'LOW'}">
-                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
-            </tr>
-        </th:block>
-    </tbody>
+<section id="priorities" class="align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="section-title text-center">
+                <span>High Priority</span>
+                <h2>High Priority</h2>
+            </div>
+            <h1 class="section-title text-center">A better way to send money</h1>
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempo rr sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt dolor sit amet, consectetur adipiscing elit, ut labore et incididuntr sit amet,
+                consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt dolor sit amet, consectetur adipiscing elit, ut labore et dolor sit amet, consectetur
+                adipiscing elit, ut labore et dolore magna aliqua.</h2>
+        </div>
+    </div>
+    </div>
+</section>
 
 
-</table>
+<section id="featured-services" class="featured-services">
+    <div class="container">
+        <div class="row">
+            <th:block th:each="wantTo : ${listWantTo}" class="container">
+                <div th:if="${wantTo.priority.name() == 'HIGH'}" class="col-lg-4 col-md-6 cards-priorities">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bi bi-laptop"></i></div>
+                        <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
+                                             th:text="${wantTo.title}"></a></h4>
+                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
+                            excepturi sint occaecati cupiditate non provident</p>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</section>
 
 
+<section id="medium" class="align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="section-title-blue text-center">
+                <span>Medium Priority</span>
+                <h2>Medium Priority</h2>
+            </div>
+            <h1 class="section-title-blue text-center">A better way to send money</h1>
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempo rr sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt dolor sit amet, consectetur adipiscing elit, ut labore et incididuntr sit amet,
+                consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt dolor sit amet, consectetur adipiscing elit, ut labore et dolor sit amet, consectetur
+                adipiscing elit, ut labore et dolore magna aliqua.</h2>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<section id="blue-priorities" class="blue-priorities">
+    <div class="container">
+        <div class="row">
+            <th:block th:each="wantTo : ${listWantTo}" class="container">
+                <div th:if="${wantTo.priority.name() == 'MEDIUM'}" class="col-lg-4 col-md-6 cards-priorities">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bi bi-laptop"></i></div>
+                        <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
+                                             th:text="${wantTo.title}"></a></h4>
+                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
+                            excepturi sint occaecati cupiditate non provident</p>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="normal-title" class="align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="section-title text-center">
+                <span>Normal Priority</span>
+                <h2>Normal Priority</h2>
+            </div>
+            <h1 class="section-title text-center">A better way to send money</h1>
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempo rr sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt dolor sit amet, consectetur adipiscing elit, ut labore et incididuntr sit amet,
+                consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt dolor sit amet, consectetur adipiscing elit, ut labore et dolor sit amet, consectetur
+                adipiscing elit, ut labore et dolore magna aliqua.</h2>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<section id="normal" class="featured-services">
+    <div class="container">
+        <div class="row">
+            <th:block th:each="wantTo : ${listWantTo}" class="container">
+                <div th:if="${wantTo.priority.name() == 'LOW'}" class="col-lg-4 col-md-6 cards-priorities">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bi bi-laptop"></i></div>
+                        <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
+                                             th:text="${wantTo.title}"></a></h4>
+                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
+                            excepturi sint occaecati cupiditate non provident</p>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</section>
+
+<!-- ======= Scripts ======= -->
+<section th:replace="fragments :: scripts"></section>
+
+<!-- ======= Footer ======= -->
+<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>

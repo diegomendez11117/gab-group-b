@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body>
 <header th:replace="fragments :: header"></header>
 
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <!-- <th>ID</th> -->
-        <th>FAQ</th>
-        <!-- <th>Answer</th> -->
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:each="faq : ${listFaq}">
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
         <tr>
-            <td> <a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}">></a> </td>
+            <!-- <th>ID</th> -->
+            <th>FAQ</th>
+            <!-- <th>Answer</th> -->
         </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="faq : ${listFaq}">
+            <tr>
+                <td> <a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a> </td>
+            </tr>
 
-    </th:block>
+        </th:block>
+        </tbody>
+    </table>
+</div>
 
-    </tbody>
+<!-- ======= Scripts ======= -->
+<section th:replace="fragments :: scripts"></section>
 
-
-</table>
-
-
+<!-- ======= Footer ======= -->
+<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>

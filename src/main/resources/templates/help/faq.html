@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body>
 <header th:replace="fragments :: header"></header>
 
+<div class="container">
     <div>
         <p th:text="${faq.question}"></p>
         <p th:text="${faq.answer}"></p>
@@ -11,25 +12,33 @@
 
     <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>Links:</th>
-                <th></th>
-            </tr>
+        <tr>
+            <th>Links:</th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
-            <th:block th:each="link : ${faq.links}">
-                <tr>
-                    <td>
-                        <a th:href="@{${link.url}}" th:text="${link.name}"></a>
-                    </td>
-                    <td th:if="${link.guideStarUrl != NULL}">
-                        <a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a>
-                    </td>
-                </tr>
-            </th:block>
+        <th:block th:each="link : ${faq.links}">
+            <tr>
+                <td>
+                    <a th:href="@{${link.url}}" th:text="${link.name}"></a>
+                </td>
+                <td th:if="${link.guideStarUrl != NULL}">
+                    <a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a>
+                </td>
+            </tr>
+        </th:block>
 
         </tbody>
     </table>
+</div>
+
+<!-- ======= Scripts ======= -->
+<section th:replace="fragments :: scripts"></section>
+
+<!-- ======= Footer ======= -->
+<footer th:replace="fragments :: footer"></footer>
+
 
 </body>
 </html>
