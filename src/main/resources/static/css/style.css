@@ -1416,9 +1416,30 @@ section {
     margin-bottom:30px;
 }
 
+
 /*--------------------------------------------------------------
 # Featured Services
 --------------------------------------------------------------*/
+#medium{
+    width: 100%;
+    background: #206bfb;
+    padding-top: 120px;
+}
+
+#medium h2{
+    color: white;
+    margin: 10px 0 30px 0;
+    font-size: 24px;
+}
+
+#medium h1{
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: white;
+}
+
 .blue-priorities {
     background: #206bfb;
     background-size: cover;
@@ -1428,7 +1449,7 @@ section {
 .blue-priorities .icon-box {
   padding: 20px;
   color: #5f687b;
-  background: #f9f9fa;
+  background: white;
   border-radius: 4px;
   border: 1px solid #f9f9fa;
   transition: 0.3s;
@@ -1451,7 +1472,7 @@ section {
 }
 
 .blue-priorities .title a {
-  color: white;
+  color: #3e4450;
   transition: 0.3s;
 }
 
@@ -1460,10 +1481,89 @@ section {
 }
 
 .blue-priorities .icon-box:hover .title a {
-  color: white;
+  color: #206bfb;
 }
 
 .blue-priorities .description {
   line-height: 24px;
   font-size: 14px;
+}
+
+
+.section-title-blue {
+  text-align: center;
+  padding: 30px 0;
+  position: relative;
+}
+
+.section-title-blue h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title-blue h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title-blue span {
+  position: absolute;
+  top: 30px;
+  color: #6f9ffc;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 52px;
+  text-transform: uppercase;
+  line-height: 0;
+}
+
+.section-title-blue p {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 575px) {
+  .section-title-blue h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  .section-title-blue span {
+    font-size: 38px;
+  }
+}
+
+
+#normal-title {
+  width: 100%;
+  background: #fff;
+  padding-top: 120px;
+}
+
+#normal-title h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #3e4450;
+}
+
+#normal-title h2 {
+  color: #858ea1;
+  margin: 10px 0  30px 0;
+  font-size: 24px;
 }
