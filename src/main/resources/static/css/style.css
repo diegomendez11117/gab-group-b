@@ -1184,6 +1184,10 @@ section {
   content: "/";
 }
 
+.title-top{
+    margin-top: 100px;
+}
+
 @media (max-width: 992px) {
   .breadcrumbs {
     margin-top: 58px;
@@ -1340,4 +1344,126 @@ section {
   background-image: url('https://wextor.eu/wextor/en/hero_login.png');
   background-size: cover;
   background-position: center center;
+}
+
+.section-priorities{
+  width: 100%;
+  background: #fff;
+  padding-top: 120px;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#priorities {
+  width: 100%;
+  background: #fff;
+  padding-top: 120px;
+}
+
+#priorities h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #3e4450;
+}
+
+#priorities h2 {
+  color: #858ea1;
+  margin: 10px 0  30px 0;
+  font-size: 24px;
+}
+
+#priorities .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 30px 10px 30px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #fff;
+  background: #206bfb;
+  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+}
+
+#priorities .btn-get-started:hover {
+  background: #206bfb;
+  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+}
+
+#priorities .btn-watch-video {
+  font-size: 16px;
+  display: inline-block;
+  transition: 0.5s;
+  margin-left: 25px;
+  color: #5f687b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#priorities .btn-watch-video i {
+  color: #949cac;
+  font-size: 32px;
+  line-height: 0;
+  margin-right: 8px;
+}
+
+.cards-priorities{
+    margin-bottom:30px;
+}
+
+/*--------------------------------------------------------------
+# Featured Services
+--------------------------------------------------------------*/
+.blue-priorities {
+    background: #206bfb;
+    background-size: cover;
+    padding: 60px 0;
+}
+
+.blue-priorities .icon-box {
+  padding: 20px;
+  color: #5f687b;
+  background: #f9f9fa;
+  border-radius: 4px;
+  border: 1px solid #f9f9fa;
+  transition: 0.3s;
+  height: 100%;
+}
+
+.blue-priorities .icon {
+  margin: 0 0 15px 0;
+}
+
+.blue-priorities .icon i {
+  color: #206bfb;
+  font-size: 36px;
+}
+
+.blue-priorities .title {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.blue-priorities .title a {
+  color: white;
+  transition: 0.3s;
+}
+
+.blue-priorities .icon-box:hover {
+  border-color: #eaecef;
+}
+
+.blue-priorities .icon-box:hover .title a {
+  color: white;
+}
+
+.blue-priorities .description {
+  line-height: 24px;
+  font-size: 14px;
 }
