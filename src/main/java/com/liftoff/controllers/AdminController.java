@@ -20,6 +20,7 @@ public class AdminController {
         return "admin/index";
     }
 
+
     @Autowired
     private WelcomeRepository welcomeRepository;
 
