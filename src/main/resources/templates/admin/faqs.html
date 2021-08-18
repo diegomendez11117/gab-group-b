@@ -3,7 +3,49 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
-<nav th:replace="fragments :: adminNav"></nav>
+
+
+<div class="container p-1">
+    <div class="row">
+        <div class="col-2">
+            <nav th:replace="fragments :: adminNav"></nav>
+        </div>
+        <div class="col-6">
+            <table class="table table-bordered">
+                <th:block th:each="faq : ${listFaqs}" class="container">
+                    <tr>
+                        <td> <a  th:text="${faq.question}">></a> </td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+        <div class="col-4">
+            <form th:action="@{/admin/saveFaq}" th:object="${faq}" th:method="post"
+                  style="max-width: 600px; margin: 0; auto">
+                <input type="hidden" th:field="*{id}" th:value="${faq.id}"/>
+                <div class="m-3">
+                    <div Class="form-group row">
+                        <label class="col-form-Label col-sm-4">FAQ Question:</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{question}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div Class="form-group row">
+                        <label class="col-form-Label col-sm-4">FAQ Answer:</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{answer}" class="form-control" required/>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center p-3">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 </body>

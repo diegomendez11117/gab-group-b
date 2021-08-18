@@ -3,7 +3,22 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
-<nav th:replace="fragments :: adminNav"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <nav th:replace="fragments :: adminNav"></nav>
+        </div>
+        <div class="col-lg">
+            One of three columns
+        </div>
+        <div class="col-lg">
+            One of three columns
+        </div>
+    </div>
+</div>
+
+
 
 
 </body>

@@ -1,35 +1,60 @@
 package com.liftoff.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Welcome extends AbstractEntity{
 
-        public String welcomeMessage = "Every year many refugee migrants arrive in Saint Louis from other parts of the world. It is essential for them to settle in a new community and start a new life. To all this, some problems arise, such as: obtaining personal documentation like driver license, work permit, Social Security Number, information for minors regarding the continuity of academic studies, language learning, also alternatives for adults to obtain a job, government aid, financial information for obtaining loans and credit. These are some of the many other problems that can affect the development of the life of a refugee in the United States and specifically in the city of Saint Louis.\n" +
-                "Due to the problem of lack of information, we can consider the idea of creating an information help center for immigrants, which interacts with each user, providing all the information tools (links, phone numbers, addresses, and tips) so that they can advance in the beginning of a new life in a brand-new place.";
+    private String paragraph1;
+    private String paragraph2;
+    private String paragraph3;
 
-        public int zip;
+    //private int zip;
 
-        public enum PreferredLanguage {
-            ENGLISH,
-            SPANISH,
-            FRENCH,
-        }
-
-        public PreferredLanguage preferredLanguage;
-
-    public String getWelcomeMessage() {
-        return welcomeMessage;
+    public enum PreferredLanguage {
+        ENGLISH,
+        SPANISH,
+        FRENCH,
     }
 
-    public void setWelcomeMessage(String welcomeMessage) {
-        this.welcomeMessage = welcomeMessage;
+    private PreferredLanguage preferredLanguage;
+
+    private String mapString;
+
+
+
+
+    public String getParagraph1() {
+        return paragraph1;
     }
 
-    public int getZip() {
-        return zip;
+    public void setParagraph1(String paragraph1) {
+        this.paragraph1 = paragraph1;
     }
 
-    public void setZip(int zip) {
-        this.zip = zip;
+    public String getParagraph2() {
+        return paragraph2;
     }
+
+    public void setParagraph2(String paragraph2) {
+        this.paragraph2 = paragraph2;
+    }
+
+    public String getParagraph3() {
+        return paragraph3;
+    }
+
+    public void setParagraph3(String paragraph3) {
+        this.paragraph3 = paragraph3;
+    }
+
+//    public int getZip() {
+//        return zip;
+//    }
+//
+//    public void setZip(int zip) {
+//        this.zip = zip;
+//    }
 
     public PreferredLanguage getPreferredLanguage() {
         return preferredLanguage;
@@ -37,5 +62,13 @@ public class Welcome extends AbstractEntity{
 
     public void setPreferredLanguage(PreferredLanguage preferredLanguage) {
         this.preferredLanguage = preferredLanguage;
+    }
+
+    public String getMapString() {
+        return mapString;
+    }
+
+    public void setMapString(String mapString) {
+        this.mapString = mapString;
     }
 }
