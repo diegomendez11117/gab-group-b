@@ -1806,3 +1806,11 @@ section {
     line-height: 32px;
   }
 }
+
+.fondo{
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
+.space{
+  margin-bottom: 25px;
+}
