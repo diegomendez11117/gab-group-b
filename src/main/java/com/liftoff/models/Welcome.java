@@ -8,8 +8,10 @@ public class Welcome extends AbstractEntity{
     private String paragraph1;
     private String paragraph2;
     private String paragraph3;
+    private String about1;
+    private String about2;
+    private String about3;
 
-    //private int zip;
 
     public enum PreferredLanguage {
         ENGLISH,
@@ -48,13 +50,29 @@ public class Welcome extends AbstractEntity{
         this.paragraph3 = paragraph3;
     }
 
-//    public int getZip() {
-//        return zip;
-//    }
-//
-//    public void setZip(int zip) {
-//        this.zip = zip;
-//    }
+    public String getAbout1() {
+        return about1;
+    }
+
+    public void setAbout1(String about1) {
+        this.about1 = about1;
+    }
+
+    public String getAbout2() {
+        return about2;
+    }
+
+    public void setAbout2(String about2) {
+        this.about2 = about2;
+    }
+
+    public String getAbout3() {
+        return about3;
+    }
+
+    public void setAbout3(String about3) {
+        this.about3 = about3;
+    }
 
     public PreferredLanguage getPreferredLanguage() {
         return preferredLanguage;

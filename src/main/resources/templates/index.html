@@ -4,11 +4,16 @@
 <body class="container">
 <header th:replace="fragments :: header"></header>
 
+
     <div>
-        <p th:text="${welcomeMessage}"></p>
+        <p th:text="*{welcome.paragraph1}"></p>
     </div>
-
-
+    <div>
+        <p th:text="*{welcome.paragraph2}"></p>
+    </div>
+    <div>
+        <p th:text="*{welcome.paragraph3}"></p>
+    </div>
 
 </body>
 </html>

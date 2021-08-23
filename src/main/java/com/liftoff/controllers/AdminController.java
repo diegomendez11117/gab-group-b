@@ -26,7 +26,7 @@ public class AdminController {
 
     @GetMapping ("welcome")
     public String displayManageWelcomePage (Model model) {
-        List<Welcome> listWelcome = welcomeRepository.findAll();
+        //List<Welcome> listWelcome = welcomeRepository.findAll();
         Welcome welcome = welcomeRepository.getById(1);
         model.addAttribute("title", "Manage Welcome Page");
         model.addAttribute("welcome",welcome);
