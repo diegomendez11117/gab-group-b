@@ -40,7 +40,7 @@ public class AdminController {
     }
 
     @PostMapping("updateWelcome")
-    public String updateWelcome(Welcome welcome, Model model) {
+    public String updateWelcome(Welcome welcome) {
         welcomeRepository.save(welcome);
         return "redirect:";
     }
@@ -59,7 +59,7 @@ public class AdminController {
     @GetMapping ("manageFaqs")
     public String displayManageFAQPage (Model model) {
         List<Faq> listFaqs = faqRepository.findAll();
-        model.addAttribute("title", "Admin Manage FAQs");
+        model.addAttribute("title", "Admin Portal: Manage FAQs");
         model.addAttribute("listFaqs", listFaqs);
         //model.addAttribute("faq", new Faq());
         return "/admin/manageFaqs/index";
@@ -68,18 +68,42 @@ public class AdminController {
     @GetMapping ("manageFaqs/new")
     public String displayAddNewFAQ (Model model) {
         List<Faq> listFaqs = faqRepository.findAll();
-        model.addAttribute("title", "Admin Manage FAQs");
+        model.addAttribute("title", "Admin Portal: add FAQ");
         model.addAttribute("listFaqs", listFaqs);
         model.addAttribute("faq", new Faq());
         return "/admin/manageFaqs/new";
     }
 
     @PostMapping ("manageFaqs/save")
-    public String saveFAQ (Faq faq, Model model) {
+    public String saveFAQ (Faq faq) {
         faqRepository.save(faq);
         return "redirect:";
     }
 
+
+    @GetMapping ("manageLinks")
+    public String displayManageLinksPage (Model model) {
+        List<Link> listLink = linkRepository.findAll();
+        model.addAttribute("title", "Admin Portal: Manage Links");
+        model.addAttribute("listLink", listLink);
+        //model.addAttribute("link", new Link());
+        return "/admin/manageLinks/index";
+    }
+
+    @GetMapping ("manageLinks/new")
+    public String displayAddNewLink (Model model) {
+        List<Link> listLinks = linkRepository.findAll();
+        model.addAttribute("title", "Admin Portal: add link");
+        model.addAttribute("listLinks", listLinks);
+        model.addAttribute("link", new Link());
+        return "/admin/manageLinks/new";
+    }
+
+    @PostMapping ("manageLinks/save")
+    public String saveLink (Link link) {
+        linkRepository.save(link);
+        return "redirect:";
+    }
 
 
 
@@ -90,16 +114,6 @@ public class AdminController {
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", new WantTo());
         return "/admin/ManageWantTos/index";
-    }
-
-
-    @GetMapping ("manageLinks")
-    public String displayManageLinksPage (Model model) {
-        List<Link> listLink = linkRepository.findAll();
-        model.addAttribute("title", "Manage Links");
-        model.addAttribute("listLink", listLink);
-        model.addAttribute("link", new Link());
-        return "/admin/manageLinks/index";
     }
 
 }
