@@ -25,7 +25,6 @@ public class Welcome extends AbstractEntity{
 
 
 
-
     public String getParagraph1() {
         return paragraph1;
     }
