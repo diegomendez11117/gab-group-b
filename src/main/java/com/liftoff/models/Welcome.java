@@ -1,16 +1,38 @@
 package com.liftoff.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
 public class Welcome extends AbstractEntity{
 
+    @Column(name="paragraph1", columnDefinition="MEDIUMTEXT")
     private String paragraph1;
+
+    @Column(name="paragraph2", columnDefinition="MEDIUMTEXT")
     private String paragraph2;
+
+    @Column(name="paragraph4", columnDefinition="MEDIUMTEXT")
     private String paragraph3;
+
+    @Column(name="about1", columnDefinition="MEDIUMTEXT")
     private String about1;
+
+    @Column(name="about2", columnDefinition="MEDIUMTEXT")
     private String about2;
+
+    @Column(name="about3", columnDefinition="MEDIUMTEXT")
     private String about3;
+
+    @Column(name="portal1", columnDefinition="MEDIUMTEXT")
+    private String portal1;
+
+    @Column(name="portal2", columnDefinition="MEDIUMTEXT")
+    private String portal2;
+
+    @Column(name="portal3", columnDefinition="MEDIUMTEXT")
+    private String portal3;
+
 
 
     public enum PreferredLanguage {
@@ -71,6 +93,30 @@ public class Welcome extends AbstractEntity{
 
     public void setAbout3(String about3) {
         this.about3 = about3;
+    }
+
+    public String getPortal1() {
+        return portal1;
+    }
+
+    public void setPortal1(String portal1) {
+        this.portal1 = portal1;
+    }
+
+    public String getPortal2() {
+        return portal2;
+    }
+
+    public void setPortal2(String portal2) {
+        this.portal2 = portal2;
+    }
+
+    public String getPortal3() {
+        return portal3;
+    }
+
+    public void setPortal3(String portal3) {
+        this.portal3 = portal3;
     }
 
     public PreferredLanguage getPreferredLanguage() {

@@ -30,16 +30,39 @@ public class AdminController {
     @Autowired
     private LinkRepository linkRepository;
 
-
     @GetMapping ("")
-    public String displayManageWelcomePage (Model model) {
+    public String displayAdminPortalLandingPage(Model model) {
         Welcome welcome = welcomeRepository.getById(1);
-        model.addAttribute("title", "Manage Welcome Page");
+        model.addAttribute("title", "Admin Portal:");
         model.addAttribute("welcome",welcome);
         return "/admin/index";
     }
 
-    @PostMapping("updateWelcome")
+    @GetMapping ("manageWelcome/editWelcome")
+    public String displayManageWelcome (Model model) {
+        Welcome welcome = welcomeRepository.getById(1);
+        model.addAttribute("title", "Admin Portal: Manage Welcome Page");
+        model.addAttribute("welcome",welcome);
+        return "/admin/manageWelcome/editWelcome";
+    }
+
+    @GetMapping ("manageWelcome/editAbout")
+    public String displayManageAboutUs (Model model) {
+        Welcome welcome = welcomeRepository.getById(1);
+        model.addAttribute("title", "Admin Portal: Manage About Us");
+        model.addAttribute("welcome",welcome);
+        return "/admin/manageWelcome/editAbout";
+    }
+
+    @GetMapping ("manageWelcome/editPortal")
+    public String displayManagePortal (Model model) {
+        Welcome welcome = welcomeRepository.getById(1);
+        model.addAttribute("title", "Admin Portal: Manage Portal Welcome");
+        model.addAttribute("welcome",welcome);
+        return "/admin/manageWelcome/editPortal";
+    }
+
+    @PostMapping("manageWelcome/save")
     public String updateWelcome(Welcome welcome) {
         welcomeRepository.save(welcome);
         return "redirect:";
