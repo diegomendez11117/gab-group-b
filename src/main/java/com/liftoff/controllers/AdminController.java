@@ -45,7 +45,6 @@ public class AdminController {
         return "redirect:";
     }
 
-
     @GetMapping ("manageUsers")
     public String displayManageUsersPage (Model model) {
         List<User> listUser = userRepository.findAll();
@@ -54,6 +53,7 @@ public class AdminController {
         model.addAttribute("user", new User());
         return "/admin/manageUsers/index";
     }
+
 
 
     @GetMapping ("manageFaqs")
@@ -81,6 +81,7 @@ public class AdminController {
     }
 
 
+
     @GetMapping ("manageLinks")
     public String displayManageLinksPage (Model model) {
         List<Link> listLink = linkRepository.findAll();
@@ -92,9 +93,9 @@ public class AdminController {
 
     @GetMapping ("manageLinks/new")
     public String displayAddNewLink (Model model) {
-        List<Link> listLinks = linkRepository.findAll();
+        List<Link> listLink = linkRepository.findAll();
         model.addAttribute("title", "Admin Portal: add link");
-        model.addAttribute("listLinks", listLinks);
+        model.addAttribute("listLink", listLink);
         model.addAttribute("link", new Link());
         return "/admin/manageLinks/new";
     }
@@ -107,13 +108,28 @@ public class AdminController {
 
 
 
+
     @GetMapping ("manageWantTos")
     public String displayManageWantTosPage (Model model) {
         List<WantTo> listWantTo = wantToRepository.findAll();
-        model.addAttribute("title", "Manage Want To");
+        model.addAttribute("title", "Admin Portal: Manage Want-To");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", new WantTo());
         return "/admin/ManageWantTos/index";
     }
 
+    @GetMapping ("manageWantTos/new")
+    public String displayAddNewWantTo (Model model) {
+        List<WantTo> listWantTo = wantToRepository.findAll();
+        model.addAttribute("title", "Admin Portal: add wantTo");
+        model.addAttribute("listWantTo", listWantTo);
+        model.addAttribute("wantTo", new WantTo());
+        return "/admin/manageWantTos/new";
+    }
+
+    @PostMapping ("manageWantTos/save")
+    public String saveWantTo (WantTo wantTo) {
+        wantToRepository.save(wantTo);
+        return "redirect:";
+    }
 }
