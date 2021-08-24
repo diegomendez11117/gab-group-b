@@ -45,13 +45,26 @@ public class AdminController {
         return "redirect:";
     }
 
+
     @GetMapping ("manageUsers")
     public String displayManageUsersPage (Model model) {
         List<User> listUser = userRepository.findAll();
-        model.addAttribute("title", "Manage Users");
+        model.addAttribute("title", "Admin Portal: Manage Users");
         model.addAttribute("listUser", listUser);
         model.addAttribute("user", new User());
         return "/admin/manageUsers/index";
+    }
+
+    @GetMapping("manageUsers/new")
+    public String displayRegisterNewUser(){
+        return "/register";
+    }
+
+
+    @GetMapping ("manageUsers/save")
+    public String saveUser (User user) {
+        userRepository.save(user);
+        return "redirect:";
     }
 
 
