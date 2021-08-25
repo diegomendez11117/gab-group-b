@@ -15,8 +15,31 @@
         <div class="col-6">
             <table class="table table-bordered">
                 <th:block th:each="wantTo : ${listWantTo}" class="container">
-                    <tr th:unless="${wantTo.hidden}">
-                        <td> <a  th:text="${wantTo.title}">></a> </td>
+                    <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'HIGH'}">
+                        <td> <a  th:text="${wantTo.title}"></a> </td>
+                        <td> <a  th:text="${wantTo.priority}"></a> </td>
+                        <td> <a th:href="@{'/admin/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
+                    </tr>
+                </th:block>
+            </table>
+
+
+            <table class="table table-bordered">
+                <th:block th:each="wantTo : ${listWantTo}" class="container">
+                    <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'MEDIUM'}">
+                        <td> <a  th:text="${wantTo.title}"></a> </td>
+                        <td> <a  th:text="${wantTo.priority}"></a> </td>
+                        <td> <a th:href="@{'/admin/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
+                    </tr>
+                </th:block>
+            </table>
+
+
+            <table class="table table-bordered">
+                <th:block th:each="wantTo : ${listWantTo}" class="container">
+                    <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'LOW'}">
+                        <td> <a  th:text="${wantTo.title}"></a> </td>
+                        <td> <a  th:text="${wantTo.priority}"></a> </td>
                         <td> <a th:href="@{'/admin/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
                     </tr>
                 </th:block>
@@ -25,7 +48,8 @@
             <table class="table table-bordered">
                 <th:block th:each="wantTo : ${listWantTo}" class="container">
                     <tr th:if="${wantTo.hidden}">
-                        <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' + {wantTo.title}}">></a> </td>
+                        <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' + {wantTo.title}}"></a> </td>
+                        <td style="color:LightGray"> <a  th:text="${wantTo.priority}"></a> </td>
                         <td style="color:LightGray"> <a th:href="@{'/admin/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
                     </tr>
                 </th:block>

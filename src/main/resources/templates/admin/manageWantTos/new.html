@@ -15,8 +15,29 @@
         <div class="col-6">
             <table class="table table-bordered">
                 <th:block th:each="wantTo : ${listWantTo}" class="container">
-                    <tr th:unless="${wantTo.hidden}">
+                    <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'HIGH'}">
                         <td> <a  th:text="${wantTo.title}"></a> </td>
+                        <td> <a  th:text="${wantTo.priority}"></a> </td>
+                    </tr>
+                </th:block>
+            </table>
+
+
+            <table class="table table-bordered">
+                <th:block th:each="wantTo : ${listWantTo}" class="container">
+                    <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'MEDIUM'}">
+                        <td> <a  th:text="${wantTo.title}"></a> </td>
+                        <td> <a  th:text="${wantTo.priority}"></a> </td>
+                    </tr>
+                </th:block>
+            </table>
+
+
+            <table class="table table-bordered">
+                <th:block th:each="wantTo : ${listWantTo}" class="container">
+                    <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'LOW'}">
+                        <td> <a  th:text="${wantTo.title}"></a> </td>
+                        <td> <a  th:text="${wantTo.priority}"></a> </td>
                     </tr>
                 </th:block>
             </table>
@@ -25,7 +46,8 @@
                 <th:block th:each="wantTo : ${listWantTo}" class="container">
                     <tr th:if="${wantTo.hidden}">
                         <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' + {wantTo.title}}"></a> </td>
-                    </tr>
+                        <td style="color:LightGray"> <a  th:text="${wantTo.priority}"></a> </td>
+                     </tr>
                 </th:block>
             </table>
         </div>
