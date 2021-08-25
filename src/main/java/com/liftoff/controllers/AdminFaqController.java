@@ -16,10 +16,8 @@ import java.util.List;
 @RequestMapping("admin/manageFaqs")
 public class AdminFaqController {
 
-
     @Autowired
     private FaqRepository faqRepository;
-
 
     @GetMapping ("")
     public String displayManageFAQPage (Model model) {
@@ -34,7 +32,7 @@ public class AdminFaqController {
     public String displayAddNewFAQ (Model model,Faq faq) {
         List<Faq> listFaqs = faqRepository.findAll();
         model.addAttribute("title", "Admin Portal: add FAQ");
-        model.addAttribute("button", "Save new FAQ");
+        model.addAttribute("button", "SAVE");
         model.addAttribute("listFaqs", listFaqs);
         model.addAttribute("faq", new Faq());
         return "/admin/manageFaqs/new";
@@ -44,24 +42,18 @@ public class AdminFaqController {
     public String displayEditFAQ (@PathVariable("id") Integer id, Model model) {
         List<Faq> listFaqs = faqRepository.findAll();
         Faq faq = faqRepository.findById(id).get();
-
         model.addAttribute("listFaqs", listFaqs);
         model.addAttribute("title", "Admin Portal: edit FAQ");
         model.addAttribute("button", "Save Changes");
         model.addAttribute("faq", faq);
         return "/admin/manageFaqs/new";
-
     }
 
     @PostMapping ("save")
     public String saveFAQ (Faq faq, Model model) {
         faqRepository.save(faq);
-        //return "redirect:";
-        model.addAttribute("faq", faq);
-        model.addAttribute("title", "TEST SAVE");
         return "redirect:/admin/manageFaqs";
-
-    }
+   }
 
 
 

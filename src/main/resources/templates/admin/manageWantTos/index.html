@@ -7,21 +7,33 @@
 
 <div class="container p-1">
     <div class="row">
+
         <div class="col-2">
             <nav th:replace="fragments :: adminNav"></nav>
         </div>
+
         <div class="col-6">
             <table class="table table-bordered">
                 <th:block th:each="wantTo : ${listWantTo}" class="container">
-                    <tr>
+                    <tr th:unless="${wantTo.hidden}">
                         <td> <a  th:text="${wantTo.title}">></a> </td>
+                        <td> <a th:href="@{'/admin/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
+                    </tr>
+                </th:block>
+            </table>
+
+            <table class="table table-bordered">
+                <th:block th:each="wantTo : ${listWantTo}" class="container">
+                    <tr th:if="${wantTo.hidden}">
+                        <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' + {wantTo.title}}">></a> </td>
+                        <td style="color:LightGray"> <a th:href="@{'/admin/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
                     </tr>
                 </th:block>
             </table>
         </div>
+
         <div class="col-4">
-            <form th:action="@{/admin/manageWantTos/new}" th:object="${wantTo}" th:method="get"
-                  style="max-width: 600px; margin: 0; auto">
+            <form th:action="@{/admin/manageWantTos/new}" th:object="${wantTo}" th:method="get">
                   <div class="m-3">
                         <div class="text-center p-3">
                             <button type="submit" class="btn btn-primary">Add New WantTo</button>
@@ -31,7 +43,6 @@
         </div>
     </div>
 </div>
-
 
 </body>
 </html>

@@ -18,6 +18,12 @@ public class Faq extends AbstractEntity{
 
     public Faq(){}
 
+    public Faq(String question, String answer,Boolean hidden) {
+        this.question = question;
+        this.answer = answer;
+        this.hidden = hidden;
+    }
+
     public Faq(String question, String answer) {
         this.question = question;
         this.answer = answer;

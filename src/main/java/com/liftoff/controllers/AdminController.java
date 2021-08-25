@@ -116,29 +116,4 @@ public class AdminController {
     }
 
 
-
-
-    @GetMapping ("manageWantTos")
-    public String displayManageWantTosPage (Model model) {
-        List<WantTo> listWantTo = wantToRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage Want-To");
-        model.addAttribute("listWantTo", listWantTo);
-        model.addAttribute("wantTo", new WantTo());
-        return "/admin/ManageWantTos/index";
-    }
-
-    @GetMapping ("manageWantTos/new")
-    public String displayAddNewWantTo (Model model) {
-        List<WantTo> listWantTo = wantToRepository.findAll();
-        model.addAttribute("title", "Admin Portal: add wantTo");
-        model.addAttribute("listWantTo", listWantTo);
-        model.addAttribute("wantTo", new WantTo());
-        return "/admin/manageWantTos/new";
-    }
-
-    @PostMapping ("manageWantTos/save")
-    public String saveWantTo (WantTo wantTo) {
-        wantToRepository.save(wantTo);
-        return "redirect:";
-    }
 }

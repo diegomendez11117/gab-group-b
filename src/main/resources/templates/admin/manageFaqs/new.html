@@ -24,12 +24,11 @@
             <table class="table table-bordered">
                 <th:block th:each="faq : ${listFaqs}" class="container">
                     <tr th:if="${faq.hidden}">
-                        <td style="color:LightGray"> <a th:text="${faq.question}"></a> </td>
+                        <td style="color:LightGray"> <a th:text="${'-HIDDEN-  ' +{faq.question}}"></a> </td>
                     </tr>
                 </th:block>
             </table>
         </div>
-
 
 
         <div class="col-4">
@@ -59,26 +58,26 @@
                             <input type="checkbox" th:field="*{hidden}" class="form-control"/>
                         </div>
                     </div>
+
+
                     <div Class="form-group row">
                         <div>
-                            <button type="submit" th:text="${button}" class="btn btn-success">Save</button>
+                            <button type="submit" th:text="${button}" class="btn btn-success">SAVE</button>
                             <a  th:href="@{/admin/manageFaqs/}" class="btn btn-danger" >CANCEL</a>
                         </div>
                     </div>
 
 
                     <div Class="form-group row">
-
-                            <label class="col-form-Label col-sm-4">Links:</label>
-                            <table class="table-bordered col-sm-8">
-                                <th:block th:each="link : ${faq.links}">
-                                    <tr>
-                                        <td> <a th:text="${link.name}"></a> </td>
-                                        <td> <a th:href="@{'/admin/manageLinks/edit/' + ${link.id}}">edit</a> </td>
-                                    </tr>
-                                </th:block>
-                            </table>
-
+                        <label class="col-form-Label col-sm-4">Links:</label>
+                        <table class="table-bordered col-sm-8">
+                            <th:block th:each="link : ${faq.links}">
+                                <tr>
+                                    <td> <a th:text="${link.name}"></a> </td>
+                                    <td> <a th:href="@{'/admin/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                </tr>
+                            </th:block>
+                        </table>
                     </div>
 
 

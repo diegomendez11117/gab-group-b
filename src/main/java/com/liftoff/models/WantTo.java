@@ -12,10 +12,9 @@ public class WantTo extends AbstractEntity{
     private List<Link> links = new ArrayList<>();
 
     private String title;
-
     private String description;
-
     private Priority priority;
+    private Boolean hidden;
 
     public enum Priority {
         HIGH,
@@ -27,17 +26,31 @@ public class WantTo extends AbstractEntity{
 
     public WantTo(){}
 
-    public WantTo(String title, String description, Priority priority) {
+    public WantTo(String title, String description, Priority priority,Boolean hidden) {
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.hidden = hidden;
+    }
+
+    public WantTo(String title, String description,Priority priority) {
         this.title = title;
         this.description = description;
         this.priority = priority;
     }
 
-    public WantTo(String title, String description) {
+    public WantTo(String title, String description){
         this.title = title;
         this.description = description;
     }
 
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
 
     public String getTitle() {
         return title;
@@ -63,14 +76,13 @@ public class WantTo extends AbstractEntity{
         this.priority = priority;
     }
 
-    public List<Link> getLinks() {
-        return links;
+    public Boolean getHidden() {
+        return hidden;
     }
 
-    public void setLinks(List<Link> links) {
-        this.links = links;
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
     }
-
 
     @Override
     public String toString() {
