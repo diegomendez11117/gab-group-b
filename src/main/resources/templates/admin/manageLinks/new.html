@@ -14,7 +14,7 @@
 
         <div class="col-6">
             <table class="table table-bordered">
-                <th:block th:each="link : ${listLink}" class="container">
+                <th:block th:each="link : ${listLinks}" class="container">
                     <tr>
                         <td> <a  th:text="${link.name}"></a></td>
                     </tr>
@@ -23,9 +23,8 @@
         </div>
 
         <div class="col-4">
-            <form th:action="@{/admin/manageLinks/save}" th:object="${link}" th:method="post"
-                  style="max-width: 600px; margin: 0; auto">
-
+            <form th:action="@{/admin/manageLinks/save}" th:object="${link}" th:method="post">
+                <input type="hidden" th:field="*{id}" th:value="${link.id}"/>
                 <div class="m-3">
                     <div Class="form-group row">
                         <label class="col-form-Label col-sm-4">Link Name:</label>
@@ -45,10 +44,26 @@
                             <input type="text" th:field="*{guideStarUrl}" class="form-control"/>
                         </div>
                     </div>
+                    <div Class="form-group row">
+                        <label class="col-form-Label col-sm-4">Want-To (Id):</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{wantTo}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div Class="form-group row">
+                        <label class="col-form-Label col-sm-4">FAQ (Id):</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{faq}" class="form-control"/>
+                        </div>
+                    </div>
 
 
-                    <div class="text-center p-3">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                    <div Class="form-group row">
+                        <div>
+                                <a th:href="@{'/admin/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
+                                <a  th:href="@{/admin/manageLinks/}" class="btn btn-primary" >BACK</a>
+                                <button type="submit" th:text="${button}" class="btn btn-success"></button>
+                       </div>
                     </div>
                 </div>
             </form>

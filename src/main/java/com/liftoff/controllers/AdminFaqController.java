@@ -24,7 +24,6 @@ public class AdminFaqController {
         List<Faq> listFaqs = faqRepository.findAll();
         model.addAttribute("title", "Admin Portal: Manage FAQs");
         model.addAttribute("listFaqs", listFaqs);
-        model.addAttribute("faq", new Faq());
         return "/admin/manageFaqs/index";
     }
 

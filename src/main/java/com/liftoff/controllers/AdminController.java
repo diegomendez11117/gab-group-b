@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
 
 @Controller
 @RequestMapping("admin")
@@ -18,10 +17,7 @@ public class AdminController {
     @Autowired
     private WelcomeRepository welcomeRepository;
 
-    @Autowired
-    private LinkRepository linkRepository;
-
-    @GetMapping ("")
+     @GetMapping ("")
     public String displayAdminPortalLandingPage(Model model) {
         Welcome welcome = welcomeRepository.getById(1);
         model.addAttribute("title", "Admin Portal:");
@@ -59,31 +55,6 @@ public class AdminController {
         return "redirect:";
     }
 
-
-
-    @GetMapping ("manageLinks")
-    public String displayManageLinksPage (Model model) {
-        List<Link> listLink = linkRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage Links");
-        model.addAttribute("listLink", listLink);
-        //model.addAttribute("link", new Link());
-        return "/admin/manageLinks/index";
-    }
-
-    @GetMapping ("manageLinks/new")
-    public String displayAddNewLink (Model model) {
-        List<Link> listLink = linkRepository.findAll();
-        model.addAttribute("title", "Admin Portal: add link");
-        model.addAttribute("listLink", listLink);
-        model.addAttribute("link", new Link());
-        return "/admin/manageLinks/new";
-    }
-
-    @PostMapping ("manageLinks/save")
-    public String saveLink (Link link) {
-        linkRepository.save(link);
-        return "redirect:";
-    }
 
 
 }

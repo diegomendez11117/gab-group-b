@@ -4,7 +4,6 @@
 <body class="container">
 <header th:replace="fragments :: header"></header>
 
-
 <div class="container p-1">
     <div class="row">
 
@@ -12,22 +11,25 @@
             <nav th:replace="fragments :: adminNav"></nav>
         </div>
 
+
         <div class="col-6">
             <table class="table table-bordered">
-                <th:block th:each="link : ${listLink}" class="container">
+                <th:block th:each="link : ${listLinks}" class="container">
                     <tr>
                         <td> <a  th:text="${link.name}"></a></td>
+                        <td> <a th:href="@{'/admin/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                     </tr>
                 </th:block>
             </table>
         </div>
+
 
         <div class="col-4">
             <form th:action="@{/admin/manageLinks/new}" th:object="${link}" th:method="get"
                   style="max-width: 600px; margin: 0; auto">
                 <div class="m-3">
                         <div class="text-center p-3">
-                        <button type="submit" class="btn btn-primary">Add New Link</button>
+                        <button type="submit" class="btn btn-success">Add New Link</button>
                     </div>
                 </div>
             </form>

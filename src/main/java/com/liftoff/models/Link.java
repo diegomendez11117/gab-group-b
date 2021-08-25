@@ -23,6 +23,19 @@ public class Link extends AbstractEntity{
 
     public Link(){}
 
+    public Link(WantTo wantTo, String name, String url, Faq faq) {
+        this.wantTo = wantTo;
+        this.name = name;
+        this.url = url;
+        this.faq = faq;
+    }
+
+    public Link(String name, String url, Faq faq) {
+        this.name = name;
+        this.url = url;
+        this.faq = faq;
+    }
+
     public Link(WantTo wantTo, String name, String url) {
         this.wantTo = wantTo;
         this.name = name;
@@ -37,12 +50,12 @@ public class Link extends AbstractEntity{
         this.wantTo = wantTo;
     }
 
-    public String getUrl() {
-        return url;
+    public Faq getFaq() {
+        return faq;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setFaq(Faq faq) {
+        this.faq = faq;
     }
 
     public String getName() {
@@ -53,12 +66,12 @@ public class Link extends AbstractEntity{
         this.name = name;
     }
 
-    public Faq getFaq() {
-        return faq;
+    public String getUrl() {
+        return url;
     }
 
-    public void setFaq(Faq faq) {
-        this.faq = faq;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getGuideStarUrl() {

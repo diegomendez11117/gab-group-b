@@ -11,6 +11,7 @@
             <nav th:replace="fragments :: adminNav"></nav>
         </div>
 
+
         <div class="col-6">
             <table class="table table-bordered">
                 <th:block th:each="user : ${listUsers}" class="container">
@@ -21,6 +22,7 @@
                 </th:block>
             </table>
         </div>
+
 
         <div class="col-4">
             <form th:action="@{/register}" th:object="${user}" th:method="get" style="max-width: 600px; margin: 0; auto">
