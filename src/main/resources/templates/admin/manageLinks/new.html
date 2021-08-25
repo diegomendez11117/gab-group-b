@@ -60,9 +60,9 @@
 
                     <div Class="form-group row">
                         <div>
-                                <a th:href="@{'/admin/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
-                                <a  th:href="@{/admin/manageLinks/}" class="btn btn-primary" >BACK</a>
-                                <button type="submit" th:text="${button}" class="btn btn-success"></button>
+                            <a  th:href="@{/admin/manageLinks/}" class="btn btn-primary" >BACK</a>
+                            <button type="submit" th:text="${button}" class="btn btn-success"></button>
+                            <a th:href="@{'/admin/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
                        </div>
                     </div>
                 </div>
