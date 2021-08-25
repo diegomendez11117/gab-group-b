@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,12 +17,6 @@ public class AdminController {
 
     @Autowired
     private WelcomeRepository welcomeRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private WantToRepository wantToRepository;
 
     @Autowired
     private LinkRepository linkRepository;
@@ -65,29 +58,6 @@ public class AdminController {
         welcomeRepository.save(welcome);
         return "redirect:";
     }
-
-
-    @GetMapping ("manageUsers")
-    public String displayManageUsersPage (Model model) {
-        List<User> listUser = userRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage Users");
-        model.addAttribute("listUser", listUser);
-        model.addAttribute("user", new User());
-        return "/admin/manageUsers/index";
-    }
-
-    @GetMapping("manageUsers/new")
-    public String displayRegisterNewUser(){
-        return "/register";
-    }
-
-
-    @GetMapping ("manageUsers/save")
-    public String saveUser (User user) {
-        userRepository.save(user);
-        return "redirect:";
-    }
-
 
 
 
