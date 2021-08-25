@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,9 +21,6 @@ public class AdminController {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private FaqRepository faqRepository;
 
     @Autowired
     private WantToRepository wantToRepository;
@@ -90,31 +88,6 @@ public class AdminController {
         return "redirect:";
     }
 
-
-
-    @GetMapping ("manageFaqs")
-    public String displayManageFAQPage (Model model) {
-        List<Faq> listFaqs = faqRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage FAQs");
-        model.addAttribute("listFaqs", listFaqs);
-        //model.addAttribute("faq", new Faq());
-        return "/admin/manageFaqs/index";
-    }
-
-    @GetMapping ("manageFaqs/new")
-    public String displayAddNewFAQ (Model model) {
-        List<Faq> listFaqs = faqRepository.findAll();
-        model.addAttribute("title", "Admin Portal: add FAQ");
-        model.addAttribute("listFaqs", listFaqs);
-        model.addAttribute("faq", new Faq());
-        return "/admin/manageFaqs/new";
-    }
-
-    @PostMapping ("manageFaqs/save")
-    public String saveFAQ (Faq faq) {
-        faqRepository.save(faq);
-        return "redirect:";
-    }
 
 
 

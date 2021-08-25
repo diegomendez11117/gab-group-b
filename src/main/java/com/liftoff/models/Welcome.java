@@ -12,7 +12,7 @@ public class Welcome extends AbstractEntity{
     @Column(name="paragraph2", columnDefinition="MEDIUMTEXT")
     private String paragraph2;
 
-    @Column(name="paragraph4", columnDefinition="MEDIUMTEXT")
+    @Column(name="paragraph3", columnDefinition="MEDIUMTEXT")
     private String paragraph3;
 
     @Column(name="about1", columnDefinition="MEDIUMTEXT")

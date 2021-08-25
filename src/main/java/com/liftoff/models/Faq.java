@@ -3,25 +3,24 @@ package com.liftoff.models;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 
 @Entity
 public class Faq extends AbstractEntity{
 
+    private String question;
+    private String answer;
+    private Boolean hidden;
 
     @OneToMany (mappedBy = "faq", cascade = CascadeType.ALL)
     private List<Link> links = new ArrayList<>();
-
-    private String question;
-
-    private String answer;
-
 
     public Faq(){}
 
     public Faq(String question, String answer) {
         this.question = question;
         this.answer = answer;
-
     }
 
 
@@ -49,6 +48,13 @@ public class Faq extends AbstractEntity{
         this.links = links;
     }
 
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
 
     @Override
     public String toString() {
@@ -57,4 +63,5 @@ public class Faq extends AbstractEntity{
                 ", answer='" + answer + '\'' +
                 '}';
     }
+
 }
