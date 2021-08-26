@@ -6,7 +6,8 @@ A users experience starts with a welcome page where they will set a zip code, th
 An Admin will be able to login to add more admins, edit the content on each page, and add new "Need to Knows".
 
 # Features
-- User Login: Admins will be able to create additional Logins, update their profile, edit site content, and add new "Need to Knows".
+- User login: a user can track keymile stones in navigating the the emigration process.
+- Admin Login: Admins will be able to manage Logins, edit site content/UI, and add a new "Want To", "FAQ", and "links".
 
 - RSS Feed: The landing page will have a News feed with relevant update news regarding emigration.
 - Add: Admins will have the ability to add a new "Need to Know", which includes a title, description, specific links regarding this topic, and any values needed for the Google API.
@@ -17,19 +18,20 @@ An Admin will be able to login to add more admins, edit the content on each page
 
 # Technologies
 - Java
-- Javascript with Angular
-- Bootstrap
 - Spring Boot
-- MySQL with Angular
-- Restful API
+- Javascript
+- HTML
+- CSS
+- Bootstrap
+- MySQL
 
 # What the Team Will Have to Learn
-- [ ] Angular: Our frontend team would like to get away from Thymeleaf and expand on our use of Angular.
-- [ ] Using Angular, our backend team will need to learn how to connect Angular with Java and what that means to MySQL.
 - [ ] We plan to host this site, so we need to determine an appropriate host, how to generate the appropriate files to upload to the host, and how to configure the host.
 - [ ] Google Maps API (Google Maps based on a search term, and proximity from a zip code
 - [ ] Google API (language options)
 - [ ] RSS Feed Source unknown API
+- [ ] How to manage logins/Roles to determine varying site access.
+- [x] A much deeper level of Thymeleaf to create a true CMS.
 
 # Project Tracker
 https://trello.com/b/scrGqFqr/liftoffaug2021b
