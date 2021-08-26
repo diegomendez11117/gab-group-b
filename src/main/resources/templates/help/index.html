@@ -4,7 +4,7 @@
 <body>
 <header th:replace="fragments :: header"></header>
 
-<<<<<<< HEAD
+
 <section id="priorities" class="align-items-center">
     <div class="container">
         <div class="row">
@@ -43,30 +43,7 @@
 
 <!-- ======= Footer ======= -->
 <footer th:replace="fragments :: footer"></footer>
-=======
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <!-- <th>ID</th> -->
-        <th>FAQ</th>
-        <!-- <th>Answer</th> -->
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:each="faq : ${listFaq}">
-        <tr th:unless="${faq.hidden}">
-            <td> <a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}">></a> </td>
-        </tr>
 
-    </th:block>
-
-    </tbody>
-
-
-</table>
-
-
->>>>>>> origin/sandbox_BackEnd_Admin
 
 </body>
 </html>

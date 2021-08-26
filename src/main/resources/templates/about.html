@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<<<<<<< HEAD
+
     <head th:replace="fragments :: head"></head>
         <body>
             <!-- ======= Header ======= -->
             <header th:replace="fragments :: header"></header>
                 <div>
-                    <p th:text="${aboutMessage}"></p>
+                    <p th:text="*{welcome.about1}"></p>
+
+                    <p th:text="*{welcome.about2}"></p>
+
+                    <p th:text="*{welcome.about3}"></p>
                 </div>
             <!-- ======= Scripts ======= -->
             <section th:replace="fragments :: scripts"></section>
@@ -14,20 +18,5 @@
             <!-- ======= Footer ======= -->
             <footer th:replace="fragments :: footer"></footer>
         </body>
-=======
-<head th:replace="fragments :: head"></head>
-<body class="container">
-<header th:replace="fragments :: header"></header>
 
-    <div>
-        <p th:text="*{welcome.about1}"></p>
-    </div>
-    <div>
-        <p th:text="*{welcome.about2}"></p>
-    </div>
-    <div>
-        <p th:text="*{welcome.about3}"></p>
-    </div>
-</body>
->>>>>>> origin/sandbox_BackEnd_Admin
 </html>
