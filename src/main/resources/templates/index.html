@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body>
 <header th:replace="fragments :: header"></header>
 
+<!-- ======= Main Information Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1>Welcome to the informational help center for immigrants</h1>
+                <h2>Here you can find both legal and daily necessary information, as well as access to organizations of your interest.</h2>
+                <div class="d-flex">
+                    <a th:href="@{/wantTo}" class="btn-get-started scrollto">Get Started</a>
+                    <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                <img src="/img/hero-img.png" class="img-fluid animated" alt="">
+            </div>
+        </div>
+    </div>
+</section><!-- End Main Information -->
 
-    <div>
-        <p th:text="*{welcome.welcomeParagraph1}"></p>
-    </div>
-    <div>
-        <p th:text="*{welcome.welcomeParagraph2}"></p>
-    </div>
-    <div>
-        <p th:text="*{welcome.welcomeParagraph3}"></p>
-    </div>
+<main id="main">
+
+</main>
+
+
+<!-- ======= Scripts ======= -->
+<section th:replace="fragments :: scripts"></section>
+
+<!-- ======= Footer ======= -->
+<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>
