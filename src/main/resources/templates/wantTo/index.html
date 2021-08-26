@@ -5,6 +5,52 @@
 <!-- ======= Header ======= -->
 <header th:replace="fragments :: header"></header>
 
+<<<<<<< HEAD
+=======
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>High Priority</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}" class="container">
+            <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'HIGH'}">
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
+           </tr>
+        </th:block>
+    </tbody>
+
+    <thead>
+        <tr>
+            <th>Medium Priority</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}">
+            <tr th:if="${wantTo.priority.name() == 'MEDIUM'}">
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
+            </tr>
+        </th:block>
+    </tbody>
+
+    <thead>
+        <tr>
+            <th>Low Priority</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="wantTo : ${listWantTo}">
+            <tr th:if="${wantTo.priority.name() == 'LOW'}">
+                <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
+            </tr>
+        </th:block>
+    </tbody>
+
+
+</table>
+>>>>>>> origin/sandbox_BackEnd_Admin
 
 <section id="priorities" class="align-items-center">
     <div class="container">

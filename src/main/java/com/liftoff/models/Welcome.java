@@ -1,34 +1,120 @@
 package com.liftoff.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Welcome extends AbstractEntity{
 
-        public String welcomeMessage = "Every year many refugee migrants arrive in Saint Louis from other parts of the world. It is essential for them to settle in a new community and start a new life. To all this, some problems arise, such as: obtaining personal documentation like driver license, work permit, Social Security Number, information for minors regarding the continuity of academic studies, language learning, also alternatives for adults to obtain a job, government aid, financial information for obtaining loans and credit. These are some of the many other problems that can affect the development of the life of a refugee in the United States and specifically in the city of Saint Louis.\n" +
-                "Due to the problem of lack of information, we can consider the idea of creating an information help center for immigrants, which interacts with each user, providing all the information tools (links, phone numbers, addresses, and tips) so that they can advance in the beginning of a new life in a brand-new place.";
+    @Column(name="welcomeParagraph1", columnDefinition="MEDIUMTEXT")
+    private String welcomeParagraph1;
 
-        public int zip;
+    @Column(name="welcomeParagraph2", columnDefinition="MEDIUMTEXT")
+    private String welcomeParagraph2;
 
-        public enum PreferredLanguage {
-            ENGLISH,
-            SPANISH,
-            FRENCH,
-        }
+    @Column(name="welcomeParagraph3", columnDefinition="MEDIUMTEXT")
+    private String welcomeParagraph3;
 
-        public PreferredLanguage preferredLanguage;
+    @Column(name="about1", columnDefinition="MEDIUMTEXT")
+    private String about1;
 
-    public String getWelcomeMessage() {
-        return welcomeMessage;
+    @Column(name="about2", columnDefinition="MEDIUMTEXT")
+    private String about2;
+
+    @Column(name="about3", columnDefinition="MEDIUMTEXT")
+    private String about3;
+
+    @Column(name="highPriorityDescription", columnDefinition="MEDIUMTEXT")
+    private String highPriorityDescription;
+
+    @Column(name="mediumPriorityDescription", columnDefinition="MEDIUMTEXT")
+    private String mediumPriorityDescription;
+
+    @Column(name="lowPriorityDescription", columnDefinition="MEDIUMTEXT")
+    private String lowPriorityDescription;
+
+
+
+    public enum PreferredLanguage {
+        ENGLISH,
+        SPANISH,
+        FRENCH,
     }
 
-    public void setWelcomeMessage(String welcomeMessage) {
-        this.welcomeMessage = welcomeMessage;
+    private PreferredLanguage preferredLanguage;
+
+    private String mapString;
+
+    public String getWelcomeParagraph1() {
+        return welcomeParagraph1;
     }
 
-    public int getZip() {
-        return zip;
+    public void setWelcomeParagraph1(String welcomeParagraph1) {
+        this.welcomeParagraph1 = welcomeParagraph1;
     }
 
-    public void setZip(int zip) {
-        this.zip = zip;
+    public String getWelcomeParagraph2() {
+        return welcomeParagraph2;
+    }
+
+    public void setWelcomeParagraph2(String welcomeParagraph2) {
+        this.welcomeParagraph2 = welcomeParagraph2;
+    }
+
+    public String getWelcomeParagraph3() {
+        return welcomeParagraph3;
+    }
+
+    public void setWelcomeParagraph3(String welcomeParagraph3) {
+        this.welcomeParagraph3 = welcomeParagraph3;
+    }
+
+    public String getAbout1() {
+        return about1;
+    }
+
+    public void setAbout1(String about1) {
+        this.about1 = about1;
+    }
+
+    public String getAbout2() {
+        return about2;
+    }
+
+    public void setAbout2(String about2) {
+        this.about2 = about2;
+    }
+
+    public String getAbout3() {
+        return about3;
+    }
+
+    public void setAbout3(String about3) {
+        this.about3 = about3;
+    }
+
+    public String getHighPriorityDescription() {
+        return highPriorityDescription;
+    }
+
+    public void setHighPriorityDescription(String highPriorityDescription) {
+        this.highPriorityDescription = highPriorityDescription;
+    }
+
+    public String getMediumPriorityDescription() {
+        return mediumPriorityDescription;
+    }
+
+    public void setMediumPriorityDescription(String mediumPriorityDescription) {
+        this.mediumPriorityDescription = mediumPriorityDescription;
+    }
+
+    public String getLowPriorityDescription() {
+        return lowPriorityDescription;
+    }
+
+    public void setLowPriorityDescription(String lowPriorityDescription) {
+        this.lowPriorityDescription = lowPriorityDescription;
     }
 
     public PreferredLanguage getPreferredLanguage() {
@@ -37,5 +123,13 @@ public class Welcome extends AbstractEntity{
 
     public void setPreferredLanguage(PreferredLanguage preferredLanguage) {
         this.preferredLanguage = preferredLanguage;
+    }
+
+    public String getMapString() {
+        return mapString;
+    }
+
+    public void setMapString(String mapString) {
+        this.mapString = mapString;
     }
 }
