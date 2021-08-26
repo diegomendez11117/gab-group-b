@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+
+<div class="container p-1">
+    <div class="row">
+
+        <div class="col-2">
+            <nav th:replace="fragments :: adminNav"></nav>
+        </div>
+
+        <div class="col-6">
+            <table class="table table-bordered">
+                <th:block th:each="faq : ${listFaqs}" class="container">
+                    <tr th:unless="${faq.hidden}">
+                        <td> <a  th:text="${faq.question}"></a> </td>
+                        <td> <a th:href="@{'/access/manageFaqs/edit/' + ${faq.id}}">edit</a> </td>
+                    </tr>
+                </th:block>
+            </table>
+
+            <table class="table table-bordered">
+                <th:block th:each="faq : ${listFaqs}" class="container">
+                    <tr th:if="${faq.hidden}">
+                        <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{faq.question}}"></a> </td>
+                        <td style="color:LightGray"> <a th:href="@{'/access/manageFaqs/edit/' + ${faq.id}}">edit</a> </td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+
+        <div class="col-4">
+            <form th:action="@{/access/manageFaqs/new}" th:object="${faq}" th:method="get">
+                <div class="m-3">
+                      <div class="text-center p-3">
+                            <button type="submit" class="btn btn-success">Add New FAQ</button>
+                      </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

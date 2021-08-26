@@ -43,8 +43,8 @@
                 <li><a class="nav-link scrollto" th:href="@{/wantTo}">I Want To</a></li>
                 <li><a class="nav-link scrollto" th:href="@{/about}">About Us</a></li>
                 <li><a class="nav-link scrollto " th:href="@{/help}">Help</a></li>
-              <!--  <li><a class="nav-link scrollto" th:href="@{/login}">login</a></li>
-                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+
+                <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
                         <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -62,8 +62,8 @@
                     </ul>
                 </li>-->
 
-                <li><a class="nav-link scrollto" th:href="@{/login}">login</a></li>
-                <li><a class="nav-link scrollto" th:href="@{/admin}">Admin</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/access}">login</a></li>
+
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -94,6 +94,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <div class="social-links">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -140,21 +141,19 @@
 </body>
 <!-- Vendor JS Files -->
 
-<!--
-    <nav th:fragment="adminNav">
-        <ul class="nav justify-content-center">
-            <li class="nav-item"><a class="nav-link" th:href="@{/admin/}">Admin Tools</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/admin/users}">Manage Users</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/admin/welcome}">Manage Welcome Page</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/admin/faqs}">Manage FAQ</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/admin/wantTos}">Manage WantTo</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/admin/links}">Manage Links</a></li>
+
+    <nav th:fragment="adminNav" class= "navbar bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" th:href="@{/access/manageUsers}">Users</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/access/manageWelcome/edit}">UI</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/access/manageFaqs}">FAQs</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/access/manageWantTos}">WantTo(s)</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/access/manageLinks}">Links</a></li>
 
         </ul>
+
     </nav>
 </body>
-
--->
 
 
 </html>

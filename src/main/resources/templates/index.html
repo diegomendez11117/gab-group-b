@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+
+
+    <div>
+        <p th:text="*{welcome.welcomeParagraph1}"></p>
+    </div>
+    <div>
+        <p th:text="*{welcome.welcomeParagraph2}"></p>
+    </div>
+    <div>
+        <p th:text="*{welcome.welcomeParagraph3}"></p>
+    </div>
+
+</body>
+</html>
