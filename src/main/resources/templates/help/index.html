@@ -4,25 +4,38 @@
 <body>
 <header th:replace="fragments :: header"></header>
 
-<div class="container">
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <!-- <th>ID</th> -->
-            <th>FAQ</th>
-            <!-- <th>Answer</th> -->
-        </tr>
-        </thead>
-        <tbody>
-        <th:block th:each="faq : ${listFaq}">
-            <tr>
-                <td> <a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a> </td>
-            </tr>
+<section id="priorities" class="align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="section-title text-center">
+                <span>Frequently asked questions</span>
+                <h2>Frequently asked questions</h2>
+            </div>
+        </div>
 
-        </th:block>
-        </tbody>
-    </table>
-</div>
+        <div class="row" th:each="faq : ${listFaq}">
+            <div class="col-sm">
+                <div class="col fondo p-3 space">
+                    <h4><a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a></h4>
+                    <p>well this is the sentence that s that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure  that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure hould be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure out how to do it.</p>
+                </div>
+            </div>
+            <div class="col-sm ">
+                <div class="col fondo p-3 space">
+                    <h4><a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a></h4>
+                    <p>well this is the sentence that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure out how to do it.</p>
+                </div>
+            </div>
+            <div class="col-sm ">
+                <div class="col fondo p-3 space">
+                    <h4><a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a></h4>
+                    <p>well this is the sentence that  that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure out how to do it.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Features Section -->
 
 <!-- ======= Scripts ======= -->
 <section th:replace="fragments :: scripts"></section>
