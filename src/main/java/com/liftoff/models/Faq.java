@@ -64,10 +64,7 @@ public class Faq extends AbstractEntity{
 
     @Override
     public String toString() {
-        return "Faq{" +
-                ", question='" + question + '\'' +
-                ", answer='" + answer + '\'' +
-                '}';
+        return question;
     }
 
 }

@@ -6,14 +6,14 @@ import javax.persistence.Entity;
 @Entity
 public class Welcome extends AbstractEntity{
 
-    @Column(name="paragraph1", columnDefinition="MEDIUMTEXT")
-    private String paragraph1;
+    @Column(name="welcomeParagraph1", columnDefinition="MEDIUMTEXT")
+    private String welcomeParagraph1;
 
-    @Column(name="paragraph2", columnDefinition="MEDIUMTEXT")
-    private String paragraph2;
+    @Column(name="welcomeParagraph2", columnDefinition="MEDIUMTEXT")
+    private String welcomeParagraph2;
 
-    @Column(name="paragraph3", columnDefinition="MEDIUMTEXT")
-    private String paragraph3;
+    @Column(name="welcomeParagraph3", columnDefinition="MEDIUMTEXT")
+    private String welcomeParagraph3;
 
     @Column(name="about1", columnDefinition="MEDIUMTEXT")
     private String about1;
@@ -24,14 +24,14 @@ public class Welcome extends AbstractEntity{
     @Column(name="about3", columnDefinition="MEDIUMTEXT")
     private String about3;
 
-    @Column(name="portal1", columnDefinition="MEDIUMTEXT")
-    private String portal1;
+    @Column(name="highPriorityDescription", columnDefinition="MEDIUMTEXT")
+    private String highPriorityDescription;
 
-    @Column(name="portal2", columnDefinition="MEDIUMTEXT")
-    private String portal2;
+    @Column(name="mediumPriorityDescription", columnDefinition="MEDIUMTEXT")
+    private String mediumPriorityDescription;
 
-    @Column(name="portal3", columnDefinition="MEDIUMTEXT")
-    private String portal3;
+    @Column(name="lowPriorityDescription", columnDefinition="MEDIUMTEXT")
+    private String lowPriorityDescription;
 
 
 
@@ -45,30 +45,28 @@ public class Welcome extends AbstractEntity{
 
     private String mapString;
 
-
-
-    public String getParagraph1() {
-        return paragraph1;
+    public String getWelcomeParagraph1() {
+        return welcomeParagraph1;
     }
 
-    public void setParagraph1(String paragraph1) {
-        this.paragraph1 = paragraph1;
+    public void setWelcomeParagraph1(String welcomeParagraph1) {
+        this.welcomeParagraph1 = welcomeParagraph1;
     }
 
-    public String getParagraph2() {
-        return paragraph2;
+    public String getWelcomeParagraph2() {
+        return welcomeParagraph2;
     }
 
-    public void setParagraph2(String paragraph2) {
-        this.paragraph2 = paragraph2;
+    public void setWelcomeParagraph2(String welcomeParagraph2) {
+        this.welcomeParagraph2 = welcomeParagraph2;
     }
 
-    public String getParagraph3() {
-        return paragraph3;
+    public String getWelcomeParagraph3() {
+        return welcomeParagraph3;
     }
 
-    public void setParagraph3(String paragraph3) {
-        this.paragraph3 = paragraph3;
+    public void setWelcomeParagraph3(String welcomeParagraph3) {
+        this.welcomeParagraph3 = welcomeParagraph3;
     }
 
     public String getAbout1() {
@@ -95,28 +93,28 @@ public class Welcome extends AbstractEntity{
         this.about3 = about3;
     }
 
-    public String getPortal1() {
-        return portal1;
+    public String getHighPriorityDescription() {
+        return highPriorityDescription;
     }
 
-    public void setPortal1(String portal1) {
-        this.portal1 = portal1;
+    public void setHighPriorityDescription(String highPriorityDescription) {
+        this.highPriorityDescription = highPriorityDescription;
     }
 
-    public String getPortal2() {
-        return portal2;
+    public String getMediumPriorityDescription() {
+        return mediumPriorityDescription;
     }
 
-    public void setPortal2(String portal2) {
-        this.portal2 = portal2;
+    public void setMediumPriorityDescription(String mediumPriorityDescription) {
+        this.mediumPriorityDescription = mediumPriorityDescription;
     }
 
-    public String getPortal3() {
-        return portal3;
+    public String getLowPriorityDescription() {
+        return lowPriorityDescription;
     }
 
-    public void setPortal3(String portal3) {
-        this.portal3 = portal3;
+    public void setLowPriorityDescription(String lowPriorityDescription) {
+        this.lowPriorityDescription = lowPriorityDescription;
     }
 
     public PreferredLanguage getPreferredLanguage() {

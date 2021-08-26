@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("admin/manageUsers")
+@RequestMapping("access/manageUsers")
 public class AdminUserController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class AdminUserController {
         model.addAttribute("title", "Admin Portal: Manage Users");
         model.addAttribute("listUsers", listUsers);
         model.addAttribute("user", new User());
-        return "/admin/manageUsers/index";
+        return "/access/manageUsers/index";
     }
 
     @GetMapping("new")
@@ -41,19 +41,19 @@ public class AdminUserController {
         model.addAttribute("title","Admin Portal: edit User");
         model.addAttribute("button", "Save Changes");
         model.addAttribute("user", user);
-        return "/admin/manageUsers/edit";
+        return "/access/manageUsers/edit";
     }
 
     @GetMapping ("delete/{id}")
     public String deleteUser (User user) {
         userRepository.delete(user);
-        return "redirect:/admin/manageUsers";
+        return "redirect:/access/manageUsers";
     }
 
     @PostMapping("save")
     public String saveUser (User user) {
         userRepository.save(user);
-        return "redirect:/admin/manageUsers";
+        return "redirect:/access/manageUsers";
     }
 
 }

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("admin")
-public class AdminController {
+@RequestMapping("access")
+public class AdminWelcomeController {
 
     @Autowired
     private WelcomeRepository welcomeRepository;
@@ -21,38 +21,24 @@ public class AdminController {
     public String displayAdminPortalLandingPage(Model model) {
         Welcome welcome = welcomeRepository.getById(1);
         model.addAttribute("title", "Admin Portal:");
-        model.addAttribute("welcome",welcome);
-        return "/admin/index";
+        model.addAttribute("welcome", welcome);
+        return "/access/index";
     }
 
-    @GetMapping ("manageWelcome/editWelcome")
+    @GetMapping ("manageWelcome/edit")
     public String displayManageWelcome (Model model) {
         Welcome welcome = welcomeRepository.getById(1);
-        model.addAttribute("title", "Admin Portal: Manage Welcome Page");
+        model.addAttribute("title", "Admin Portal: Manage UI");
         model.addAttribute("welcome",welcome);
-        return "/admin/manageWelcome/editWelcome";
+        return "/access/manageWelcome/edit";
     }
 
-    @GetMapping ("manageWelcome/editAbout")
-    public String displayManageAboutUs (Model model) {
-        Welcome welcome = welcomeRepository.getById(1);
-        model.addAttribute("title", "Admin Portal: Manage About Us");
-        model.addAttribute("welcome",welcome);
-        return "/admin/manageWelcome/editAbout";
-    }
 
-    @GetMapping ("manageWelcome/editPortal")
-    public String displayManagePortal (Model model) {
-        Welcome welcome = welcomeRepository.getById(1);
-        model.addAttribute("title", "Admin Portal: Manage Portal Welcome");
-        model.addAttribute("welcome",welcome);
-        return "/admin/manageWelcome/editPortal";
-    }
 
     @PostMapping("manageWelcome/save")
     public String updateWelcome(Welcome welcome) {
         welcomeRepository.save(welcome);
-        return "redirect:";
+        return "/access/index";
     }
 
 

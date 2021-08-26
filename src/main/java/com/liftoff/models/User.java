@@ -19,6 +19,15 @@ public class User extends AbstractEntity{
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 
+
+    public enum AdminRights {
+        USER,
+        ADMIN,
+        SUPER,
+    }
+
+    private AdminRights adminRights;
+
     public User(){}
 
     public User(String username, String password) {

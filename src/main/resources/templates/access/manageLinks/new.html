@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-4">
-            <form th:action="@{/admin/manageLinks/save}" th:object="${link}" th:method="post">
+             <form th:action="@{/access/manageLinks/save}" th:object="${link}" th:method="post">
                 <input type="hidden" th:field="*{id}" th:value="${link.id}"/>
                 <div class="m-3">
                     <div Class="form-group row">
@@ -44,32 +44,39 @@
                             <input type="text" th:field="*{guideStarUrl}" class="form-control"/>
                         </div>
                     </div>
+
+
                     <div Class="form-group row">
-                        <label class="col-form-Label col-sm-4">Want-To (Id):</label>
+                        <label class="col-form-Label col-sm-4">Want-To (id):</label>
                         <div class="col-sm-8">
-                            <input type="text" th:field="*{wantTo}" class="form-control"/>
-                        </div>
-                    </div>
-                    <div Class="form-group row">
-                        <label class="col-form-Label col-sm-4">FAQ (Id):</label>
-                        <div class="col-sm-8">
-                            <input type="text" th:field="*{faq}" class="form-control"/>
+                            <select th:field="*{wantTo}" class="form-control">
+                                <option th:value="null" th:text="''"></option>
+                                <option th:each="want : ${listWantTos}" th:value="${want.id}" th:text="${want}"/>
+                            </select>
                         </div>
                     </div>
 
+                    <div Class="form-group row">
+                        <label class="col-form-Label col-sm-4">FAQ (id):</label>
+                        <div class="col-sm-8">
+                            <select th:field="*{faq}" class="form-control">
+                                <option th:value="null" th:text="''"></option>
+                                <option th:each="faq : ${listFaqs}" th:value="${faq.id}" th:text="${faq}"/>
+                            </select>
+                        </div>
+                    </div>
 
                     <div Class="form-group row">
                         <div>
-                            <a  th:href="@{/admin/manageLinks/}" class="btn btn-primary" >BACK</a>
+                            <a  th:href="@{/access/manageLinks/}" class="btn btn-primary" >BACK</a>
                             <button type="submit" th:text="${button}" class="btn btn-success"></button>
-                            <a th:href="@{'/admin/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
-                       </div>
+                            <th:block th:unless="${hide == 'hide'}">
+                                <a th:href="@{'/access/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
+                            </th:block>
+                        </div>
                     </div>
                 </div>
             </form>
-
-
-
         </div>
     </div>
 </div>

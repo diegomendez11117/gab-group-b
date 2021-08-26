@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("admin/manageWantTos")
+@RequestMapping("access/manageWantTos")
 public class AdminWantToController {
 
 
@@ -26,21 +26,20 @@ public class AdminWantToController {
         List<WantTo> listWantTo = wantToRepository.findAll();
         model.addAttribute("title", "Admin Portal: Manage Want-To");
         model.addAttribute("listWantTo", listWantTo);
-        model.addAttribute("wantTo", new WantTo());
-        return "/admin/ManageWantTos/index";
+        return "/access/ManageWantTos/index";
     }
 
-    @GetMapping ("new")
+    @GetMapping ("/new")
     public String displayAddNewWantTo (Model model) {
         List<WantTo> listWantTo = wantToRepository.findAll();
         model.addAttribute("title", "Admin Portal: add wantTo");
         model.addAttribute("button", "SAVE");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", new WantTo());
-        return "/admin/manageWantTos/new";
+        return "/access/manageWantTos/new";
     }
 
-    @GetMapping ("edit/{id}")
+    @GetMapping ("/edit/{id}")
     public String displayEditWantTo(@PathVariable("id") Integer id, Model model) {
         List<WantTo> listWantTo = wantToRepository.findAll();
         WantTo wantTo = wantToRepository.findById(id).get();
@@ -48,12 +47,12 @@ public class AdminWantToController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", wantTo);
-        return "/admin/manageWantTos/new";
+        return "/access/manageWantTos/new";
     }
 
-    @PostMapping ("save")
+    @PostMapping ("/save")
     public String saveWantTo (WantTo wantTo) {
         wantToRepository.save(wantTo);
-        return "redirect:/admin/manageWantTos";
+        return "redirect:/access/manageWantTos";
     }
 }

@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <th:block th:each="wantTo : ${listWantTo}" class="container">
-           <tr th:if="${wantTo.priority.name() == 'HIGH'}">
+            <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'HIGH'}">
                 <td> <a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}" th:text="${wantTo.title}"></a></td>
            </tr>
         </th:block>

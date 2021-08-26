@@ -20,8 +20,7 @@ public class WantTo extends AbstractEntity{
         HIGH,
         MEDIUM,
         LOW,
-        HIDDEN,
-    }
+     }
 
 
     public WantTo(){}
@@ -86,9 +85,6 @@ public class WantTo extends AbstractEntity{
 
     @Override
     public String toString() {
-        return "WantTo{" +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return title;
     }
 }

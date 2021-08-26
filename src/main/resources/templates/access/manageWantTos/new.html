@@ -23,7 +23,7 @@
             </table>
 
 
-            <table class="table table-bordered">
+           <table class="table table-bordered">
                 <th:block th:each="wantTo : ${listWantTo}" class="container">
                     <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'MEDIUM'}">
                         <td> <a  th:text="${wantTo.title}"></a> </td>
@@ -54,7 +54,7 @@
 
 
         <div class="col-4">
-            <form th:action="@{/admin/manageWantTos/save}" th:object="${wantTo}" th:method="post">
+            <form th:action="@{/access/manageWantTos/save}" th:object="${wantTo}" th:method="post">
                 <input type="hidden" th:field="*{id}" th:value="${wantTo.id}"/>
                 <div class="m-3">
 
@@ -95,7 +95,7 @@
 
                     <div Class="form-group row">
                         <div>
-                            <a  th:href="@{/admin/manageWantTos/}" class="btn btn-primary" >BACK</a>
+                            <a  th:href="@{/access/manageWantTos/}" class="btn btn-primary" >BACK</a>
                             <button type="submit" th:text="${button}" class="btn btn-success">SAVE</button>
                         </div>
                     </div>
@@ -107,11 +107,19 @@
                             <th:block th:each="link : ${wantTo.links}">
                                 <tr>
                                     <td> <a th:text="${link.name}"></a> </td>
-                                    <td> <a th:href="@{'/admin/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                    <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                                 </tr>
                             </th:block>
                         </table>
                     </div>
+
+
+                    <div Class="form-group row">
+                        <div>
+                            <a  th:href="@{'/access/manageLinks/newWantToLink/' + ${wantTo.id}}" class="btn btn-success" >Add New Link</a>
+                        </div>
+                    </div>
+
 
 
                 </div>
