@@ -34,15 +34,6 @@ public class Welcome extends AbstractEntity{
     private String lowPriorityDescription;
 
 
-
-    public enum PreferredLanguage {
-        ENGLISH,
-        SPANISH,
-        FRENCH,
-    }
-
-    private PreferredLanguage preferredLanguage;
-
     private String mapString;
 
     public String getWelcomeParagraph1() {
@@ -115,14 +106,6 @@ public class Welcome extends AbstractEntity{
 
     public void setLowPriorityDescription(String lowPriorityDescription) {
         this.lowPriorityDescription = lowPriorityDescription;
-    }
-
-    public PreferredLanguage getPreferredLanguage() {
-        return preferredLanguage;
-    }
-
-    public void setPreferredLanguage(PreferredLanguage preferredLanguage) {
-        this.preferredLanguage = preferredLanguage;
     }
 
     public String getMapString() {

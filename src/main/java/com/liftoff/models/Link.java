@@ -15,11 +15,10 @@ public class Link extends AbstractEntity{
     private Faq faq;
 
     private String name;
-
     private String url;
-
     private String guideStarUrl;
-
+    private Boolean hidden;
+    private Boolean displayOnWelcomePage;
 
     public Link(){}
 
@@ -80,6 +79,22 @@ public class Link extends AbstractEntity{
 
     public void setGuideStarUrl(String guideStarUrl) {
         this.guideStarUrl = guideStarUrl;
+    }
+
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public Boolean getDisplayOnWelcomePage() {
+        return displayOnWelcomePage;
+    }
+
+    public void setDisplayOnWelcomePage(Boolean displayOnWelcomePage) {
+        this.displayOnWelcomePage = displayOnWelcomePage;
     }
 
     @Override
