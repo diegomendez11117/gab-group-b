@@ -8,10 +8,38 @@
 <section id="priorities" class="align-items-center">
     <div class="container">
 
-        <div>
-            <p th:text="${faq.question}"></p>
-            <p th:text="${faq.answer}"></p>
+        <span th:text="${faq.question}"></span>
+        <span th:text="${faq.answer}"></span>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-wrap">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                        <tr>
+                            <th>Links</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:block th:each="link : ${faq.links}" class="alert" role="alert">
+                            <td class="d-flex align-items-center">
+                                <div class="pl-3 email">
+                                    <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
+                                </div>
+                            </td>
+                            <td class="status">
+                                <div class="pl-3 email" th:if="${link.guideStarUrl != NULL}">
+                                    <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+<<<<<<< HEAD
 
         <table class="table table-bordered">
             <thead>
@@ -53,6 +81,8 @@
             </tbody>
         </table>
 
+=======
+>>>>>>> 78158ff... Adding Style to the FAQs list of links table
     </div>
 </section>
 
