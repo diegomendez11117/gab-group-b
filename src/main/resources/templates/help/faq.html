@@ -4,34 +4,39 @@
 <body>
 <header th:replace="fragments :: header"></header>
 
-<div class="container">
-    <div>
-        <p th:text="${faq.question}"></p>
-        <p th:text="${faq.answer}"></p>
-    </div>
 
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Links:</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <th:block th:each="link : ${faq.links}">
+<section id="priorities" class="align-items-center">
+    <div class="container">
+
+        <div>
+            <p th:text="${faq.question}"></p>
+            <p th:text="${faq.answer}"></p>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <td>
-                    <a th:href="@{${link.url}}" th:text="${link.name}"></a>
-                </td>
-                <td th:if="${link.guideStarUrl != NULL}">
-                    <a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a>
-                </td>
+                <th>Links:</th>
+                <th></th>
             </tr>
-        </th:block>
+            </thead>
+            <tbody>
+            <th:block th:each="link : ${faq.links}">
+                <tr>
+                    <td>
+                        <a th:href="@{${link.url}}" th:text="${link.name}"></a>
+                    </td>
+                    <td th:if="${link.guideStarUrl != NULL}">
+                        <a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a>
+                    </td>
+                </tr>
+            </th:block>
 
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+
+    </div>
+</section>
 
 <!-- ======= Scripts ======= -->
 <section th:replace="fragments :: scripts"></section>
