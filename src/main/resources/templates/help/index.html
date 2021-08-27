@@ -17,6 +17,9 @@
         <div class="row">
             <div class="col-2" th:each="faq : ${listFaq}">
                 <div class="col fondo p-3 space"  th:if="${faq.columnSetting.name() == 'LEFT'}">
+        <div class="row" th:each="faq : ${listFaq}">
+            <div class="col-sm">
+                <div class="col fondo p-3 space">
                     <h4><a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a></h4>
                     <p th:text="${faq.answer}"></p>
                 </div>
@@ -35,9 +38,32 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section><!-- End Features Section -->
+
+
+
+
+<div class="row" th:each="faq : ${listFaq}">
+    <div class="col-sm">
+        <div class="col fondo p-3 space">
+            <h4><a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a></h4>
+            <p>well this is the sentence that s that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure  that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure hould be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure out how to do it.</p>
+        </div>
+    </div>
+    <div class="col-sm ">
+        <div class="col fondo p-3 space">
+            <h4><a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a></h4>
+            <p>well this is the sentence that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure out how to do it.</p>
+        </div>
+    </div>
+    <div class="col-sm ">
+        <div class="col fondo p-3 space">
+            <h4><a th:href="@{'/help/faq/' + ${faq.id}}"  th:text="${faq.question}"></a></h4>
+            <p>well this is the sentence that  that should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure should be in this box. I need to change some of the options that appears over here but, it's ok, I'll figure out how to do it.</p>
+        </div>
+    </div>
+</div>
 
 <!-- ======= Scripts ======= -->
 <section th:replace="fragments :: scripts"></section>
