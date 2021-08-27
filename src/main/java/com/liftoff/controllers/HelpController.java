@@ -1,7 +1,9 @@
 package com.liftoff.controllers;
 
+import com.liftoff.models.Welcome;
 import com.liftoff.models.data.FaqRepository;
 import com.liftoff.models.Faq;
+import com.liftoff.models.data.WelcomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ public class HelpController {
 
     @Autowired
     private FaqRepository faqRepository;
+
+    @Autowired
+    private WelcomeRepository welcomeRepository;
 
     @GetMapping ("")
     public String displayHelpPage (Model model) {

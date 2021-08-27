@@ -16,6 +16,7 @@
                     <th:block th:each="faq : ${listFaqs}" class="container">
                         <tr th:unless="${faq.hidden}">
                             <td> <a  th:text="${faq.question}"></a> </td>
+                            <td> <a  th:text="${faq.columnSetting}"></a> </td>
                             <td> <a th:href="@{'/access/manageFaqs/edit/' + ${faq.id}}">edit</a> </td>
                         </tr>
                     </th:block>
@@ -25,6 +26,7 @@
                     <th:block th:each="faq : ${listFaqs}" class="container">
                         <tr th:if="${faq.hidden}">
                             <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{faq.question}}"></a> </td>
+                            <td style="color:LightGray"> <a  th:text="${faq.columnSetting}"></a> </td>
                             <td style="color:LightGray"> <a th:href="@{'/access/manageFaqs/edit/' + ${faq.id}}">edit</a> </td>
                         </tr>
                     </th:block>
@@ -40,7 +42,7 @@
                     </div>
                 </form>
             </div>
-    </div>
+        </div>
     </div>
 </section>
 

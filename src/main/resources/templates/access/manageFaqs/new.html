@@ -16,6 +16,7 @@
                     <th:block th:each="faq : ${listFaqs}" class="container">
                         <tr th:unless="${faq.hidden}">
                             <td><a th:text="${faq.question}"></a></td>
+                            <td><a th:text="${faq.columnSetting}"></a></td>
                         </tr>
                     </th:block>
                 </table>
@@ -49,9 +50,19 @@
                         </div>
 
                         <div Class="form-group row">
+                            <label class="col-form-Label col-sm-4">Column Setting:</label>
+                            <div class="col-sm-8">
+                                <select name="columnSetting" th:field="*{columnSetting}">
+                                    <option th:each="columnSetting : ${T(com.liftoff.models.Faq.ColumnSetting).values()}"
+                                            th:value="${columnSetting}" th:text="${columnSetting}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div Class="form-group row">
                             <label class="col-form-Label col-sm-4">Hidden:</label>
                             <div class="col-sm-8">
-                                <input type="checkbox" th:field="*{hidden}" class="form-control"/>
+                                <input type="checkbox" th:field="*{hidden}" class="form-check-input"/>
                             </div>
                         </div>
 
@@ -59,7 +70,6 @@
                             <div>
                                 <a th:href="@{/access/manageFaqs/}" class="btn btn-primary">BACK</a>
                                 <button type="submit" th:text="${button}" class="btn btn-success">SAVE</button>
-
                             </div>
                         </div>
 
@@ -67,9 +77,14 @@
                             <label class="col-form-Label col-sm-4">Links:</label>
                             <table class="table-bordered col-sm-8">
                                 <th:block th:each="link : ${faq.links}">
-                                    <tr>
-                                        <td><a th:text="${link.name}"></a></td>
-                                        <td><a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a></td>
+                                    <tr th:if="${!link.hidden}">
+                                        <td> <a th:text="${link.name}"></a> </td>
+                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                    </tr>
+                                    <tr th:if="${link.hidden}">
+                                        <!-- <td> <a th:text="${link.name}"></a> </td> -->
+                                        <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{link.name}}"></a> </td>
+                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                                     </tr>
                                 </th:block>
                             </table>

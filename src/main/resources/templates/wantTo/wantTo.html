@@ -38,7 +38,7 @@
         </header>
         <div class="row gy-4">
             <div class="col-lg-4 col-md-6" th:each="link : ${wantTo.links}">
-                    <div class="service-box blue"  th:onclick="|window.location.href='@{${link.url}}'|">
+                    <div th:if="${!link.hidden}" class="service-box blue"  th:onclick="|window.location.href='@{${link.url}}'|">
                         <i class="ri-discuss-line icon"></i>
                         <a th:href="@{${link.url}}" ><h3 th:text="${link.name}"></h3></a>
                         <a th:href="@{${link.url}}" th:text="${link.name}" class="read-more"><i

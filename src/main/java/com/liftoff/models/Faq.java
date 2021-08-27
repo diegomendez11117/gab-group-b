@@ -13,6 +13,15 @@ public class Faq extends AbstractEntity{
     private String answer;
     private Boolean hidden;
 
+    public enum ColumnSetting {
+        LEFT,
+        MIDDLE,
+        RIGHT,
+    }
+
+    private ColumnSetting columnSetting;
+
+
     @OneToMany (mappedBy = "faq", cascade = CascadeType.ALL)
     private List<Link> links = new ArrayList<>();
 
@@ -60,6 +69,14 @@ public class Faq extends AbstractEntity{
 
     public void setHidden(Boolean hidden) {
         this.hidden = hidden;
+    }
+
+    public ColumnSetting getColumnSetting() {
+        return columnSetting;
+    }
+
+    public void setColumnSetting(ColumnSetting columnSetting) {
+        this.columnSetting = columnSetting;
     }
 
     @Override
