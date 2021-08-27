@@ -25,7 +25,6 @@ public class HelpController {
 
     @GetMapping ("")
     public String displayHelpPage (Model model) {
-        Welcome welcome = welcomeRepository.findById(1).get();
         List<Faq> listFaq = faqRepository.findAll();
         model.addAttribute("title", "Help");
         model.addAttribute("listFaq",listFaq);

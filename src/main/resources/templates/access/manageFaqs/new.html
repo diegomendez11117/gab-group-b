@@ -77,9 +77,14 @@
                             <label class="col-form-Label col-sm-4">Links:</label>
                             <table class="table-bordered col-sm-8">
                                 <th:block th:each="link : ${faq.links}">
-                                    <tr>
-                                        <td><a th:text="${link.name}"></a></td>
-                                        <td><a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a></td>
+                                    <tr th:if="${!link.hidden}">
+                                        <td> <a th:text="${link.name}"></a> </td>
+                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                    </tr>
+                                    <tr th:if="${link.hidden}">
+                                        <!-- <td> <a th:text="${link.name}"></a> </td> -->
+                                        <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{link.name}}"></a> </td>
+                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                                     </tr>
                                 </th:block>
                             </table>
