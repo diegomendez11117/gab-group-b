@@ -1,8 +1,6 @@
 package com.liftoff.models;
 
-import com.liftoff.models.Role;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -23,7 +21,7 @@ public class User{
     @Column
     private String email;
 
-    @Column(nullable = false)
+    @Column(name="pw_Hash", nullable = false)
     private String pwHash;
 
     @Column
@@ -113,6 +111,10 @@ public class User{
 
     public void removeRole(Role role){
         this.roles.remove(role);
+    }
+
+    public boolean isMatchingPassword(String password){
+        return encoder.matches(password, pwHash);
     }
 
     @Override
