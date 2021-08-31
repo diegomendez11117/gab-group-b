@@ -19,6 +19,7 @@ An Admin will be able to login to add more admins, edit the content on each page
 # Technologies
 - Java
 - Spring Boot
+- Spring Security
 - Javascript
 - HTML
 - CSS
@@ -30,7 +31,7 @@ An Admin will be able to login to add more admins, edit the content on each page
 - [ ] Google Maps API (Google Maps based on a search term, and proximity from a zip code
 - [ ] Google API (language options)
 - [ ] RSS Feed Source unknown API
-- [ ] How to manage logins/Roles to determine varying site access.
+- [x] How to manage logins/Roles to determine varying site access.
 - [x] A much deeper level of Thymeleaf to create a true CMS.
 
 # Project Tracker
