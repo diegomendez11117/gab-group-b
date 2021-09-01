@@ -20,6 +20,7 @@ An Admin will be able to login to add more admins, edit the content on each page
 - Java
 - Spring Boot
 - Spring Security
+- Thymeleaf & Thymeleaf Security Extra
 - Javascript
 - HTML
 - CSS
