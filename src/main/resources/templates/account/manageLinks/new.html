@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
@@ -85,9 +86,11 @@
                         <div Class="form-group row">
                             <div>
                                 <a  th:href="@{/account/manageLinks/}" class="btn btn-primary" >BACK</a>
-                                <button type="submit" th:text="${button}" class="btn btn-success"></button>
+                                <button type="submit" th:text="${button}" class="btn btn-success"
+                                        sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"></button>
                                 <th:block th:unless="${hide == 'hide'}">
-                                    <a th:href="@{'/account/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
+                                    <a th:href="@{'/account/manageLinks/delete/' + ${link.id}}" class="btn btn-danger"
+                                        sec:authorize="hasAnyAuthority('ADMIN')">DELETE LINK</a>
                                 </th:block>
                             </div>
                         </div>

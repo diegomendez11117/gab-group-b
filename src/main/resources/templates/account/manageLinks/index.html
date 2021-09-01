@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
@@ -17,7 +18,8 @@
                     <th:block th:each="link : ${listLinks}" class="container">
                         <tr th:if="${!link.hidden}">
                             <td> <a  th:text="${link.name}"></a></td>
-                            <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                            <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                         </tr>
                     </th:block>
                 </table>
@@ -28,7 +30,8 @@
                         <tr  th:if="${!link.hidden}">
                             <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{link.name}}"></a> </td>
 
-                            <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                            <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                         </tr>
                     </th:block>
                 </table>
@@ -39,7 +42,8 @@
                       style="max-width: 600px; margin: 0; auto">
                     <div class="m-3">
                         <div class="text-center p-3">
-                            <button type="submit" class="btn btn-success">Add New Link</button>
+                            <button type="submit" class="btn btn-success"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">Add New Link</button>
                         </div>
                     </div>
                 </form>

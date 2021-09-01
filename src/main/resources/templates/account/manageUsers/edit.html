@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
@@ -51,10 +52,13 @@
                             </div>
                         </div>
 
-                        <div class="text-center p-3">
+                        <div class="text-center p-3"
+                             sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
                             <a th:href="@{/account/manageUsers/}" class="btn btn-primary" >BACK</a>
-                            <a th:href="@{/account/manageUsers/save/}" class="btn btn-success">SAVE</a>
-                            <a th:href="@{'/account/manageUsers/delete/' + ${user.id}}" class="btn btn-danger">DELETE USER</a>
+                            <a th:href="@{/account/manageUsers/save/}" class="btn btn-success"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">SAVE</a>
+                            <a th:href="@{'/account/manageUsers/delete/' + ${user.id}}" class="btn btn-danger"
+                                    sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>
                         </div>
                     </div>
                 </form>
