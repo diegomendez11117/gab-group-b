@@ -332,9 +332,9 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 80vh;
+  height: 95vh;
   background: #fff;
-  padding-top: 82px;
+  padding-top: 100px;
 }
 
 #hero h1 {
@@ -406,6 +406,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   #hero .hero-img {
     text-align: center;
+     padding: 10%;
   }
   #hero .hero-img img {
     width: 50%;
@@ -1359,7 +1360,7 @@ section {
 #priorities {
   width: 100%;
   background: #fff;
-  padding-top: 120px;
+  padding-top: 160px;
 }
 
 #priorities h1 {
