@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("access")
+@RequestMapping("account")
 public class AdminWelcomeController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class AdminWelcomeController {
         Welcome welcome = welcomeRepository.getById(1);
         model.addAttribute("title", "Admin Portal:");
         model.addAttribute("welcome", welcome);
-        return "/access/index";
+        return "/account/index";
     }
 
     @GetMapping ("manageWelcome/edit")
@@ -30,7 +30,7 @@ public class AdminWelcomeController {
         Welcome welcome = welcomeRepository.getById(1);
         model.addAttribute("title", "Admin Portal: Manage UI");
         model.addAttribute("welcome",welcome);
-        return "/access/manageWelcome/edit";
+        return "/account/manageWelcome/edit";
     }
 
 
@@ -38,7 +38,7 @@ public class AdminWelcomeController {
     @PostMapping("manageWelcome/save")
     public String updateWelcome(Welcome welcome) {
         welcomeRepository.save(welcome);
-        return "/access/index";
+        return "/account/index";
     }
 
 

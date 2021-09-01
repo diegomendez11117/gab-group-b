@@ -81,7 +81,7 @@
 //        setUserInSession(request.getSession(), newUser);
 //
 //        //return "redirect:";
-//        return "/access/index";
+//        return "/account/index";
 //        //return "login";
 //    }
 //
@@ -122,7 +122,7 @@
 //        setUserInSession(request.getSession(), theUser);
 //
 //        //return "redirect:";
-//        return "/access/index";
+//        return "/account/index";
 //    }
 //
 //    @GetMapping("/logout")

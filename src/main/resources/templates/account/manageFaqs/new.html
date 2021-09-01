@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-4">
-                <form th:action="@{/access/manageFaqs/save}" th:object="${faq}" th:method="post">
+                <form th:action="@{/account/manageFaqs/save}" th:object="${faq}" th:method="post">
                     <input type="hidden" th:field="*{id}" th:value="${faq.id}"/>
                     <div class="m-3">
 
@@ -68,7 +68,7 @@
 
                         <div Class="form-group row">
                             <div>
-                                <a th:href="@{/access/manageFaqs/}" class="btn btn-primary">BACK</a>
+                                <a th:href="@{/account/manageFaqs/}" class="btn btn-primary">BACK</a>
                                 <button type="submit" th:text="${button}" class="btn btn-success">SAVE</button>
                             </div>
                         </div>
@@ -79,12 +79,12 @@
                                 <th:block th:each="link : ${faq.links}">
                                     <tr th:if="${!link.hidden}">
                                         <td> <a th:text="${link.name}"></a> </td>
-                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                                     </tr>
                                     <tr th:if="${link.hidden}">
                                         <!-- <td> <a th:text="${link.name}"></a> </td> -->
                                         <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{link.name}}"></a> </td>
-                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                                     </tr>
                                 </th:block>
                             </table>
@@ -92,7 +92,7 @@
 
                         <div Class="form-group row">
                             <div>
-                                <a th:href="@{'/access/manageLinks/newFaqLink/' + ${faq.id}}" class="btn btn-success">Add
+                                <a th:href="@{'/account/manageLinks/newFaqLink/' + ${faq.id}}" class="btn btn-success">Add
                                     New Link</a>
                             </div>
                         </div>

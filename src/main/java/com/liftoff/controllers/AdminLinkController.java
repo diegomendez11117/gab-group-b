@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("access/manageLinks")
+@RequestMapping("account/manageLinks")
 public class AdminLinkController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class AdminLinkController {
         List<Link> listLinks = linkRepository.findAll();
         model.addAttribute("title", "Admin Portal: Manage Links");
         model.addAttribute("listLinks", listLinks);
-        return "/access/manageLinks/index";
+        return "/account/manageLinks/index";
     }
 
     @GetMapping ("new")
@@ -49,7 +49,7 @@ public class AdminLinkController {
         model.addAttribute("button", "SAVE NEW");
         model.addAttribute("hide","hide");
         model.addAttribute("link", new Link());
-       return "/access/manageLinks/new";
+       return "/account/manageLinks/new";
     }
 
     @GetMapping ("newWantToLink/{id}")
@@ -65,7 +65,7 @@ public class AdminLinkController {
         Link newLink = new Link();
         newLink.setWantTo(wantTo);
         model.addAttribute("link", newLink);
-        return "/access/manageLinks/new";
+        return "/account/manageLinks/new";
     }
 
     @GetMapping ("newFaqLink/{id}")
@@ -81,7 +81,7 @@ public class AdminLinkController {
         Link newLink = new Link();
         newLink.setFaq(faq);
         model.addAttribute("link", newLink);
-        return "/access/manageLinks/new";
+        return "/account/manageLinks/new";
     }
 
 
@@ -98,20 +98,20 @@ public class AdminLinkController {
         model.addAttribute("title", "Admin Portal: edit link");
         model.addAttribute("button", "SAVE CHANGES");
         model.addAttribute("link", link);
-        return "/access/manageLinks/new";
+        return "/account/manageLinks/new";
 
     }
 
     @PostMapping ("save")
     public String saveLink (Link link) {
         linkRepository.save(link);
-        return "redirect:/access/manageLinks";
+        return "redirect:/account/manageLinks";
     }
 
     @GetMapping ("delete/{id}")
     public String deleteLink (Link link) {
         linkRepository.delete(link);
-        return "redirect:/access/manageLinks";
+        return "redirect:/account/manageLinks";
     }
 
 

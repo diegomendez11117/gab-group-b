@@ -42,27 +42,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 //.csrf().disable()
                 .authorizeRequests()
-//                    .antMatchers("/products/delete/**",
-//                                            "/users/delete/**",
-//                                            "/categories/delete/**",
-//                                            "/brands/delete/**").hasAuthority("ADMIN")
-//                    .antMatchers("/users/new/**",
-//                                            "/users/edit/**").hasAnyAuthority("ADMIN","EDITOR")
-//                    .antMatchers("/products/new/**",
-//                                            "/products/edit/**").hasAnyAuthority("ADMIN","EDITOR")
-//                    .antMatchers("/brands/new/**",
-//                                            "/brands/edit/**").hasAnyAuthority("ADMIN","EDITOR")
-//                    .antMatchers("/categories/new/**",
-//                                            "/categories/edit/**").hasAnyAuthority("ADMIN","EDITOR")
-
-                    .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/js/*","/register").permitAll()
-                    .anyRequest()
-                    .authenticated()
+                .antMatchers("/account/manageUsers/**",
+                                        "/account/manageLinks/**",
+                                        "/account/manageWantTos/**",
+                                        "/account/manageFaqs/**",
+                                        "/account/manageWelcome/**").hasAnyAuthority("ADMIN","EDITOR")
+                .antMatchers("/account/**").authenticated()
+                .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/js/*","/register").permitAll()
+                .anyRequest()
+                .authenticated()
 //                .and()
 //                .formLogin()
 //                    .loginPage("/login")
 //                    .permitAll()
-//                    .defaultSuccessUrl("/access",true)
+//                    .defaultSuccessUrl("/account",true)
 //                    .passwordParameter("password")
 //                    .usernameParameter("username")
                 .and()

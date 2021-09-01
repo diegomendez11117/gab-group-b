@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("access/manageWantTos")
+@RequestMapping("account/manageWantTos")
 public class AdminWantToController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class AdminWantToController {
         model.addAttribute("title", "Admin Portal: Manage Want-To");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("welcome", welcome);
-        return "/access/ManageWantTos/index";
+        return "/account/ManageWantTos/index";
     }
 
     @GetMapping ("/new")
@@ -42,7 +42,7 @@ public class AdminWantToController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", new WantTo());
-        return "/access/manageWantTos/new";
+        return "/account/manageWantTos/new";
     }
 
     @GetMapping ("/edit/{id}")
@@ -53,12 +53,12 @@ public class AdminWantToController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", wantTo);
-        return "/access/manageWantTos/new";
+        return "/account/manageWantTos/new";
     }
 
     @PostMapping ("/save")
     public String saveWantTo (WantTo wantTo) {
         wantToRepository.save(wantTo);
-        return "redirect:/access/manageWantTos";
+        return "redirect:/account/manageWantTos";
     }
 }

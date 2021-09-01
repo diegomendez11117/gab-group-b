@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("access/manageFaqs")
+@RequestMapping("account/manageFaqs")
 public class AdminFaqController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class AdminFaqController {
         List<Faq> listFaqs = faqRepository.findAll();
         model.addAttribute("title", "Admin Portal: Manage FAQs");
         model.addAttribute("listFaqs", listFaqs);
-        return "/access/manageFaqs/index";
+        return "/account/manageFaqs/index";
     }
 
     @GetMapping ("new")
@@ -34,7 +34,7 @@ public class AdminFaqController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listFaqs", listFaqs);
         model.addAttribute("faq", new Faq());
-        return "/access/manageFaqs/new";
+        return "/account/manageFaqs/new";
     }
 
     @GetMapping ("edit/{id}")
@@ -45,13 +45,13 @@ public class AdminFaqController {
         model.addAttribute("title", "Admin Portal: edit FAQ");
         model.addAttribute("button", "Save Changes");
         model.addAttribute("faq", faq);
-        return "/access/manageFaqs/new";
+        return "/account/manageFaqs/new";
     }
 
     @PostMapping ("save")
     public String saveFAQ (Faq faq) {
         faqRepository.save(faq);
-        return "redirect:/access/manageFaqs";
+        return "redirect:/account/manageFaqs";
    }
 
 

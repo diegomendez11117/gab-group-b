@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-4">
-                <form th:action="@{/access/manageUsers/save}" th:object="${user}" th:method="post"
+                <form th:action="@{/account/manageUsers/save}" th:object="${user}" th:method="post"
                       style="max-width: 600px; margin: 0; auto">
                     <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
                     <div class="m-3">
@@ -40,9 +40,9 @@
                         </div>
 
                         <div class="text-center p-3">
-                            <a th:href="@{/access/manageUsers/}" class="btn btn-primary" >BACK</a>
-                            <a th:href="@{/access/manageUsers/save/}" class="btn btn-success">SAVE</a>
-                            <a th:href="@{'/access/manageUsers/delete/' + ${user.id}}" class="btn btn-danger">DELETE USER</a>
+                            <a th:href="@{/account/manageUsers/}" class="btn btn-primary" >BACK</a>
+                            <a th:href="@{/account/manageUsers/save/}" class="btn btn-success">SAVE</a>
+                            <a th:href="@{'/account/manageUsers/delete/' + ${user.id}}" class="btn btn-danger">DELETE USER</a>
                         </div>
                     </div>
                 </form>
