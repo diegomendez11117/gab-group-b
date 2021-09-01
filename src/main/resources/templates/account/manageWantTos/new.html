@@ -53,7 +53,7 @@
 
 
             <div class="col-4">
-                <form th:action="@{/access/manageWantTos/save}" th:object="${wantTo}" th:method="post">
+                <form th:action="@{/account/manageWantTos/save}" th:object="${wantTo}" th:method="post">
                     <input type="hidden" th:field="*{id}" th:value="${wantTo.id}"/>
                     <div class="m-3">
 
@@ -93,7 +93,7 @@
 
                         <div Class="form-group row">
                             <div>
-                                <a  th:href="@{/access/manageWantTos/}" class="btn btn-primary" >BACK</a>
+                                <a  th:href="@{/account/manageWantTos/}" class="btn btn-primary" >BACK</a>
                                 <button type="submit" th:text="${button}" class="btn btn-success">SAVE</button>
                             </div>
                         </div>
@@ -105,12 +105,12 @@
                                 <th:block th:each="link : ${wantTo.links}">
                                     <tr th:if="${!link.hidden}">
                                         <td> <a th:text="${link.name}"></a> </td>
-                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                                     </tr>
                                     <tr th:if="${link.hidden}">
                                         <!-- <td> <a th:text="${link.name}"></a> </td> -->
                                         <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{link.name}}"></a> </td>
-                                        <td> <a th:href="@{'/access/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
                                     </tr>
 
                                 </th:block>
@@ -120,7 +120,7 @@
 
                         <div Class="form-group row">
                             <div>
-                                <a  th:href="@{'/access/manageLinks/newWantToLink/' + ${wantTo.id}}" class="btn btn-success" >Add New Link</a>
+                                <a  th:href="@{'/account/manageLinks/newWantToLink/' + ${wantTo.id}}" class="btn btn-success" >Add New Link</a>
                             </div>
                         </div>
 

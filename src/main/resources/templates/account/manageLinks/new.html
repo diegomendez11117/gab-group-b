@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-4">
-                <form th:action="@{/access/manageLinks/save}" th:object="${link}" th:method="post">
+                <form th:action="@{/account/manageLinks/save}" th:object="${link}" th:method="post">
                     <input type="hidden" th:field="*{id}" th:value="${link.id}"/>
                     <div class="m-3">
                         <div Class="form-group row">
@@ -84,10 +84,10 @@
 
                         <div Class="form-group row">
                             <div>
-                                <a  th:href="@{/access/manageLinks/}" class="btn btn-primary" >BACK</a>
+                                <a  th:href="@{/account/manageLinks/}" class="btn btn-primary" >BACK</a>
                                 <button type="submit" th:text="${button}" class="btn btn-success"></button>
                                 <th:block th:unless="${hide == 'hide'}">
-                                    <a th:href="@{'/access/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
+                                    <a th:href="@{'/account/manageLinks/delete/' + ${link.id}}" class="btn btn-danger">DELETE LINK</a>
                                 </th:block>
                             </div>
                         </div>

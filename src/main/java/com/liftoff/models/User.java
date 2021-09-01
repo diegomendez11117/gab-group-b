@@ -1,60 +1,137 @@
 package com.liftoff.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
-public class User extends AbstractEntity{
+@Table (name = "users")
+public class User{
 
+    @Id
+    @Column (name = "user_id")
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @NotNull
+    @Column(length = 45, nullable = false, unique = true)
     private String username;
 
-    @NotNull
+    @Column
+    private String email;
+
+    @Column(name="pw_Hash", nullable = false)
     private String pwHash;
 
-    private Boolean disableUser;
+    @Column
+    private boolean enabled;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+    public User(){ }
 
-
-    public enum AdminRights {
-        USER,
-        ADMIN,
-        SUPER,
-    }
-
-    private AdminRights adminRights;
-
-    public User(){}
-
-    public User(String username, String password) {
+    public User(String username, String pwHash) {
         this.username = username;
-        this.pwHash = encoder.encode(password);
+        this.pwHash = encoder.encode(pwHash);
     }
 
-
-    public Boolean getDisableUser() {
-        return disableUser;
+    public User(String username, String pwHash, String email) {
+        this.username = username;
+        this.pwHash = encoder.encode(pwHash);
+        this.email = email;
     }
 
-    public void setDisableUser(Boolean disable) {
-        this.disableUser = disable;
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable (
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) { this.username = username; }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public String getPwHash() {
         return pwHash;
+    }
+
+    public void setPwHash(String pwHash) {
+        this.pwHash = pwHash;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void addRole(Role role){
+        this.roles.add(role);
+    }
+
+    public void removeRole(Role role){
+        this.roles.remove(role);
     }
 
     public boolean isMatchingPassword(String password){
         return encoder.matches(password, pwHash);
     }
 
+    @Override
+    public String toString() {
+        return username ;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
