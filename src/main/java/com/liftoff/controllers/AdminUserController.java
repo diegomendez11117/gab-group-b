@@ -53,7 +53,7 @@ public class AdminUserController {
     @PostMapping("save")
     public String saveUser (User user) {
         userRepository.save(user);
-        return "redirect:/account/manageUsers";
+        return "/account/manageUsers";
     }
 
 }
