@@ -1,6 +1,8 @@
 package com.liftoff.controllers;
 
+import com.liftoff.models.Role;
 import com.liftoff.models.User;
+import com.liftoff.models.data.RoleRepository;
 import com.liftoff.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class AdminUserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     @GetMapping ("")
     public String displayManageUsersPage (Model model) {
         List<User> listUsers = userRepository.findAll();
@@ -36,8 +41,10 @@ public class AdminUserController {
     @GetMapping ("edit/{id}")
     public String displayEditUserPage(@PathVariable("id") Integer id, Model model){
         List<User> listUsers = userRepository.findAll();
+        List<Role> listRoles = roleRepository.findAll();
         User user = userRepository.findById(id).get();
         model.addAttribute("listUsers", listUsers);
+        model.addAttribute("listRoles", listRoles);
         model.addAttribute("title","Admin Portal: edit User");
         model.addAttribute("button", "Save Changes");
         model.addAttribute("user", user);

@@ -42,7 +42,7 @@ public class AdminWantToController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", new WantTo());
-        return "/account/manageWantTos/new";
+        return "/account/manageWantTos/edit";
     }
 
     @GetMapping ("/edit/{id}")
@@ -53,7 +53,7 @@ public class AdminWantToController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", wantTo);
-        return "/account/manageWantTos/new";
+        return "/account/manageWantTos/edit";
     }
 
     @PostMapping ("/save")

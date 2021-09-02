@@ -15,8 +15,16 @@
             <div class="col-6">
                 <table class="table table-bordered">
                     <th:block th:each="link : ${listLinks}" class="container">
-                        <tr>
+                        <tr th:if="${!link.hidden}">
                             <td> <a  th:text="${link.name}"></a></td>
+                          </tr>
+                    </th:block>
+                </table>
+
+                <table class="table table-bordered">
+                    <th:block th:each="link : ${listLinks}" class="container">
+                        <tr  th:if="${link.hidden}">
+                            <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' + {link.name}}"></a> </td>
                         </tr>
                     </th:block>
                 </table>

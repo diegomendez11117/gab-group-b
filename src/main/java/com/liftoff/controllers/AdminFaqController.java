@@ -34,7 +34,7 @@ public class AdminFaqController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listFaqs", listFaqs);
         model.addAttribute("faq", new Faq());
-        return "/account/manageFaqs/new";
+        return "/account/manageFaqs/edit";
     }
 
     @GetMapping ("edit/{id}")
@@ -45,7 +45,7 @@ public class AdminFaqController {
         model.addAttribute("title", "Admin Portal: edit FAQ");
         model.addAttribute("button", "Save Changes");
         model.addAttribute("faq", faq);
-        return "/account/manageFaqs/new";
+        return "/account/manageFaqs/edit";
     }
 
     @PostMapping ("save")

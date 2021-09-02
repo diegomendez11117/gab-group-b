@@ -17,7 +17,9 @@
                     <th:block th:each="user : ${listUsers}" class="container">
                         <tr>
                             <td><a th:text="${user.username}"></a></td>
-                            <td><a th:text="${user.enabled}"></a></td>
+                            <td th:if="${user.enabled}">
+                                <a>enabled</a>
+                            </td>
                             <td><a th:text="${user.email}"></a></td>
                             <td><a th:text="${user.roles}"></a></td>
                             <td><a th:href="@{'/account/manageUsers/edit/' + ${user.id}}"

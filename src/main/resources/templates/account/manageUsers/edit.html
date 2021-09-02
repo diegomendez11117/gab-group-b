@@ -26,8 +26,7 @@
             </div>
 
             <div class="col-4">
-                <form th:action="@{/account/manageUsers/save}" th:object="${user}" th:method="post"
-                      style="max-width: 600px; margin: 0; auto">
+                <form th:action="@{/account/manageUsers/save}" th:object="${user}" th:method="post">
                     <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
                     <div class="m-3">
                         <div Class="form-group row">
@@ -42,6 +41,21 @@
                                 <input type="text" th:field="*{email}" class="form-control"/>
                             </div>
                         </div>
+
+<!--                        <div Class="form-group row">-->
+<!--                            <label class="col-form-Label col-sm-4">User roles:</label>-->
+<!--                            <div class="col-sm-8 text-left">-->
+<!--                                <th block th:each="role : ${listRoles}" >-->
+<!--                                    <div>-->
+<!--                                        <input type="checkbox" th:field="*{roles}"-->
+<!--                                               th:text="${role.name}"-->
+<!--                                               th:value="${role.id}" />-->
+<!--                                    </div>-->
+<!--                                </th>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
                         <div Class="form-group row">
                             <label class="col-form-Label col-sm-4">enabled:</label>
                             <div class="col-sm-8">

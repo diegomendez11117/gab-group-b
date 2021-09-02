@@ -5,7 +5,6 @@
 <body class="container">
 <header th:replace="fragments :: header"></header>
 
-
 <section id="priorities" class="align-items-center" th:fragment="TopSection">
     <div class="container">
         <div class="row">
@@ -26,8 +25,8 @@
 
                 <table class="table table-bordered">
                     <th:block th:each="link : ${listLinks}" class="container">
-                        <tr  th:if="${!link.hidden}">
-                            <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{link.name}}"></a> </td>
+                        <tr  th:if="${link.hidden}">
+                            <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' + {link.name}}"></a> </td>
 
                             <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}"
                                     sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
@@ -37,7 +36,7 @@
             </div>
 
             <div class="col-4">
-                <form th:action="@{/account/manageLinks/new}" th:object="${link}" th:method="get"
+                <form th:action="@{/account/manageLinks/edit}" th:object="${link}" th:method="get"
                       style="max-width: 600px; margin: 0; auto">
                     <div class="m-3">
                         <div class="text-center p-3">

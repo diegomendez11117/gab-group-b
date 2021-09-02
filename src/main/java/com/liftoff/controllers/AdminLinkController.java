@@ -49,7 +49,7 @@ public class AdminLinkController {
         model.addAttribute("button", "SAVE NEW");
         model.addAttribute("hide","hide");
         model.addAttribute("link", new Link());
-       return "/account/manageLinks/new";
+       return "/account/manageLinks/edit";
     }
 
     @GetMapping ("newWantToLink/{id}")
@@ -65,7 +65,7 @@ public class AdminLinkController {
         Link newLink = new Link();
         newLink.setWantTo(wantTo);
         model.addAttribute("link", newLink);
-        return "/account/manageLinks/new";
+        return "/account/manageLinks/edit";
     }
 
     @GetMapping ("newFaqLink/{id}")
@@ -81,7 +81,7 @@ public class AdminLinkController {
         Link newLink = new Link();
         newLink.setFaq(faq);
         model.addAttribute("link", newLink);
-        return "/account/manageLinks/new";
+        return "/account/manageLinks/edit";
     }
 
 
@@ -98,7 +98,7 @@ public class AdminLinkController {
         model.addAttribute("title", "Admin Portal: edit link");
         model.addAttribute("button", "SAVE CHANGES");
         model.addAttribute("link", link);
-        return "/account/manageLinks/new";
+        return "/account/manageLinks/edit";
 
     }
 
