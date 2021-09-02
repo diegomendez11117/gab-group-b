@@ -56,45 +56,10 @@ public class ApplicationController {
     }
 
 
-
-
-
-//    @GetMapping("login")
-//    public String displayLogin (Model model){
-//        return "/login";
-//    }
-//
-//
-//
-//
-//
-//    @GetMapping ("register")
-//    public String displayCreateNewUser (Model model) {
-//        List<Role> listRoles = roleRepository.findAll();
-//
-//        model.addAttribute("title","Add User");
-//        model.addAttribute("user",new User());
-//        model.addAttribute("listRoles", listRoles);
-//        model.addAttribute("password", "password");
-//        model.addAttribute("verifyPassword", "verifyPassword");
-//
-//        return "/register";
-//    }
-//
-//    @PostMapping("save")
-//    public String saveUser(Model model, User user){
-//        String password = user.getPassword();
-//        String hash = encoder.encode(password);
-//        user.setPassword(hash);
-//
-//        System.out.println(password);
-//        System.out.println(hash);
-//
-//        userRepository.save(user);
-//        return "redirect:";
-//    }
-
-
+    @GetMapping ("403")
+    public String error403() {
+        return "/403";
+    }
 
 
 }
