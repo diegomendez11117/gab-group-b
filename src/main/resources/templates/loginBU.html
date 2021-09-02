@@ -19,33 +19,40 @@
                         <div class="col-lg-10 col-xl-7 mx-auto">
                             <h3 class="display-4">Sign In</h3>
                             <p class="text-muted mb-4">Enter your credentials to login.</p>
-                            <form method="post">
-                                <div class="form-group mb-3">
-                                    <input th:field="${loginFormDTO.username}" placeholder="Username" required=""
+                            <form method="post" action="/login">
+
+                                <p>
+                                    <label for="username" class="sr-only">Username</label>
+                                    <input type="text" id="username" placeholder="Username" name="username" required=""
                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input th:field="${loginFormDTO.password}" type="password" placeholder="Password"
-                                           required=""
-                                           class="form-control roundedA-pill border-0 shadow-sm px-4 text-primary">
-                                    <p class="error" th:errors="${loginFormDTO.password}"></p>
-                                </div>
+                                </p>
+
+                                <p>
+                                    <label for="password" class="sr-only">Password</label>
+                                    <input type="password" id="password" placeholder="Password" name="password" required=""
+                                           class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                </p>
+
                                 <div class="custom-control custom-checkbox mb-3">
                                     <input id="customCheck1" type="checkbox" checked class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember password</label>
                                 </div>
+
                                 <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
                                     Sign in
                                 </button>
+
                                 <div class="text-center d-flex justify-content-between mt-4">
                                     <p>Don't have an account?
                                         <a href="/register">Register for one.</a>
                                     </p>
                                 </div>
+
                                 <div class="text-center d-flex justify-content-between mt-4">
                                     <a href="/register">Forgot password?</a>
                                 </div>
+
                             </form>
                         </div>
                     </div>

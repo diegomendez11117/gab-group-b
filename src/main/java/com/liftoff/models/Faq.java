@@ -1,5 +1,7 @@
 package com.liftoff.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,9 @@ public class Faq extends AbstractEntity{
 
     private String question;
     private String answer;
+
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(columnDefinition = "TINYINT")
     private Boolean hidden;
 
     public enum ColumnSetting {

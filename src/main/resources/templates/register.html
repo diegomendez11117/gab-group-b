@@ -4,12 +4,10 @@
 <body>
 <header th:replace="fragments :: header"></header>
 
-
 <div class="container-fluid">
     <div class="row no-gutter">
         <!-- The image half -->
         <div class="col-md-6 d-none d-md-flex bg-image"></div>
-
 
         <!-- The content half -->
         <div class="col-md-6 bg-light">
@@ -22,18 +20,20 @@
                             <h3 class="display-4">Register Account</h3>
                             <p class="text-muted mb-4">Enter your information to create an account.</p>
                             <form method="post">
+
                                 <div class="form-group mb-3">
                                     <input th:field="${registerFormDTO.username}" placeholder="Username" required=""
                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
                                     <p class="error" th:errors="${registerFormDTO.username}"></p>
-
                                 </div>
+
                                 <div class="form-group mb-3">
                                     <input th:field="${registerFormDTO.password}" type="password" placeholder="Password"
                                            required=""
                                            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
                                     <p class="error" th:errors="${registerFormDTO.password}"></p>
                                 </div>
+
                                 <div class="form-group mb-3">
                                     <input th:field="${registerFormDTO.verifyPassword}" type="password"
                                            placeholder="Verify Password"
@@ -41,11 +41,13 @@
                                            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
                                     <p class="error" th:errors="${registerFormDTO.password}"></p>
                                 </div>
+
                                 <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
                                         value="Register">
                                     Register
                                 </button>
+
                             </form>
                         </div>
                     </div>

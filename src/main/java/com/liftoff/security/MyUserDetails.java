@@ -35,7 +35,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPwHash();
+        return user.getPassword();
     }
 
     @Override

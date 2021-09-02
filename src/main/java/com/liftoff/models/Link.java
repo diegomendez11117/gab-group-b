@@ -1,5 +1,7 @@
 package com.liftoff.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +19,13 @@ public class Link extends AbstractEntity{
     private String name;
     private String url;
     private String guideStarUrl;
+
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(columnDefinition = "TINYINT")
     private Boolean hidden;
+
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(columnDefinition = "TINYINT")
     private Boolean displayOnWelcomePage;
 
     public Link(){}

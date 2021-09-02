@@ -1,5 +1,6 @@
 package com.liftoff.models;
 
+import org.hibernate.annotations.Type;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -21,24 +22,25 @@ public class User{
     @Column
     private String email;
 
-    @Column(name="pw_Hash", nullable = false)
-    private String pwHash;
+    @Column(name="password", nullable = false)
+    private String password;
 
     @Column
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean enabled;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User(){ }
 
-    public User(String username, String pwHash) {
+    public User(String username, String password) {
         this.username = username;
-        this.pwHash = encoder.encode(pwHash);
+        this.password = encoder.encode(password);
     }
 
-    public User(String username, String pwHash, String email) {
+    public User(String username, String password, String email) {
         this.username = username;
-        this.pwHash = encoder.encode(pwHash);
+        this.password = encoder.encode(password);
         this.email = email;
     }
 
@@ -81,12 +83,12 @@ public class User{
         this.enabled = enabled;
     }
 
-    public String getPwHash() {
-        return pwHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwHash(String pwHash) {
-        this.pwHash = pwHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Role> getRoles() {
@@ -114,7 +116,7 @@ public class User{
     }
 
     public boolean isMatchingPassword(String password){
-        return encoder.matches(password, pwHash);
+        return encoder.matches(password, this.password);
     }
 
     @Override
