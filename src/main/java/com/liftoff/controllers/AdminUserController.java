@@ -40,21 +40,29 @@ public class AdminUserController {
 
     @GetMapping ("edit/{id}")
     public String displayEditUserPage(@PathVariable("id") Integer id, Model model){
-        List<User> listUsers = userRepository.findAll();
-        List<Role> listRoles = roleRepository.findAll();
-        User user = userRepository.findById(id).get();
-        model.addAttribute("listUsers", listUsers);
-        model.addAttribute("listRoles", listRoles);
-        model.addAttribute("title","Admin Portal: edit User");
-        model.addAttribute("button", "Save Changes");
-        model.addAttribute("user", user);
-        return "/account/manageUsers/edit";
+        if (userRepository.existsById(id)) {
+            List<User> listUsers = userRepository.findAll();
+            List<Role> listRoles = roleRepository.findAll();
+            User user = userRepository.findById(id).get();
+            model.addAttribute("listUsers", listUsers);
+            model.addAttribute("listRoles", listRoles);
+            model.addAttribute("title", "Admin Portal: edit User");
+            model.addAttribute("button", "Save Changes");
+            model.addAttribute("user", user);
+            return "/account/manageUsers/edit";
+        } else {
+            return "/500";
+        }
     }
 
     @GetMapping ("delete/{id}")
-    public String deleteUser (User user) {
-        userRepository.delete(user);
-        return "redirect:/account/manageUsers";
+    public String deleteUser (@PathVariable("id") Integer id, User user) {
+        if (userRepository.existsById(id)) {
+            userRepository.delete(user);
+            return "redirect:/account/manageUsers";
+        } else {
+            return "/500";
+        }
     }
 
     @PostMapping("save")

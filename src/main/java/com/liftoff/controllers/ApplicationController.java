@@ -58,8 +58,11 @@ public class ApplicationController {
 
     @GetMapping ("403")
     public String error403() {
-        return "/403";
+        return "/error/403";
     }
 
-
+    @GetMapping ("500")
+    public String error500() {
+        return "/error/500";
+    }
 }

@@ -39,13 +39,18 @@ public class AdminFaqController {
 
     @GetMapping ("edit/{id}")
     public String displayEditFAQ (@PathVariable("id") Integer id, Model model) {
+
         List<Faq> listFaqs = faqRepository.findAll();
-        Faq faq = faqRepository.findById(id).get();
-        model.addAttribute("listFaqs", listFaqs);
-        model.addAttribute("title", "Admin Portal: edit FAQ");
-        model.addAttribute("button", "Save Changes");
-        model.addAttribute("faq", faq);
-        return "/account/manageFaqs/edit";
+        if (faqRepository.existsById(id)){
+            Faq faq = faqRepository.findById(id).get();
+            model.addAttribute("listFaqs", listFaqs);
+            model.addAttribute("title", "Admin Portal: edit FAQ");
+            model.addAttribute("button", "Save Changes");
+            model.addAttribute("faq", faq);
+            return "/account/manageFaqs/edit";
+        } else {
+            return "/500";
+        }
     }
 
     @PostMapping ("save")

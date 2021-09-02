@@ -37,10 +37,14 @@ public class HelpController {
 
     @GetMapping ("faq/{id}")
     public String displayFaq (@PathVariable("id") Integer id, Model model) {
-        Faq faq = faqRepository.findById(id).get();
-        model.addAttribute("faq",faq);
-        model.addAttribute("title", "FAQ");
-        return "/help/faq";
+        if (faqRepository.existsById(id)) {
+            Faq faq = faqRepository.findById(id).get();
+            model.addAttribute("faq", faq);
+            model.addAttribute("title", "FAQ");
+            return "/help/faq";
+        } else {
+            return "/500";
+        }
     }
 
 

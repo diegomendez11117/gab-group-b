@@ -54,52 +54,63 @@ public class AdminLinkController {
 
     @GetMapping ("newWantToLink/{id}")
     public String displayAddNewWantToLink (@PathVariable("id") Integer id, Model model) {
-        List<WantTo> listWantTos = wantToRepository.findAll();
-        List<Link> listLinks = linkRepository.findAll();
-        WantTo wantTo = wantToRepository.findById(id).get();
-        model.addAttribute("listLinks", listLinks);
-        model.addAttribute("listWantTos",listWantTos);
-        model.addAttribute("title", "Admin Portal: add link");
-        model.addAttribute("button", "SAVE NEW");
-        model.addAttribute("hide","hide");
-        Link newLink = new Link();
-        newLink.setWantTo(wantTo);
-        model.addAttribute("link", newLink);
-        return "/account/manageLinks/edit";
+        if (wantToRepository.existsById(id)) {
+            List<WantTo> listWantTos = wantToRepository.findAll();
+            List<Link> listLinks = linkRepository.findAll();
+            WantTo wantTo = wantToRepository.findById(id).get();
+            model.addAttribute("listLinks", listLinks);
+            model.addAttribute("listWantTos", listWantTos);
+            model.addAttribute("title", "Admin Portal: add link");
+            model.addAttribute("button", "SAVE NEW");
+            model.addAttribute("hide", "hide");
+            Link newLink = new Link();
+            newLink.setWantTo(wantTo);
+            model.addAttribute("link", newLink);
+            return "/account/manageLinks/edit";
+        } else {
+            return "500";
+        }
     }
 
     @GetMapping ("newFaqLink/{id}")
     public String displayAddNewFaqLink (@PathVariable("id") Integer id, Model model) {
-        List<Faq> listFaqs = faqRepository.findAll();
-        List<Link> listLinks = linkRepository.findAll();
-        Faq faq = faqRepository.findById(id).get();
-        model.addAttribute("listLinks", listLinks);
-        model.addAttribute("listFaqs",listFaqs);
-        model.addAttribute("title", "Admin Portal: add link");
-        model.addAttribute("button", "SAVE NEW");
-        model.addAttribute("hide","hide");
-        Link newLink = new Link();
-        newLink.setFaq(faq);
-        model.addAttribute("link", newLink);
-        return "/account/manageLinks/edit";
+        if (faqRepository.existsById(id)) {
+            List<Faq> listFaqs = faqRepository.findAll();
+            List<Link> listLinks = linkRepository.findAll();
+            Faq faq = faqRepository.findById(id).get();
+            model.addAttribute("listLinks", listLinks);
+            model.addAttribute("listFaqs", listFaqs);
+            model.addAttribute("title", "Admin Portal: add link");
+            model.addAttribute("button", "SAVE NEW");
+            model.addAttribute("hide", "hide");
+            Link newLink = new Link();
+            newLink.setFaq(faq);
+            model.addAttribute("link", newLink);
+            return "/account/manageLinks/edit";
+        } else {
+            return "/500";
+        }
     }
 
 
 
     @GetMapping ("edit/{id}")
     public String displayEditLink (@PathVariable("id") Integer id, Model model) {
-        List<Faq> listFaqs = faqRepository.findAll();
-        List<WantTo> listWantTos = wantToRepository.findAll();
-        List<Link> listLinks = linkRepository.findAll();
-        Link link = linkRepository.findById(id).get();
-        model.addAttribute("listLinks", listLinks);
-        model.addAttribute("listFaqs", listFaqs);
-        model.addAttribute("listWantTos",listWantTos);
-        model.addAttribute("title", "Admin Portal: edit link");
-        model.addAttribute("button", "SAVE CHANGES");
-        model.addAttribute("link", link);
-        return "/account/manageLinks/edit";
-
+        if (linkRepository.existsById(id)) {
+            List<Faq> listFaqs = faqRepository.findAll();
+            List<WantTo> listWantTos = wantToRepository.findAll();
+            List<Link> listLinks = linkRepository.findAll();
+            Link link = linkRepository.findById(id).get();
+            model.addAttribute("listLinks", listLinks);
+            model.addAttribute("listFaqs", listFaqs);
+            model.addAttribute("listWantTos", listWantTos);
+            model.addAttribute("title", "Admin Portal: edit link");
+            model.addAttribute("button", "SAVE CHANGES");
+            model.addAttribute("link", link);
+            return "/account/manageLinks/edit";
+        } else {
+            return "/500";
+        }
     }
 
     @PostMapping ("save")
