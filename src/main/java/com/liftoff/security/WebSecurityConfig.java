@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                //.csrf().disable()
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/account/manageUsers/**",
                                         "/account/manageLinks/**",
@@ -48,16 +48,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         "/account/manageFaqs/**",
                                         "/account/manageWelcome/**").hasAnyAuthority("ADMIN","EDITOR")
                 .antMatchers("/account/**").authenticated()
-                .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/js/*","/register").permitAll()
+                .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/js/*","/register","/login").permitAll()
                 .anyRequest()
                 .authenticated()
-//                .and()
-//                .formLogin()
-//                    .loginPage("/login")
-//                    .permitAll()
-//                    .defaultSuccessUrl("/account",true)
-//                    .passwordParameter("password")
-//                    .usernameParameter("username")
+                .and()
+                .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
+                    .defaultSuccessUrl("/",true)
+                    .passwordParameter("password")
+                    .usernameParameter("username")
                 .and()
                 .formLogin().permitAll()
                 .and()

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
@@ -15,11 +16,12 @@
                 <table class="table table-bordered">
                     <th:block th:each="user : ${listUsers}" class="container">
                         <tr>
-                            <td> <a th:text="${user.username}"></a> </td>
-                            <td> <a  th:text="${user.enabled}"></a> </td>
-                            <td> <a  th:text="${user.email}"></a> </td>
-                            <td> <a  th:text="${user.roles}"></a> </td>
-                            <td> <a th:href="@{'/account/manageUsers/edit/' + ${user.id}}">edit</a> </td>
+                            <td><a th:text="${user.username}"></a></td>
+                            <td><a th:text="${user.enabled}"></a></td>
+                            <td><a th:text="${user.email}"></a></td>
+                            <td><a th:text="${user.roles}"></a></td>
+                            <td><a th:href="@{'/account/manageUsers/edit/' + ${user.id}}"
+                                   sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a></td>
                         </tr>
                     </th:block>
                 </table>
@@ -29,7 +31,8 @@
                 <form th:action="@{/register}" th:object="${user}" th:method="get">
                     <div class="m-3">
                         <div class="text-center p-3">
-                            <button type="submit" class="btn btn-success">Register a New User</button>
+                            <button type="submit" class="btn btn-success"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">Register a New User</button>
                         </div>
                     </div>
                 </form>

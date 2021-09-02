@@ -55,6 +55,19 @@ public class ApplicationController {
         return "/about";
     }
 
+
+
+
+
+//    @GetMapping("login")
+//    public String displayLogin (Model model){
+//        return "/login";
+//    }
+//
+//
+//
+//
+//
 //    @GetMapping ("register")
 //    public String displayCreateNewUser (Model model) {
 //        List<Role> listRoles = roleRepository.findAll();
@@ -70,9 +83,9 @@ public class ApplicationController {
 //
 //    @PostMapping("save")
 //    public String saveUser(Model model, User user){
-//        String password = user.getPwHash();
+//        String password = user.getPassword();
 //        String hash = encoder.encode(password);
-//        user.setPwHash(hash);
+//        user.setPassword(hash);
 //
 //        System.out.println(password);
 //        System.out.println(hash);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
@@ -17,7 +18,8 @@
                         <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'HIGH'}">
                             <td> <a  th:text="${wantTo.title}"></a> </td>
                             <td> <a  th:text="${wantTo.priority}"></a> </td>
-                            <td> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
+                            <td> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}"
+                                sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                         </tr>
                     </th:block>
                 </table>
@@ -28,7 +30,8 @@
                         <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'MEDIUM'}">
                             <td> <a  th:text="${wantTo.title}"></a> </td>
                             <td> <a  th:text="${wantTo.priority}"></a> </td>
-                            <td> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
+                            <td> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}"
+                                sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                         </tr>
                     </th:block>
                 </table>
@@ -39,7 +42,8 @@
                         <tr th:if="${!wantTo.hidden and wantTo.priority.name() == 'LOW'}">
                             <td> <a  th:text="${wantTo.title}"></a> </td>
                             <td> <a  th:text="${wantTo.priority}"></a> </td>
-                            <td> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
+                            <td> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}"
+                                 sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                         </tr>
                     </th:block>
                 </table>
@@ -49,7 +53,8 @@
                         <tr th:if="${wantTo.hidden}">
                             <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' + {wantTo.title}}"></a> </td>
                             <td style="color:LightGray"> <a  th:text="${wantTo.priority}"></a> </td>
-                            <td style="color:LightGray"> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}">edit</a> </td>
+                            <td style="color:LightGray"> <a th:href="@{'/account/manageWantTos/edit/' + ${wantTo.id}}"
+                                   sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                         </tr>
                     </th:block>
                 </table>
@@ -59,7 +64,8 @@
                 <form th:action="@{/account/manageWantTos/new}" th:object="${wantTo}" th:method="get">
                     <div class="m-3">
                         <div class="text-center p-3">
-                            <button type="submit" class="btn btn-success">Add New WantTo</button>
+                            <button type="submit" class="btn btn-success"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">Add New WantTo</button>
                         </div>
                     </div>
                 </form>

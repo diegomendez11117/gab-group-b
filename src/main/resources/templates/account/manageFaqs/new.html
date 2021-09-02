@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
@@ -69,7 +70,8 @@
                         <div Class="form-group row">
                             <div>
                                 <a th:href="@{/account/manageFaqs/}" class="btn btn-primary">BACK</a>
-                                <button type="submit" th:text="${button}" class="btn btn-success">SAVE</button>
+                                <button type="submit" th:text="${button}" class="btn btn-success"
+                                        sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">SAVE</button>
                             </div>
                         </div>
 
@@ -79,12 +81,14 @@
                                 <th:block th:each="link : ${faq.links}">
                                     <tr th:if="${!link.hidden}">
                                         <td> <a th:text="${link.name}"></a> </td>
-                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}"
+                                                sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                                     </tr>
                                     <tr th:if="${link.hidden}">
                                         <!-- <td> <a th:text="${link.name}"></a> </td> -->
                                         <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{link.name}}"></a> </td>
-                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}">edit</a> </td>
+                                        <td> <a th:href="@{'/account/manageLinks/edit/' + ${link.id}}"
+                                                sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
                                     </tr>
                                 </th:block>
                             </table>
@@ -92,8 +96,8 @@
 
                         <div Class="form-group row">
                             <div>
-                                <a th:href="@{'/account/manageLinks/newFaqLink/' + ${faq.id}}" class="btn btn-success">Add
-                                    New Link</a>
+                                <a th:href="@{'/account/manageLinks/newFaqLink/' + ${faq.id}}" class="btn btn-success"
+                                   sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">Add New Link</a>
                             </div>
                         </div>
                     </div>

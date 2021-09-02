@@ -1,5 +1,7 @@
 package com.liftoff.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,9 @@ public class WantTo extends AbstractEntity{
     private String title;
     private String description;
     private Priority priority;
+
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(columnDefinition = "TINYINT")
     private Boolean hidden;
 
     public enum Priority {

@@ -1,3 +1,4 @@
+
 package com.liftoff.models.dto;
 
 import javax.validation.constraints.NotBlank;
