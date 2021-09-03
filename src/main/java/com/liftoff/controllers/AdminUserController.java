@@ -40,7 +40,7 @@ public class AdminUserController {
 
     @GetMapping ("edit/{id}")
     public String displayEditUserPage(@PathVariable("id") Integer id, Model model){
-        if (userRepository.existsById(id)) {
+        System.out.println("user edit/{id}" + userRepository.getById(id));
             List<User> listUsers = userRepository.findAll();
             List<Role> listRoles = roleRepository.findAll();
             User user = userRepository.findById(id).get();
@@ -50,16 +50,15 @@ public class AdminUserController {
             model.addAttribute("button", "Save Changes");
             model.addAttribute("user", user);
             return "/account/manageUsers/edit";
-        } else {
-            return "/500";
-        }
+
+
     }
 
     @GetMapping ("delete/{id}")
     public String deleteUser (@PathVariable("id") Integer id, User user) {
         if (userRepository.existsById(id)) {
             userRepository.delete(user);
-            return "redirect:/account/manageUsers";
+            return "redirect:/account/manageUsers/index";
         } else {
             return "/500";
         }
@@ -67,8 +66,9 @@ public class AdminUserController {
 
     @PostMapping("save")
     public String saveUser (User user) {
+        System.out.println("PostMapping('save': " + user);
         userRepository.save(user);
-        return "/account/manageUsers";
+        return "/account/manageUsers/index";
     }
 
 }

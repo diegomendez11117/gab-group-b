@@ -113,7 +113,7 @@ public class AdminLinkController {
         }
     }
 
-    @PostMapping ("save")
+    @PostMapping ("saveThis")
     public String saveLink (Link link) {
         linkRepository.save(link);
         return "redirect:/account/manageLinks";
