@@ -72,13 +72,21 @@
 
                         <div class="text-center p-3"
                              sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+
                             <a th:href="@{/account/manageUsers/}" class="btn btn-primary" >BACK</a>
 
                             <button type="submit" th:text="${button}" class="btn btn-success"
                                     sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"></button>
 
+                            <a th:href="@{'/account/manageUsers/reset/' + ${user.id}}" class="btn btn-danger"
+                               sec:authorize="hasAuthority('ADMIN')">RESET PASSWORD</a>
+
                             <a th:href="@{'/account/manageUsers/delete/' + ${user.id}}" class="btn btn-danger"
                                     sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>
+
+<!--                            <a th:href="@{/account/manageUsers/delete/}" class="btn btn-danger"-->
+<!--                               sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>-->
+
                         </div>
                     </div>
                 </form>
