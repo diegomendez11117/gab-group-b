@@ -24,7 +24,7 @@
     <div class="container">
         <div class="row">
             <th:block th:each="wantTo : ${listWantTo}" class="container">
-                <div th:if="${wantTo.priority.name() == 'HIGH'}" class="col-lg-4 col-md-6 cards-priorities">
+                <div th:if="${!wantTo.hidden and wantTo.priority.name() == 'HIGH'}" class="col-lg-4 col-md-6 cards-priorities">
                     <div class="icon-box">
                         <div class="icon"><i class="bi bi-laptop"></i></div>
                         <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
@@ -57,7 +57,7 @@
     <div class="container">
         <div class="row">
             <th:block th:each="wantTo : ${listWantTo}" class="container">
-                <div th:if="${wantTo.priority.name() == 'MEDIUM'}" class="col-lg-4 col-md-6 cards-priorities">
+                <div th:if="${!wantTo.hidden and wantTo.priority.name() == 'MEDIUM'}" class="col-lg-4 col-md-6 cards-priorities">
                     <div class="icon-box">
                         <div class="icon"><i class="bi bi-laptop"></i></div>
                         <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
@@ -91,7 +91,7 @@
     <div class="container">
         <div class="row">
             <th:block th:each="wantTo : ${listWantTo}" class="container">
-                <div th:if="${wantTo.priority.name() == 'LOW'}" class="col-lg-4 col-md-6 cards-priorities">
+                <div th:if="${!wantTo.hidden and wantTo.priority.name() == 'LOW'}" class="col-lg-4 col-md-6 cards-priorities">
                     <div class="icon-box">
                         <div class="icon"><i class="bi bi-laptop"></i></div>
                         <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"

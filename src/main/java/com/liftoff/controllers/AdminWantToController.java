@@ -42,18 +42,22 @@ public class AdminWantToController {
         model.addAttribute("button", "SAVE");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", new WantTo());
-        return "/account/manageWantTos/new";
+        return "/account/manageWantTos/edit";
     }
 
     @GetMapping ("/edit/{id}")
     public String displayEditWantTo(@PathVariable("id") Integer id, Model model) {
-        List<WantTo> listWantTo = wantToRepository.findAll();
-        WantTo wantTo = wantToRepository.findById(id).get();
-        model.addAttribute("title", "Admin Portal: add wantTo");
-        model.addAttribute("button", "SAVE");
-        model.addAttribute("listWantTo", listWantTo);
-        model.addAttribute("wantTo", wantTo);
-        return "/account/manageWantTos/new";
+        if (wantToRepository.existsById(id)) {
+            List<WantTo> listWantTo = wantToRepository.findAll();
+            WantTo wantTo = wantToRepository.findById(id).get();
+            model.addAttribute("title", "Admin Portal: add wantTo");
+            model.addAttribute("button", "SAVE");
+            model.addAttribute("listWantTo", listWantTo);
+            model.addAttribute("wantTo", wantTo);
+            return "/account/manageWantTos/edit";
+        } else {
+            return "/500";
+        }
     }
 
     @PostMapping ("/save")

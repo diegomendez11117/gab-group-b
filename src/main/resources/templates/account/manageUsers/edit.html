@@ -16,15 +16,17 @@
                 <table class="table table-bordered">
                     <th:block th:each="user : ${listUsers}" class="container">
                         <tr>
-                            <td> <a  th:text="${user.username}">></a> </td>
+                            <td><a th:text="${user.username}"></a></td>
+                            <td><a th:text="${user.enabled}"></a></td>
+                            <td><a th:text="${user.email}"></a></td>
+                            <td><a th:text="${user.roles}"></a></td>
                         </tr>
                     </th:block>
                 </table>
             </div>
 
             <div class="col-4">
-                <form th:action="@{/account/manageUsers/save}" th:object="${user}" th:method="post"
-                      style="max-width: 600px; margin: 0; auto">
+                <form th:action="@{/account/manageUsers/save}" th:object="${user}" th:method="post">
                     <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
                     <div class="m-3">
                         <div Class="form-group row">
@@ -40,25 +42,51 @@
                             </div>
                         </div>
                         <div Class="form-group row">
+                            <label class="col-form-Label col-sm-4"></label>
+                            <div class="col-sm-8">
+                                <input type="hidden" th:field="*{password}" class="form-control"  readonly/>
+                            </div>
+                        </div>
+
+
+                                                <div Class="form-group row">
+                            <label class="col-form-Label col-sm-4">User roles:</label>
+                            <div class="col-sm-8 text-left">
+                                <th block th:each="role : ${listRoles}" >
+                                    <div>
+                                        <input type="checkbox" th:field="*{roles}"
+                                               th:text="${role.name}"
+                                               th:value="${role.id}" />
+                                    </div>
+                                </th>
+                            </div>
+                        </div>
+
+
+                        <div Class="form-group row">
                             <label class="col-form-Label col-sm-4">enabled:</label>
                             <div class="col-sm-8">
                                 <input type="checkbox" th:field="*{enabled}" class="form-check-input"/>
                             </div>
                         </div>
-                        <div Class="form-group row">
-                            <label class="col-form-Label col-sm-4">PW Hash:</label>
-                            <div class="col-sm-8">
-                                <input type="text" th:field="*{pwHash}" class="form-control"/>
-                            </div>
-                        </div>
 
                         <div class="text-center p-3"
                              sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+
                             <a th:href="@{/account/manageUsers/}" class="btn btn-primary" >BACK</a>
-                            <a th:href="@{/account/manageUsers/save/}" class="btn btn-success"
-                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">SAVE</a>
+
+                            <button type="submit" th:text="${button}" class="btn btn-success"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"></button>
+
+                            <a th:href="@{'/account/manageUsers/reset/' + ${user.id}}" class="btn btn-danger"
+                               sec:authorize="hasAuthority('ADMIN')">RESET PASSWORD</a>
+
                             <a th:href="@{'/account/manageUsers/delete/' + ${user.id}}" class="btn btn-danger"
                                     sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>
+
+<!--                            <a th:href="@{/account/manageUsers/delete/}" class="btn btn-danger"-->
+<!--                               sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>-->
+
                         </div>
                     </div>
                 </form>

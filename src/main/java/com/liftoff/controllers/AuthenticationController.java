@@ -75,10 +75,13 @@ public class AuthenticationController {
         }
 
         User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        newUser.setEnabled(true);
+        //newUser.addRole("USER");
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
         //return "redirect:";
+        System.out.println("I'm In and now you should be on the account page");
         return "/account/index";
     }
 

@@ -36,10 +36,14 @@ public class WantToController {
 
     @GetMapping ("wantTo/{id}")
     public String displayWantTo(@PathVariable("id") Integer id, Model model) {
-        WantTo wantTo = wantToRepository.findById(id).get();
-        model.addAttribute("wantTo",wantTo);
-        model.addAttribute("title", "I Want To ...");
-        return "/wantTo/wantTo";
+        if (wantToRepository.existsById(id)) {
+            WantTo wantTo = wantToRepository.findById(id).get();
+            model.addAttribute("wantTo", wantTo);
+            model.addAttribute("title", "I Want To ...");
+            return "/wantTo/wantTo";
+        } else {
+            return "/500";
+        }
     }
 
 }

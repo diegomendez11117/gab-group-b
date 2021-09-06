@@ -30,10 +30,12 @@
                                            class="form-control roundedA-pill border-0 shadow-sm px-4 text-primary">
                                     <p class="error" th:errors="${loginFormDTO.password}"></p>
                                 </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">
-                                    <label for="customCheck1" class="custom-control-label">Remember password</label>
-                                </div>
+
+                                <!-- ------Disabled remember my password until the feature is developed-------- -->
+<!--                                <div class="custom-control custom-checkbox mb-3">-->
+<!--                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">-->
+<!--                                    <label for="customCheck1" class="custom-control-label">Remember password</label>-->
+<!--                                </div>-->
                                 <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
                                     Sign in
@@ -43,9 +45,11 @@
                                         <a href="/register">Register for one.</a>
                                     </p>
                                 </div>
-                                <div class="text-center d-flex justify-content-between mt-4">
-                                    <a href="/register">Forgot password?</a>
-                                </div>
+
+                                <!-- ------------Disabled forgot password until the feature is developed----------- -->
+<!--                                <div class="text-center d-flex justify-content-between mt-4">-->
+<!--                                    <a href="/register">Forgot password?</a>-->
+<!--                                </div>-->
                             </form>
                         </div>
                     </div>
