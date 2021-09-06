@@ -61,29 +61,22 @@ public class AdminUserController {
 
     @GetMapping("reset/{id}")
     public String passwordReset (@PathVariable("id") Integer id) {
-        User user = userRepository.getById(id);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String resetPassword = "welcome";
-        String encodedPassword = encoder.encode(resetPassword);
-        System.out.println("Resetting User: User found: " + user);
-
         if (!userRepository.existsById(id)) {
             return "/500";
         }else{
-             user.setPassword(encodedPassword);
+                User user = userRepository.getById(id);
+                String resetPassword = "welcome";
+                BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+                String encodedPassword = encoder.encode(resetPassword);
+                user.setPassword(encodedPassword);
+                return "/account/manageUsers/index";
         }
-            return "/account/manageUsers/index";
     }
 
     @GetMapping ("delete/{id}")
-    public String deleteUser (@PathVariable("id") Integer id) {
-        if (!userRepository.existsById(id)) {
-            return "/500";
-        }else{
-            User user = userRepository.getById(id);
-            userRepository.delete(user);
-        }
-            return "/account/manageUsers/index";
+    public String deleteUser (User user) {
+        userRepository.delete(user);
+        return "/account/manageUsers/index";
     }
 
     @PostMapping("save")
