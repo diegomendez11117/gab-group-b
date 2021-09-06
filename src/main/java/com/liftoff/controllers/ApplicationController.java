@@ -65,4 +65,9 @@ public class ApplicationController {
     public String error500() {
         return "/error/500";
     }
+
+    @GetMapping ("reset")
+    public String errorReset() {
+        return "/error/reset";
+    }
 }

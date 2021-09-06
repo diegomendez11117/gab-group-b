@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.List;
 
 @Controller
@@ -42,57 +43,51 @@ public class AdminUserController {
 
     @GetMapping ("edit/{id}")
     public String displayEditUserPage(@PathVariable("id") Integer id, Model model){
-        if (userRepository.existsById(id)) {
-            List<User> listUsers = userRepository.findAll();
-            List<Role> listRoles = roleRepository.findAll();
-            User user = userRepository.findById(id).get();
-            System.out.println("Attempting to edit user: " + user);
-            model.addAttribute("listUsers", listUsers);
-            model.addAttribute("listRoles", listRoles);
-            model.addAttribute("title", "Admin Portal: edit User");
-            model.addAttribute("button", "Save Changes");
-            model.addAttribute("user", user);
-            System.out.println("Edited user: " + user);
-            return "/account/manageUsers/edit";
-        } else {
+        if (!userRepository.existsById(id)) {
             return "/500";
+        } else {
+                List<User> listUsers = userRepository.findAll();
+                List<Role> listRoles = roleRepository.findAll();
+                User user = userRepository.findById(id).get();
+                model.addAttribute("listUsers", listUsers);
+                model.addAttribute("listRoles", listRoles);
+                model.addAttribute("title", "Admin Portal: edit User");
+                model.addAttribute("button", "Save Changes");
+                model.addAttribute("user", user);
+                return "/account/manageUsers/edit";
         }
+
     }
 
     @GetMapping("reset/{id}")
     public String passwordReset (@PathVariable("id") Integer id) {
-        if (userRepository.existsById(id)) {
-            User user = userRepository.getById(id);
-            System.out.println("Attempting to reset password: " + user);
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String resetPassword = "welcome";
-            String encodedPassword = encoder.encode(resetPassword);
-            user.setPassword(encodedPassword);
-            System.out.println("Routing to Save : " + user);
-            return "/account/manageUsers/save}";
-        } else {
-            System.out.println("FAILED TO RESET: USER DOES NOT EXIST");
+        User user = userRepository.getById(id);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String resetPassword = "welcome";
+        String encodedPassword = encoder.encode(resetPassword);
+        System.out.println("Resetting User: User found: " + user);
+
+        if (!userRepository.existsById(id)) {
             return "/500";
+        }else{
+             user.setPassword(encodedPassword);
         }
+            return "/account/manageUsers/index";
     }
 
     @GetMapping ("delete/{id}")
     public String deleteUser (@PathVariable("id") Integer id) {
-        User user = userRepository.getById(id);
-        System.out.println("Attempting to delete user: " + user);
-        if (userRepository.existsById(id)) {
-            userRepository.delete(user);
-            System.out.println("Deleted user: " + user);
-            return "/account/manageUsers/index";
-        } else {
-            System.out.println("FAILED TO DELETE: USER DOES NOT EXIST");
+        if (!userRepository.existsById(id)) {
             return "/500";
+        }else{
+            User user = userRepository.getById(id);
+            userRepository.delete(user);
         }
+            return "/account/manageUsers/index";
     }
 
     @PostMapping("save")
     public String saveUser (User user) {
-        System.out.println("Saved/Updated User : " + user);
         userRepository.save(user);
         return "/account/manageUsers/index";
     }
