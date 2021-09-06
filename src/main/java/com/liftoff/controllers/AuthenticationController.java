@@ -1,5 +1,7 @@
 package com.liftoff.controllers;
 
+import com.liftoff.models.Role;
+import com.liftoff.models.data.RoleRepository;
 import com.liftoff.models.data.UserRepository;
 import com.liftoff.models.User;
 import com.liftoff.models.dto.LoginFormDTO;
@@ -21,6 +23,9 @@ public class AuthenticationController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     private static final String userSessionKey = "user";
 
@@ -76,7 +81,8 @@ public class AuthenticationController {
 
         User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
         newUser.setEnabled(true);
-        //newUser.addRole("USER");
+        Role role = roleRepository.getById(1);
+        newUser.addRole(role);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
