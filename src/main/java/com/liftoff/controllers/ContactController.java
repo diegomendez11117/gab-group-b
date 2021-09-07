@@ -2,17 +2,23 @@ package com.liftoff.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 @Controller
@@ -27,7 +33,9 @@ public class ContactController {
     }
 
     @PostMapping("/contact")
-    public String submitContact(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
+    public String submitContact(HttpServletRequest request,
+                                @RequestParam("attachment") MultipartFile multipartFile
+                                ) throws MessagingException, UnsupportedEncodingException {
         String fullname = request.getParameter("fullname");
         String email = request.getParameter("email");
         String subject = request.getParameter("subject");
@@ -50,6 +58,19 @@ public class ContactController {
 
         ClassPathResource resource = new ClassPathResource("/static/img/about.png");
         helper.addInline("logoImage", resource);
+
+        if(!multipartFile.isEmpty()) {
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+
+            InputStreamSource source = new InputStreamSource() {
+                @Override
+                public InputStream getInputStream() throws IOException {
+                    return multipartFile.getInputStream();
+                }
+            };
+            helper.addAttachment(fileName, source);
+
+        }
 
         mailSender.send(message);
 
