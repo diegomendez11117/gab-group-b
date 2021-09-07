@@ -1,6 +1,7 @@
 package com.liftoff.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMailMessage;
@@ -33,18 +34,22 @@ public class ContactController {
         String content = request.getParameter("content");
 
         MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
+        MimeMessageHelper helper = new MimeMessageHelper(message,true);
 
         String mailSubject = fullname + " has sent a message";
         String mailContent = "<p><b>Sender Name:</b> " + fullname + "</p>";
             mailContent += "<p><b>Sender email:</b> " + email + "</p>";
             mailContent += "<p><b>Subject:</b> " + subject + "</p>";
             mailContent += "<p><b>Content:</b> " + content + "</p>";
+            mailContent += "<hr><img src='cid:logoImage' />";
 
         helper.setFrom("stlwelcomesyou@gmail.com", "welcome STL");
         helper.setTo("stlwelcomesyou@gmail.com");
         helper.setSubject(mailSubject);
         helper.setText(mailContent, true);
+
+        ClassPathResource resource = new ClassPathResource("/static/img/about.png");
+        helper.addInline("logoImage", resource);
 
         mailSender.send(message);
 
