@@ -18,14 +18,14 @@ An Admin will be able to login to add more admins, edit the content on each page
 
 # Technologies
 - Java
-- Spring Boot
-- Spring Security
-- Thymeleaf & Thymeleaf Security Extra
 - Javascript
-- HTML
-- CSS
-- Bootstrap
-- MySQL
+- Spring Boot Web
+- Spring Data JPA & Hibernate (data access layer)
+- Spring Security (authentication)
+- Spring Mail (sending emails to users)
+- Thymeleaf (template enging)
+- HTML5 and Bootstrap (responsive user interface)
+- MySQL database
 
 # What the Team Will Have to Learn
 - [ ] We plan to host this site, so we need to determine an appropriate host, how to generate the appropriate files to upload to the host, and how to configure the host.
