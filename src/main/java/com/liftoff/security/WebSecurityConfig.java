@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         "/account/manageFaqs/**",
                                         "/account/manageWelcome/**").hasAnyAuthority("ADMIN","EDITOR")
                 .antMatchers("/account/**").authenticated()
-                .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/img/**","/js/*","/register","/login").permitAll()
+                .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/img/**","/js/*","/register","/login","/contact","/message").permitAll()
                 .antMatchers("/error/**").permitAll()
                 .antMatchers("/403","/500").permitAll()
                 .anyRequest()
