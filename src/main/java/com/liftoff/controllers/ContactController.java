@@ -3,11 +3,16 @@ package com.liftoff.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 @Controller
 public class ContactController {
@@ -21,25 +26,25 @@ public class ContactController {
     }
 
     @PostMapping("/contact")
-    public String submitContact(HttpServletRequest request){
+    public String submitContact(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
         String fullname = request.getParameter("fullname");
         String email = request.getParameter("email");
         String subject = request.getParameter("subject");
         String content = request.getParameter("content");
 
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        message.setFrom("stlwelcomesyou@gmail.com");
-        message.setTo("stlwelcomesyou@gmail.com");
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
 
         String mailSubject = fullname + " has sent a message";
-        String mailContent = "Sender Name: " + fullname + "\n";
-            mailContent += "Sender email: " + email + "\n";
-            mailContent += "Subject: " + subject + "\n";
-            mailContent += "Content: " + content + "\n";
+        String mailContent = "<p><b>Sender Name:</b> " + fullname + "</p>";
+            mailContent += "<p><b>Sender email:</b> " + email + "</p>";
+            mailContent += "<p><b>Subject:</b> " + subject + "</p>";
+            mailContent += "<p><b>Content:</b> " + content + "</p>";
 
-        message.setSubject(mailSubject);
-        message.setText(mailContent);
+        helper.setFrom("stlwelcomesyou@gmail.com", "welcome STL");
+        helper.setTo("stlwelcomesyou@gmail.com");
+        helper.setSubject(mailSubject);
+        helper.setText(mailContent, true);
 
         mailSender.send(message);
 
