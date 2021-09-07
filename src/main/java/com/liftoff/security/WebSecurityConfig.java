@@ -47,10 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         "/account/manageWantTos/**",
                                         "/account/manageFaqs/**",
                                         "/account/manageWelcome/**").hasAnyAuthority("ADMIN","EDITOR")
-                .antMatchers("/account/**").authenticated()
+        //        .antMatchers("/account/**").authenticated()
                 .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/img/**","/js/*","/register","/login","/contact","/message").permitAll()
                 .antMatchers("/error/**").permitAll()
-                .antMatchers("/403","/500").permitAll()
+                .antMatchers("/messages").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/403")
+                .exceptionHandling().accessDeniedPage("/messages/403")
                 ;
     }
 }

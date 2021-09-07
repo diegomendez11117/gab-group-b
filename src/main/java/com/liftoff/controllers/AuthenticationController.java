@@ -93,7 +93,7 @@ public class AuthenticationController {
 
         //return "redirect:";
         System.out.println("I'm In and now you should be on the account page");
-        return "/account/index";
+        return "/message/registered";
     }
 
     @GetMapping("/login")

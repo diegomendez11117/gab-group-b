@@ -75,6 +75,6 @@ public class ContactController {
         mailSender.send(message);
 
 
-        return "message";
+        return "/message/messageSent";
     }
 }
