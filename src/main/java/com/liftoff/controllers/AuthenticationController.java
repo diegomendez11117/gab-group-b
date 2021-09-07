@@ -6,6 +6,7 @@ import com.liftoff.models.data.UserRepository;
 import com.liftoff.models.User;
 import com.liftoff.models.dto.LoginFormDTO;
 import com.liftoff.models.dto.RegisterFormDTO;
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,9 +81,13 @@ public class AuthenticationController {
         }
 
         User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
-        newUser.setEnabled(true);
+        newUser.setEnabled(false);
         Role role = roleRepository.getById(1);
         newUser.addRole(role);
+
+        String randomCode = RandomString.make(64);
+        newUser.setVerificationCode(randomCode);
+
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 

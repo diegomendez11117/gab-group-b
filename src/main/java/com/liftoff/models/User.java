@@ -25,6 +25,10 @@ public class User{
     @Column(name="password", nullable = false)
     private String password;
 
+    @Column (name="verification_code", updatable = false)
+    private String verificationCode;
+
+
     @Column
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean enabled;
@@ -117,6 +121,14 @@ public class User{
 
     public boolean isMatchingPassword(String password){
         return encoder.matches(password, this.password);
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 
     @Override
