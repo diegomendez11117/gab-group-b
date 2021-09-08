@@ -1,4 +1,4 @@
-package com.liftoff.controllers;
+package com.liftoff.controllers.admin;
 
 import com.liftoff.models.*;
 import com.liftoff.models.data.*;

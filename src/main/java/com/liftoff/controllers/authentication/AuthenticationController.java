@@ -1,4 +1,4 @@
-package com.liftoff.controllers;
+package com.liftoff.controllers.authentication;
 
 import com.liftoff.models.Role;
 import com.liftoff.models.data.RoleRepository;
@@ -8,19 +8,33 @@ import com.liftoff.models.dto.LoginFormDTO;
 import com.liftoff.models.dto.RegisterFormDTO;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 @Controller
 public class AuthenticationController {
+
+    @Autowired
+    private AuthenticationServices authenticationServices;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     UserRepository userRepository;
@@ -47,6 +61,13 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
+    private String getSiteURL(HttpServletRequest request) {
+        String siteURL = request.getRequestURL().toString();
+        return siteURL.replace(request.getServletPath(), "");
+    }
+
+
+
     @GetMapping("/register")
     public String displayRegisterForm(Model model) {
         model.addAttribute(new RegisterFormDTO());
@@ -55,9 +76,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
+    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO, String siteURL,
                                           Errors errors, HttpServletRequest request,
-                                          Model model) {
+                                          Model model) throws MessagingException, UnsupportedEncodingException {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
@@ -67,7 +88,8 @@ public class AuthenticationController {
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
-            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+            errors.rejectValue("username", "username.alreadyexists",
+                    "A user with that username already exists");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -75,7 +97,8 @@ public class AuthenticationController {
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
-            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+            errors.rejectValue("password", "passwords.mismatch",
+                    "Passwords do not match");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -91,8 +114,8 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        //return "redirect:";
-        System.out.println("I'm In and now you should be on the account page");
+        authenticationServices.sendVerificationEmail(newUser, siteURL);
+
         return "/message/registered";
     }
 
@@ -129,10 +152,7 @@ public class AuthenticationController {
             model.addAttribute("title", "Log In");
             return "login";
         }
-
         setUserInSession(request.getSession(), theUser);
-
-        //return "redirect:";
         return "/account/index";
     }
 

@@ -1,6 +1,5 @@
-package com.liftoff.controllers;
+package com.liftoff.controllers.admin;
 
-import com.liftoff.models.Faq;
 import com.liftoff.models.WantTo;
 import com.liftoff.models.Welcome;
 import com.liftoff.models.data.WantToRepository;

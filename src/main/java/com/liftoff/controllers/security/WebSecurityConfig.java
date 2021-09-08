@@ -1,4 +1,4 @@
-package com.liftoff.security;
+package com.liftoff.controllers.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //        .antMatchers("/account/**").authenticated()
                 .antMatchers("/","/about","/help/**","/wantTo/**","/css/*","/img/**","/js/*","/register","/login","/contact","/message").permitAll()
                 .antMatchers("/error/**").permitAll()
-                .antMatchers("/messages").permitAll()
+                .antMatchers("/message/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

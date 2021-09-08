@@ -1,4 +1,4 @@
-package com.liftoff.security;
+package com.liftoff.controllers.security;
 
 
 import com.liftoff.models.User;
