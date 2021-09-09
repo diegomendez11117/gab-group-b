@@ -1,13 +1,12 @@
 package com.liftoff.controllers.authentication;
 
-import com.liftoff.models.Role;
 import com.liftoff.models.data.RoleRepository;
 import com.liftoff.models.data.UserRepository;
 import com.liftoff.models.User;
 import com.liftoff.models.dto.LoginFormDTO;
 import com.liftoff.models.dto.RegisterFormDTO;
-import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -156,6 +154,17 @@ public class AuthenticationController {
         request.getSession().invalidate();
         return "redirect:/login";
     }
+
+    @GetMapping("/verify")
+    public String verifyUser(@Param("code") String code) {
+        if (service.verify(code)) {
+            return "/message/verify_success";
+        } else {
+            return "/message/verify_fail";
+        }
+    }
+
+
 
 
 }

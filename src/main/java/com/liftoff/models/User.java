@@ -25,7 +25,7 @@ public class User{
     @Column(name="password", nullable = false)
     private String password;
 
-    @Column (name="verification_code", updatable = false)
+    @Column (name="verification_code")
     private String verificationCode;
 
 

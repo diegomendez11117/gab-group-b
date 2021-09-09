@@ -35,7 +35,6 @@ public class AuthenticationServices {
     private RoleRepository roleRepository;
 
 
-
     public void register(User user, String siteURL)
             throws UnsupportedEncodingException, MessagingException {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
@@ -80,10 +79,19 @@ public class AuthenticationServices {
         helper.setText(content, true);
 
         mailSender.send(message);
-
     }
 
+    public boolean verify(String verificationCode) {
+        User user = userRepository.findByVerificationCode(verificationCode);
 
+        if (user == null || user.isEnabled()) {
+            return false;
+        } else {
+            user.setVerificationCode(null);
+            user.setEnabled(true);
+            userRepository.save(user);
 
-
+            return true;
+        }
+   }
 }
