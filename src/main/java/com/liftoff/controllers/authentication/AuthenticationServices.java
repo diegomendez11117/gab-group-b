@@ -8,6 +8,7 @@ import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -94,4 +95,34 @@ public class AuthenticationServices {
             return true;
         }
    }
+
+   public void updateResetPassword(String token, String email) throws CustomerNotFoundException {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            user.setResetPasswordToken(token);
+            userRepository.save(user);
+        } else {
+            throw new CustomerNotFoundException("Could not find any customer with email " + email);
+        }
+   }
+
+    private class CustomerNotFoundException extends Exception {
+        public CustomerNotFoundException(String message) {
+            super(message);
+        }
+    }
+
+    public User get(String resetPasswordToken) {
+        return userRepository.findByResetPasswordToken(resetPasswordToken);
+    }
+
+    public void updatePassword(User user, String newPassword){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+
+        user.setPassword(encodedPassword);
+        user.setResetPasswordToken(null);
+
+        userRepository.save(user);
+    }
 }

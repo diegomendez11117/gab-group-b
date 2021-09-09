@@ -28,6 +28,9 @@ public class User{
     @Column (name="verification_code")
     private String verificationCode;
 
+    @Column (name="reset_password_token")
+    private String resetPasswordToken;
+
 
     @Column
     @Type(type = "org.hibernate.type.NumericBooleanType")
@@ -129,6 +132,14 @@ public class User{
 
     public void setVerificationCode(String verificationCode) {
         this.verificationCode = verificationCode;
+    }
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
     }
 
     @Override
