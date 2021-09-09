@@ -28,7 +28,7 @@ import java.util.Optional;
 public class AuthenticationController {
 
     @Autowired
-    private AuthenticationServices authenticationServices;
+    private AuthenticationServices service;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -62,7 +62,7 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
-    private String getSiteURL(HttpServletRequest request) {
+    public String getSiteURL(HttpServletRequest request) {
         String siteURL = request.getRequestURL().toString();
         return siteURL.replace(request.getServletPath(), "");
     }
@@ -77,7 +77,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO, String siteURL,
+    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, HttpServletRequest request, Model model)
                                           throws MessagingException, UnsupportedEncodingException {
 
@@ -97,6 +97,7 @@ public class AuthenticationController {
 
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
+
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch",
                     "Passwords do not match");
@@ -108,18 +109,8 @@ public class AuthenticationController {
                                 registerFormDTO.getPassword(),
                                 registerFormDTO.getEmail());
 
-        newUser.setEnabled(false);
-        Role role = roleRepository.getById(1);
-        newUser.addRole(role);
-
-        String randomCode = RandomString.make(64);
-        newUser.setVerificationCode(randomCode);
-
-        userRepository.save(newUser);
+        service.register(newUser, getSiteURL(request));
         setUserInSession(request.getSession(), newUser);
-
-        //authenticationServices.sendVerificationEmail(newUser, siteURL);
-
         return "/message/registered";
     }
 
