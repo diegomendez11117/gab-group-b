@@ -46,6 +46,7 @@ public class AuthenticationController {
 
     public User getUserFromSession(HttpSession session){
         Integer userId = (Integer) session.getAttribute(userSessionKey);
+        System.out.println("Integer userId = (Integer) session.getAttribute(userSessionKey): " + userId);
         if (userId == null) {
             return null;
         }
@@ -77,8 +78,8 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO, String siteURL,
-                                          Errors errors, HttpServletRequest request,
-                                          Model model) throws MessagingException, UnsupportedEncodingException {
+                                          Errors errors, HttpServletRequest request, Model model)
+                                          throws MessagingException, UnsupportedEncodingException {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
@@ -103,7 +104,10 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(),
+                                registerFormDTO.getPassword(),
+                                registerFormDTO.getEmail());
+
         newUser.setEnabled(false);
         Role role = roleRepository.getById(1);
         newUser.addRole(role);
@@ -114,7 +118,7 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        authenticationServices.sendVerificationEmail(newUser, siteURL);
+        //authenticationServices.sendVerificationEmail(newUser, siteURL);
 
         return "/message/registered";
     }
