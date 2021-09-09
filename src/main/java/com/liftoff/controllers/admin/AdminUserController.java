@@ -68,7 +68,7 @@ public class AdminUserController {
                 BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
                 String encodedPassword = encoder.encode(resetPassword);
                 user.setPassword(encodedPassword);
-                return "/account/manageUsers/index";
+                return "redirect:";
         }
     }
 
@@ -81,7 +81,7 @@ public class AdminUserController {
     @PostMapping("save")
     public String saveUser (User user) {
         userRepository.save(user);
-        return "/account/manageUsers/index";
+        return "redirect:";
     }
 
 
