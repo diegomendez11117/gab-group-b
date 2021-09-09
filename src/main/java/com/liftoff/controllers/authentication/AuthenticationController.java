@@ -1,5 +1,6 @@
 package com.liftoff.controllers.authentication;
 
+import com.liftoff.controllers.Utility;
 import com.liftoff.models.data.RoleRepository;
 import com.liftoff.models.data.UserRepository;
 import com.liftoff.models.User;
@@ -44,7 +45,6 @@ public class AuthenticationController {
 
     public User getUserFromSession(HttpSession session){
         Integer userId = (Integer) session.getAttribute(userSessionKey);
-        System.out.println("Integer userId = (Integer) session.getAttribute(userSessionKey): " + userId);
         if (userId == null) {
             return null;
         }
@@ -59,13 +59,6 @@ public class AuthenticationController {
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
-
-    public String getSiteURL(HttpServletRequest request) {
-        String siteURL = request.getRequestURL().toString();
-        return siteURL.replace(request.getServletPath(), "");
-    }
-
-
 
     @GetMapping("/register")
     public String displayRegisterForm(Model model) {
@@ -107,9 +100,9 @@ public class AuthenticationController {
                                 registerFormDTO.getPassword(),
                                 registerFormDTO.getEmail());
 
-        service.register(newUser, getSiteURL(request));
+        service.register(newUser, Utility.getSiteURL(request));
         setUserInSession(request.getSession(), newUser);
-        return "/message/registered";
+        return "/message/register_success";
     }
 
     @GetMapping("/login")

@@ -1,5 +1,6 @@
 package com.liftoff.controllers.authentication;
 
+import com.liftoff.controllers.Utility;
 import com.liftoff.models.Role;
 import com.liftoff.models.User;
 import com.liftoff.models.data.RoleRepository;
@@ -96,21 +97,15 @@ public class AuthenticationServices {
         }
    }
 
-   public void updateResetPassword(String token, String email) throws CustomerNotFoundException {
+   public void updateResetPasswordToken(String token, String email) throws Utility.CustomerNotFoundException {
         User user = userRepository.findByEmail(email);
         if (user != null) {
             user.setResetPasswordToken(token);
             userRepository.save(user);
         } else {
-            throw new CustomerNotFoundException("Could not find any customer with email " + email);
+            throw new Utility.CustomerNotFoundException("Could not find any customer with email " + email);
         }
    }
-
-    private class CustomerNotFoundException extends Exception {
-        public CustomerNotFoundException(String message) {
-            super(message);
-        }
-    }
 
     public User get(String resetPasswordToken) {
         return userRepository.findByResetPasswordToken(resetPasswordToken);
