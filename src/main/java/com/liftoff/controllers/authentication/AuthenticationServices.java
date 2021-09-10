@@ -107,7 +107,7 @@ public class AuthenticationServices {
         }
    }
 
-    public User get(String resetPasswordToken) {
+    public User getByResetPasswordToken(String resetPasswordToken) {
         return userRepository.findByResetPasswordToken(resetPasswordToken);
     }
 

@@ -27,11 +27,15 @@ public class ForgotPasswordController {
     @Autowired
     private JavaMailSender mailSender;
 
+
+
     @GetMapping("/forgot_password")
     public String showForgotPasswordForm(Model model){
         model.addAttribute("title", "Forgot Password");
         return "forgot_password";
     }
+
+
 
     @PostMapping("/forgot_password")
     public  String processForgotPasswordForm(HttpServletRequest request, Model model) {
@@ -41,7 +45,7 @@ public class ForgotPasswordController {
 
         try {
             service.updateResetPasswordToken(token, email);
-            String resetPasswordLink = Utility.getSiteURL(request) + "/resetPassword?token=" + token;
+            String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
             System.out.println("Reset Password Link: " + resetPasswordLink);
             sendEmail(email, resetPasswordLink);
             model.addAttribute("message", "An email with a password reset " +
@@ -49,9 +53,7 @@ public class ForgotPasswordController {
 
         } catch (Utility.CustomerNotFoundException ex) {
             model.addAttribute("error", ex.getMessage());
-        } catch (MessagingException e) {
-            model.addAttribute("error", "Error while sending e-mail");
-        } catch (UnsupportedEncodingException e) {
+        } catch (MessagingException | UnsupportedEncodingException e) {
             model.addAttribute("error", "Error while sending e-mail");
         }
 
@@ -60,24 +62,47 @@ public class ForgotPasswordController {
         return "forgot_password";
     }
 
-    @PostMapping("reset_password")
+
+
+    @GetMapping("reset_password")
     public String showResetPasswordForm(@Param(value="token") String token,
                                         Model model){
-        User user = service.get(token);
+        User user = service.getByResetPasswordToken(token);
+        model.addAttribute("title", "Reset your Password");
+
         if (user == null) {
-            model.addAttribute("title", "Reset your Password");
-            model.addAttribute("message", "Invalid Token");
-            return "message";
+            model.addAttribute("message", "Invalid Token - Unknown User");
+            return "/message/message";
+        } else {
+            model.addAttribute("token", token);
+            return ("/reset_password");
         }
-        model.addAttribute("token",token);
-        model.addAttribute("pageTitle", "Reset Your Password");
-        return ("reset_password");
     }
+
+
+    @PostMapping("/reset_password")
+    public String processResetPassword(HttpServletRequest request, Model model) {
+        String token = request.getParameter("token");
+        String password = request.getParameter("password");
+
+        User user = service.getByResetPasswordToken(token);
+        System.out.println("Post_ reset_password: user: " + user);
+        model.addAttribute("title", "Resetting Password");
+
+        if (user == null) {
+            model.addAttribute("message", "Invalid Token - Unknown User");
+            return "/message/message";
+        } else {
+            service.updatePassword(user, password);
+            model.addAttribute("message", "You have successfully changed your password.");
+            return "/message/message";
+        }
+    }
+
 
     private void sendEmail(String email, String resetPasswordLink)
             throws MessagingException, UnsupportedEncodingException {
 
-        String toAddress = email;
         String fromAddress = "stlwelcomesyou@gmail.com";
         String senderName = "Welcome STL";
         String subject = "Here is the link to reset your password";
@@ -91,7 +116,7 @@ public class ForgotPasswordController {
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
         helper.setFrom(fromAddress, senderName);
-        helper.setTo(toAddress);
+        helper.setTo(email);
         helper.setSubject(subject);
         helper.setText(content, true);
 

@@ -47,10 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         "/account/manageWantTos/**",
                                         "/account/manageFaqs/**",
                                         "/account/manageWelcome/**").hasAnyAuthority("ADMIN","EDITOR")
-        //        .antMatchers("/account/**").authenticated()
-                .antMatchers("/","/about","/register","/login","/contact","/verify","/forgotPassword").permitAll()
+                .antMatchers("/account/**").authenticated()
+                .antMatchers("/","/about","/register","/login","/contact","/verify","/forgot_password","/reset_password").permitAll()
                 .antMatchers("/help/**","/wantTo/**","/css/*","/img/**","/js/*").permitAll()
-                .antMatchers("/message/**","/error/**").permitAll()
+                .antMatchers("/message/**","/error/**","/message/message").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
