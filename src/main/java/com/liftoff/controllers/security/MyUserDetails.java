@@ -1,4 +1,4 @@
-package com.liftoff.security;
+package com.liftoff.controllers.security;
 
 
 import com.liftoff.models.Role;
@@ -20,6 +20,11 @@ public class MyUserDetails implements UserDetails {
 
     public MyUserDetails(User user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return user.isEnabled();
     }
 
     @Override
@@ -58,8 +63,8 @@ public class MyUserDetails implements UserDetails {
         return true;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return user.getEnabled();
-    }
+//    @Override
+//    public boolean isEnabled() {
+//        return user.getEnabled();
+//    }
 }

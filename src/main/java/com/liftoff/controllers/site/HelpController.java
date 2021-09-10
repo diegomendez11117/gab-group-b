@@ -1,4 +1,4 @@
-package com.liftoff.controllers;
+package com.liftoff.controllers.site;
 
 
 import com.liftoff.models.data.FaqRepository;

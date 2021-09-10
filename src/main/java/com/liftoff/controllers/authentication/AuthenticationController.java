@@ -1,31 +1,43 @@
-package com.liftoff.controllers;
+package com.liftoff.controllers.authentication;
 
-import com.liftoff.models.Role;
+import com.liftoff.controllers.Utility;
 import com.liftoff.models.data.RoleRepository;
 import com.liftoff.models.data.UserRepository;
 import com.liftoff.models.User;
 import com.liftoff.models.dto.LoginFormDTO;
 import com.liftoff.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 @Controller
 public class AuthenticationController {
 
     @Autowired
-    UserRepository userRepository;
+    private AuthenticationServices service;
 
     @Autowired
-    RoleRepository roleRepository;
+    private JavaMailSender mailSender;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    UserRepository userRepository;
+
 
     private static final String userSessionKey = "user";
 
@@ -53,10 +65,14 @@ public class AuthenticationController {
         return "register";
     }
 
+
+
+
+
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
-                                          Errors errors, HttpServletRequest request,
-                                          Model model) {
+                                          Errors errors, HttpServletRequest request, Model model)
+                                          throws MessagingException, UnsupportedEncodingException {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
@@ -66,29 +82,29 @@ public class AuthenticationController {
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
-            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+            errors.rejectValue("username", "username.alreadyexists",
+                    "A user with that username already exists");
             model.addAttribute("title", "Register");
             return "register";
         }
 
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
+
         if (!password.equals(verifyPassword)) {
-            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+            errors.rejectValue("password", "passwords.mismatch",
+                    "Passwords do not match");
             model.addAttribute("title", "Register");
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
-        newUser.setEnabled(true);
-        Role role = roleRepository.getById(1);
-        newUser.addRole(role);
-        userRepository.save(newUser);
-        setUserInSession(request.getSession(), newUser);
+        User newUser = new User(registerFormDTO.getUsername(),
+                                registerFormDTO.getPassword(),
+                                registerFormDTO.getEmail());
 
-        //return "redirect:";
-        System.out.println("I'm In and now you should be on the account page");
-        return "/account/index";
+        service.register(newUser, Utility.getSiteURL(request));
+        setUserInSession(request.getSession(), newUser);
+        return "/message/register_success";
     }
 
     @GetMapping("/login")
@@ -124,10 +140,7 @@ public class AuthenticationController {
             model.addAttribute("title", "Log In");
             return "login";
         }
-
         setUserInSession(request.getSession(), theUser);
-
-        //return "redirect:";
         return "/account/index";
     }
 
@@ -136,6 +149,17 @@ public class AuthenticationController {
         request.getSession().invalidate();
         return "redirect:/login";
     }
+
+    @GetMapping("/verify")
+    public String verifyUser(@Param("code") String code) {
+        if (service.verify(code)) {
+            return "/message/verify_success";
+        } else {
+            return "/message/verify_fail";
+        }
+    }
+
+
 
 
 }

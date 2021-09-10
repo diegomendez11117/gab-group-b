@@ -1,4 +1,4 @@
-package com.liftoff.controllers;
+package com.liftoff.controllers.admin;
 
 import com.liftoff.models.Role;
 import com.liftoff.models.User;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.util.List;
 
 @Controller
@@ -69,7 +68,7 @@ public class AdminUserController {
                 BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
                 String encodedPassword = encoder.encode(resetPassword);
                 user.setPassword(encodedPassword);
-                return "/account/manageUsers/index";
+                return "redirect:";
         }
     }
 
@@ -82,7 +81,7 @@ public class AdminUserController {
     @PostMapping("save")
     public String saveUser (User user) {
         userRepository.save(user);
-        return "/account/manageUsers/index";
+        return "redirect:";
     }
 
 

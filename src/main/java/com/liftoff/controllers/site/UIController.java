@@ -1,8 +1,6 @@
-package com.liftoff.controllers;
+package com.liftoff.controllers.site;
 
 import com.liftoff.models.Link;
-import com.liftoff.models.Role;
-import com.liftoff.models.User;
 import com.liftoff.models.Welcome;
 import com.liftoff.models.data.LinkRepository;
 import com.liftoff.models.data.RoleRepository;
@@ -13,14 +11,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
 @RequestMapping ("")
-public class ApplicationController {
+public class UIController {
 
     @Autowired
     private WelcomeRepository welcomeRepository;

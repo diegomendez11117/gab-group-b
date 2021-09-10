@@ -25,6 +25,13 @@ public class User{
     @Column(name="password", nullable = false)
     private String password;
 
+    @Column (name="verification_code")
+    private String verificationCode;
+
+    @Column (name="reset_password_token")
+    private String resetPasswordToken;
+
+
     @Column
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean enabled;
@@ -117,6 +124,22 @@ public class User{
 
     public boolean isMatchingPassword(String password){
         return encoder.matches(password, this.password);
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
     }
 
     @Override

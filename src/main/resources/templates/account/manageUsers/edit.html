@@ -17,7 +17,10 @@
                     <th:block th:each="user : ${listUsers}" class="container">
                         <tr>
                             <td><a th:text="${user.username}"></a></td>
-                            <td><a th:text="${user.enabled}"></a></td>
+                            <td>
+                                <span th:if="${user.enabled}">enabled</span>
+                                <span th:if="${!user.enabled}"> </span>
+                            </td>
                             <td><a th:text="${user.email}"></a></td>
                             <td><a th:text="${user.roles}"></a></td>
                         </tr>

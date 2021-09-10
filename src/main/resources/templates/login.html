@@ -16,14 +16,18 @@
                 <!-- Demo content-->
                 <div class="container">
                     <div class="row">
+
                         <div class="col-lg-10 col-xl-7 mx-auto">
+
                             <h3 class="display-4">Sign In</h3>
                             <p class="text-muted mb-4">Enter your credentials to login.</p>
                             <form method="post">
+
                                 <div class="form-group mb-3">
                                     <input th:field="${loginFormDTO.username}" placeholder="Username" required=""
                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
                                 </div>
+
                                 <div class="form-group mb-3">
                                     <input th:field="${loginFormDTO.password}" type="password" placeholder="Password"
                                            required=""
@@ -36,10 +40,12 @@
 <!--                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">-->
 <!--                                    <label for="customCheck1" class="custom-control-label">Remember password</label>-->
 <!--                                </div>-->
+
                                 <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
                                     Sign in
                                 </button>
+
                                 <div class="text-center d-flex justify-content-between mt-4">
                                     <p>Don't have an account?
                                         <a href="/register">Register for one.</a>
@@ -47,9 +53,10 @@
                                 </div>
 
                                 <!-- ------------Disabled forgot password until the feature is developed----------- -->
-<!--                                <div class="text-center d-flex justify-content-between mt-4">-->
-<!--                                    <a href="/register">Forgot password?</a>-->
-<!--                                </div>-->
+                                <div class="text-center d-flex justify-content-between mt-4">
+                                    <a href="/forgot_password">Forgot password?</a>
+                                </div>
+
                             </form>
                         </div>
                     </div>

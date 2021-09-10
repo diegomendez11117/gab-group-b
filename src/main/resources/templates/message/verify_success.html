@@ -18,12 +18,11 @@
 
     </div>
     <!--  --------------------------------------------------------------------------------- -->
-    <div class="text-center">
-        <h1>Message Class</h1>
-    </div>
-    <div class="text-center">
-        <h1 th:text="${title}"></h1>
-        <p th:text="${message}"></p>
+
+    <div class="container text-center">
+        <h3>Congratulations, your account has been verified!</h3>
+        <p>Please check your email to verify your account.</p>
+        <h4><a th:href="@{/login}">Click here to Login</a></h4>
     </div>
 
 </div>
