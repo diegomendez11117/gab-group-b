@@ -91,12 +91,11 @@ public class ForgotPasswordController {
 
         if (user == null) {
             model.addAttribute("message", "Invalid Token - Unknown User");
-            return "/message/message";
         } else {
             service.updatePassword(user, password);
             model.addAttribute("message", "You have successfully changed your password.");
-            return "/message/message";
         }
+        return "/message/message";
     }
 
 
