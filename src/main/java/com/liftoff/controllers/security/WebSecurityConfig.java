@@ -48,9 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         "/account/manageFaqs/**",
                                         "/account/manageWelcome/**").hasAnyAuthority("ADMIN","EDITOR")
                 .antMatchers("/account/**").authenticated()
-                .antMatchers("/","/about","/register","/login","/contact","/verify","/forgot_password","/reset_password","/fragments").permitAll()
-                .antMatchers("/help/**","/wantTo/**","/css/*","/img/**","/js/*").permitAll()
-                .antMatchers("/message/**","/message/message").permitAll()
+                .antMatchers("/","/about","/register","/login","/contact","/verify","/forgot_password","/reset_password","/fragments","/message").permitAll()
+                .antMatchers("/message/**","/help/**","/wantTo/**","/css/*","/img/**","/js/*").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -69,3 +68,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 ;
     }
 }
+// http://localhost:8080/verify?code=7Q5NtAKDpNbb361JBlAG0GROAW79POfvUqyEdPJHaOFStxPOMETkmQWPiv1TU33f

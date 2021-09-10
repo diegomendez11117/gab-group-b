@@ -38,8 +38,6 @@ public class AuthenticationController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    RoleRepository roleRepository;
 
     private static final String userSessionKey = "user";
 
@@ -66,6 +64,10 @@ public class AuthenticationController {
         model.addAttribute("title", "register");
         return "register";
     }
+
+
+
+
 
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,

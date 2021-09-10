@@ -39,8 +39,6 @@ public class AuthenticationServices {
 
     public void register(User user, String siteURL)
             throws UnsupportedEncodingException, MessagingException {
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
 
         String randomCode = RandomString.make(64);
         user.setVerificationCode(randomCode);
@@ -51,6 +49,7 @@ public class AuthenticationServices {
 
         userRepository.save(user);
         sendVerificationEmail(user, siteURL);
+            System.out.println("AuthServices.register --- saved:" + user);
     }
 
 
@@ -81,18 +80,21 @@ public class AuthenticationServices {
         helper.setText(content, true);
 
         mailSender.send(message);
+            System.out.println("SENT VERIFICATION EMAIL - authenticationServices.sendVerificationEmail");
     }
 
     public boolean verify(String verificationCode) {
         User user = userRepository.findByVerificationCode(verificationCode);
 
         if (user == null || user.isEnabled()) {
+            System.out.println("AuthServices.verify: User is null/enabled: " + user);
             return false;
         } else {
             user.setVerificationCode(null);
             user.setEnabled(true);
             userRepository.save(user);
-
+            System.out.println("AuthServices.verify: User has been verified.  user:" + user +
+                    " enabled: " +  " verification code:" + user.getVerificationCode());
             return true;
         }
    }
