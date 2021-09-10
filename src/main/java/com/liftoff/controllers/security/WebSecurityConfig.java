@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -62,10 +64,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().permitAll()
                 .and()
+                .rememberMe()
+                    .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(21))
+                    .key("2a10F47xKtCXMYVoJ57fsi0nVzoUZOmgf7pgbboAbDDjPds3X4mKAK")
+                    .rememberMeParameter("remember-me")
+                .and()
                 .logout().permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/messages/403")
                 ;
     }
 }
-// http://localhost:8080/verify?code=7Q5NtAKDpNbb361JBlAG0GROAW79POfvUqyEdPJHaOFStxPOMETkmQWPiv1TU33f
