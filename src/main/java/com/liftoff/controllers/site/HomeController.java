@@ -5,7 +5,7 @@ import com.liftoff.models.Welcome;
 import com.liftoff.models.data.LinkRepository;
 import com.liftoff.models.data.RoleRepository;
 import com.liftoff.models.data.UserRepository;
-import com.liftoff.models.data.WelcomeRepository;
+import com.liftoff.models.data.UIRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,10 +17,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping ("")
-public class UIController {
+public class HomeController {
 
     @Autowired
-    private WelcomeRepository welcomeRepository;
+    private UIRepository UIRepository;
 
     @Autowired
     private LinkRepository linkRepository;
@@ -36,7 +36,7 @@ public class UIController {
     @GetMapping ("")
     public String displayWelcome(Model model) {
         List<Link> listLinks = linkRepository.findAll();
-        Welcome welcome = welcomeRepository.getById(1);
+        Welcome welcome = UIRepository.getById(1);
         model.addAttribute("welcome", welcome);
         model.addAttribute("title", "Welcome!");
         model.addAttribute("listLinks",listLinks);
@@ -45,7 +45,7 @@ public class UIController {
 
     @GetMapping ("about")
     public String displayAboutUs(Model model) {
-        Welcome welcome = welcomeRepository.getById(1);
+        Welcome welcome = UIRepository.getById(1);
         model.addAttribute("welcome", welcome);
         model.addAttribute("title", "About Us!");
 

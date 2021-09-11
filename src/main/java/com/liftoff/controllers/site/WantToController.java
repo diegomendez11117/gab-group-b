@@ -3,7 +3,7 @@ package com.liftoff.controllers.site;
 import com.liftoff.models.Welcome;
 import com.liftoff.models.data.WantToRepository;
 import com.liftoff.models.WantTo;
-import com.liftoff.models.data.WelcomeRepository;
+import com.liftoff.models.data.UIRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +21,11 @@ public class WantToController {
     private WantToRepository wantToRepository;
 
     @Autowired
-    private WelcomeRepository welcomeRepository;
+    private UIRepository UIRepository;
 
     @GetMapping ("")
     public String displayAllWantTo (Model model) {
-        Welcome welcome = welcomeRepository.findById(1).get();
+        Welcome welcome = UIRepository.findById(1).get();
         List<WantTo> listWantTo = wantToRepository.findAll();
         model.addAttribute("title", "What to do Next...");
         model.addAttribute("listWantTo", listWantTo);
