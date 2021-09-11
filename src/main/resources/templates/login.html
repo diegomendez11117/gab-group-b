@@ -35,11 +35,12 @@
                                     <p class="error" th:errors="${loginFormDTO.password}"></p>
                                 </div>
 
-                                <!-- ------Disabled remember my password until the feature is developed-------- -->
-<!--                                <div class="custom-control custom-checkbox mb-3">-->
-<!--                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">-->
-<!--                                    <label for="customCheck1" class="custom-control-label">Remember password</label>-->
-<!--                                </div>-->
+
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input" name="remember-me">
+                                    <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                </div>
+
 
                                 <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
@@ -52,7 +53,7 @@
                                     </p>
                                 </div>
 
-                                <!-- ------------Disabled forgot password until the feature is developed----------- -->
+
                                 <div class="text-center d-flex justify-content-between mt-4">
                                     <a href="/forgot_password">Forgot password?</a>
                                 </div>
