@@ -8,17 +8,28 @@
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <nav th:replace="fragments :: adminNav"></nav>
-            </div>
-            <div class="col-4">
+                <div class="text-center">
+                    <p th:text="${user.username}"></p>
+                    <p th:text="${user.email}"></p>
+                    <p th:text="${user.roles}"></p>
+                </div>
+
                 <form th:action="@{/logout}" th:object="${user}" th:method="get">
-                    <div class="m-3">
-                        <div class="text-center p-3">
-                            <button type="submit" class="btn btn-success">logout</button>
-                        </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">logout</button>
                     </div>
                 </form>
+                <div class="m-3">
+                    <nav th:replace="fragments :: adminNav"></nav>
+                </div>
+
+            </div>
+            <div class="col-4">
+
+
             </div>
         </div>
     </div>
 </section>
+
+
