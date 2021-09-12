@@ -134,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar a i, .navbar a:focus i {
-  font-size: 12px;
+  font-size: 20px;
   line-height: 0;
   margin-left: 5px;
 }
@@ -406,7 +406,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   #hero .hero-img {
     text-align: center;
-     padding: 10%;
+    padding: 10%;
   }
   #hero .hero-img img {
     width: 50%;
@@ -566,6 +566,9 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about{
+    padding-bottom: 100px;
+}
 .about .content h3 {
   font-weight: 700;
   font-size: 32px;
@@ -724,7 +727,7 @@ section {
   margin-bottom: 0;
 }
 
-.portfolio .portfolio-item .portfolio-info .preview-link, .portfolio .portfolio-item .portfolio-info .details-link {
+.portfolio .portfolio-item .portfolio-info .ppreview-link, .portfolio .portfolio-item .portfolio-info .details-link {
   position: absolute;
   right: 40px;
   font-size: 24px;
@@ -1227,7 +1230,7 @@ section {
   font-weight: 700;
   color: #5f687b;
   position: relative;
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   padding-bottom: 0;
   margin-bottom: 0;
 }
@@ -1816,69 +1819,202 @@ section {
   margin-bottom: 25px;
 }
 
-.table-wrap {
-  overflow-x: scroll; }
+[ Table ]*/
 
-.table {
-  min-width: 1000px !important;
+.limiter {
   width: 100%;
-  -webkit-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
-  -moz-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
-  box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29); }
-  .table thead th {
-    border: none;
-    padding: 30px;
-    font-size: 13px;
-    font-weight: 500;
-    color: gray; }
-  .table thead tr {
-    background: #fff;
-    border-bottom: 4px solid #eceffa; }
-  .table tbody tr {
-    margin-bottom: 10px;
-    border-bottom: 4px solid #f8f9fd; }
-    .table tbody tr:last-child {
-      border-bottom: 0; }
-  .table tbody th, .table tbody td {
-    border: none;
-    padding: 30px;
+  margin: 0 auto;
+}
+
+.container-table100 {
+  width: 100%;
+  min-height: 100vh;
+  background: #c850c0;
+  background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -o-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
+  background: linear-gradient(45deg, #4158d0, #c850c0);
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 33px 30px;
+}
+
+.wrap-table100 {
+  width: 1170px;
+}
+
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+table * {
+  position: relative;
+}
+table td, table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: #206bfb;
+}
+table tbody tr {
+  height: 50px;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td, table th {
+  text-align: left;
+}
+table td.l, table th.l {
+  text-align: right;
+}
+table td.c, table th.c {
+  text-align: center;
+}
+table td.r, table th.r {
+  text-align: center;
+}
+
+
+.table100-head th{
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e6e6e6;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+tbody tr {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+tbody tr:hover {
+  color: #555555;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.column1 {
+  width: 260px;
+  padding-left: 40px;
+}
+
+.column2 {
+  width: 160px;
+}
+
+.column3 {
+  width: 245px;
+}
+
+.column4 {
+  width: 110px;
+  text-align: right;
+}
+
+.column5 {
+  width: 170px;
+  text-align: right;
+}
+
+.column6 {
+  width: 222px;
+  text-align: right;
+  padding-right: 62px;
+}
+
+
+@media screen and (max-width: 992px) {
+  table {
+    display: block;
+  }
+  table > *, table tr, table td, table th {
+    display: block;
+  }
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    height: auto;
+    padding: 37px 0;
+  }
+  table tbody tr td {
+    padding-left: 40% !important;
+    margin-bottom: 24px;
+  }
+  table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  table tbody tr td:before {
     font-size: 14px;
-    background: #fff;
-    vertical-align: middle; }
-  .table tbody td.status span {
-    position: relative;
-    border-radius: 30px;
-    padding: 4px 10px 4px 25px; }
-    .table tbody td.status span:after {
-      position: absolute;
-      top: 9px;
-      left: 10px;
-      width: 10px;
-      height: 10px;
-      content: '';
-      border-radius: 50%; }
-  .table tbody td.status .active {
-    background: #cff6dd;
-    color: #1fa750; }
-    .table tbody td.status .active:after {
-      background: #23bd5a; }
-  .table tbody td.status .waiting {
-    background: #fdf5dd;
-    color: #cfa00c; }
-    .table tbody td.status .waiting:after {
-      background: #f2be1d; }
-  .table tbody td .img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; }
-  .table tbody td .email span {
-    display: block; }
-    .table tbody td .email span:last-child {
-      font-size: 12px;
-      color: rgba(0, 0, 0, 0.3); }
-  .table tbody td .close span {
-    font-size: 12px;
-    color: #dc3545; }
+    color: #999999;
+    line-height: 1.2;
+    font-weight: unset;
+    position: absolute;
+    width: 40%;
+    left: 30px;
+    top: 0;
+  }
+  table tbody tr td:nth-child(1):before {
+    content: "Link";
+  }
+  table tbody tr td:nth-child(2):before {
+    content: "Description";
+  }
+
+  .column4,
+  .column5,
+  .column6 {
+    text-align: left;
+  }
+
+  .column4,
+  .column5,
+  .column6,
+  .column1,
+  .column2,
+  .column3 {
+    width: 100%;
+  }
+
+  tbody tr {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-table100 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
 
 .checkbox-wrap {
   display: block;
@@ -1908,7 +2044,7 @@ section {
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "\f0c8";
-  font-family: "FontAwesome";
+  font-family: "Raleway", sans-serif;
   position: absolute;
   color: rgba(0, 0, 0, 0.1);
   font-size: 20px;
@@ -1926,7 +2062,7 @@ section {
 .checkbox-wrap input:checked ~ .checkmark:after {
   display: block;
   content: "\f14a";
-  font-family: "FontAwesome";
+  font-family: "Raleway", sans-serif;
   color: rgba(0, 0, 0, 0.2); }
 
 /* Style the checkmark/indicator */
