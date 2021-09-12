@@ -81,8 +81,11 @@
                             <button type="submit" th:text="${button}" class="btn btn-success"
                                     sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"></button>
 
-                            <a th:href="@{'/account/manageUsers/reset/' + ${user.id}}" class="btn btn-danger"
-                               sec:authorize="hasAuthority('ADMIN')">RESET PASSWORD</a>
+                            <form method="post" action="forgot_password">
+                                <a th:href="@{'/account/manageUsers/reset/' + ${user.id}}" class="btn btn-danger"
+                                   sec:authorize="hasAuthority('ADMIN')">RESET PASSWORD</a>
+                            </form>
+
 
                             <a th:href="@{'/account/manageUsers/delete/' + ${user.id}}" class="btn btn-danger"
                                     sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>

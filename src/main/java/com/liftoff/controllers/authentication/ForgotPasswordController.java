@@ -41,7 +41,14 @@ public class ForgotPasswordController {
     @PostMapping("/forgot_password")
     public  String processForgotPasswordForm(HttpServletRequest request, Model model) {
             System.out.println("ARRIVING  /forgot_password  PostMapping  ---  FORGOT PASSWORD INITIATED");
-        String email = request.getParameter("email");
+        String email = "";
+        String email1 = "${email}";
+        String email2  = request.getParameter("email");
+        if ("!${email1}" == null) {
+            email = email1;
+        } else {
+            email = email2;
+        }
             System.out.println("/forgot_password  PostMapping  ---  request.getParameter('email'): " + email);
         String token = RandomString.make(45);
             System.out.println("/forgot_password  PostMapping  ---  token = RandomString.make(45): " + token);

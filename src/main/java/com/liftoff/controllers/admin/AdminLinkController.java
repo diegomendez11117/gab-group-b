@@ -93,7 +93,6 @@ public class AdminLinkController {
     }
 
 
-
     @GetMapping ("edit/{id}")
     public String displayEditLink (@PathVariable("id") Integer id, Model model) {
         if (linkRepository.existsById(id)) {
