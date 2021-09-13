@@ -14,7 +14,7 @@
             </div>
 
             <div class="col-10">
-                <form th:action="@{/account/manageWelcome/save}" th:object="${welcome}" th:method="post">
+                <form th:action="@{/account/manageUI/save}" th:object="${welcome}" th:method="post">
                     <input type="hidden" th:field="*{id}" th:value="${welcome.id}"/>
 
                     <!---------- Welcome Page---------->

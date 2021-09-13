@@ -28,7 +28,7 @@ public class AdminUIController {
     @PostMapping("save")
     public String updateUISettings(Welcome welcome) {
         UIRepository.save(welcome);
-        return "/account/manageUI/index";
+        return "/account/manageUI/edit";
     }
 
 
