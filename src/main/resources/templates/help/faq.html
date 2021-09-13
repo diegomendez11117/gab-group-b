@@ -4,14 +4,29 @@
 <body>
 <header th:replace="fragments :: header"></header>
 
+<section id="features" class="features">
+    <div class="container">
+        <!-- Feature Tabs -->
+        <div class="row feture-tabs">
+            <div class="col-lg-7">
+                <h3 th:text="${faq.question}"></h3>
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab1">
+                        <p th:text="${faq.answer}"></p>
+                    </div>
+                </div>
+            </div><!-- End Feature Tabs -->
+            <div class="col-lg-5">
+                <img src="/img/features-2.png" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="priorities" class="align-items-center">
     <div class="container">
-
-        <span th:text="${faq.question}"></span>
-        <span th:text="${faq.answer}"></span>
-
-        <div class="row">
+         <div class="row">
             <div class="col-md-12">
                 <div class="table-wrap">
                     <table class="table table-responsive-xl">
