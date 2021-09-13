@@ -23,16 +23,18 @@
                         </thead>
                         <tbody>
                         <tr th:block th:each="link : ${faq.links}" class="alert" role="alert">
-                            <td class="d-flex align-items-center">
-                                <div class="pl-3 email">
-                                    <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
-                                </div>
-                            </td>
-                            <td class="status">
-                                <div class="pl-3 email" th:if="${link.guideStarUrl != NULL}">
-                                    <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
-                                </div>
-                            </td>
+                            <div th:if="${!link.hidden}">
+                                <td class="d-flex align-items-center">
+                                    <div class="pl-3 email">
+                                        <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
+                                    </div>
+                                </td>
+                                <td class="status">
+                                    <div class="pl-3 email" th:if="${link.guideStarUrl != null}">
+                                        <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
+                                    </div>
+                                </td>
+                            </div>
                         </tr>
                         </tbody>
                     </table>
@@ -41,45 +43,6 @@
         </div>
 
 
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Links:</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <th:block th:each="link : ${faq.links}">
-                <tr>
-                    <td>
-                        <a th:href="@{${link.url}}" th:text="${link.name}"></a>
-                    </td>
-                    <td th:if="${link.guideStarUrl != NULL}">
-                        <a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a>
-                    </td>
-                </tr>
-            </th:block>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Links:</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <th:block th:each="link : ${faq.links}">
-            <tr th:if="${!link.hidden}">
-                <td>
-                    <a th:href="@{${link.url}}" th:text="${link.name}"></a>
-                </td>
-                <td th:if="${link.guideStarUrl != NULL}">
-                    <a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a>
-                </td>
-            </tr>
-        </th:block>
-
-            </tbody>
-        </table>
 
 
     </div>
