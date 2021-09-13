@@ -23,18 +23,20 @@
                         </thead>
                         <tbody>
                         <tr th:block th:each="link : ${faq.links}" class="alert" role="alert">
-                            <th:block th:if="${!link.hidden}">
-                                <td class="d-flex align-items-center">
-                                    <div class="pl-3 email">
-                                        <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
-                                    </div>
-                                </td>
-                                <td class="status">
-                                    <div class="pl-3 email" th:if="${link.guideStarUrl != ''}">
-                                        <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
-                                    </div>
-                                </td>
-                            </th:block>
+                            <div  class="d-flex align-items-center">
+                                <th:block th:if="${!link.hidden}">
+                                    <td>
+                                        <div class="pl-3 email">
+                                            <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
+                                        </div>
+                                    </td>
+                                    <td class="status">
+                                        <div class="pl-3 email" th:if="${link.guideStarUrl != ''}">
+                                            <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
+                                        </div>
+                                    </td>
+                                </th:block>
+                            </div>
                         </tr>
                         </tbody>
                     </table>
