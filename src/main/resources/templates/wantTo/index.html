@@ -12,7 +12,7 @@
                 <span>High Priority</span>
                 <h2>High Priority</h2>
             </div>
-            <h1 class="section-title text-center" >Federal and State Legal Documents</h1>
+            <h1 th:text="${welcome.highPriorityTitle}" class="section-title text-center" ></h1>
             <h2 th:text="${welcome.highPriorityDescription}"></h2>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 <span>Medium Priority</span>
                 <h2>Medium Priority</h2>
             </div>
-            <h1 class="section-title-blue text-center">Essential documents for life stuff</h1>
+            <h1 th:text="${welcome.mediumPriorityTitle}" class="section-title-blue text-center"></h1>
             <h2 th:text="${welcome.mediumPriorityDescription}"></h2>
         </div>
     </div>
@@ -79,7 +79,7 @@
                 <span>Low Priority</span>
                 <h2>Low Priority</h2>
             </div>
-            <h1 class="section-title text-center">Information about Immigrant Organizations</h1>
+            <h1 th:text="${welcome.lowPriorityTitle}" class="section-title text-center"></h1>
             <h2 th:text="${welcome.lowPriorityDescription}"></h2>
         </div>
     </div>

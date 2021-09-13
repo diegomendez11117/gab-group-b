@@ -15,8 +15,8 @@
         <div class="row">
             <div class="col-4">
                 <div th:each="faq : ${listFaq}">
-                    <div class="col-sm">
-                        <div class="col fondo p-3 space" th:if="${!faq.hidden and faq.columnSetting.name() == 'LEFT'}">
+                    <div class="col-sm" th:if="${!faq.hidden and faq.columnSetting.name() == 'LEFT'}">
+                        <div class="col fondo p-3 space">
                             <h4><a th:href="@{'/help/faq/' + ${faq.id}}" th:text="${faq.question}"></a></h4>
                             <p th:text="${faq.answer}"></p>
                         </div>
@@ -26,9 +26,9 @@
 
             <div class="col-4">
                 <div th:each="faq : ${listFaq}">
-                    <div class="col-sm" th:if="${faq.columnSetting.name() == 'MIDDLE'}">
+                    <div class="col-sm" th:if="${!faq.hidden and faq.columnSetting.name() == 'MIDDLE'}">
                         <div class="col fondo p-3 space">
-                            <h4><a th:href="@{!faq.hidden and '/help/faq/' + ${faq.id}}" th:text="${faq.question}"></a></h4>
+                            <h4><a th:href="@{'/help/faq/' + ${faq.id}}" th:text="${faq.question}"></a></h4>
                             <p th:text="${faq.answer}"></p>
                         </div>
                     </div>

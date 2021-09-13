@@ -24,28 +24,65 @@
     </div>
 </section><!-- End Introduction Section -->
 
-
-<!-- ======= Links Section ======= -->
-<section id="services" class="services">
+<section id="priorities" class="align-items-center">
     <div class="container">
-        <header class="section-header">
-            <h2>Links</h2>
-            <p>More information about this topic clicking the links below.</p>
-        </header>
-        <div class="row gy-4">
-            <div class="col-lg-4 col-md-6" th:each="link : ${wantTo.links}">
-                    <div th:if="${!link.hidden}" class="service-box blue"  th:onclick="|window.location.href='@{${link.url}}'|">
-                        <i class="ri-discuss-line icon"></i>
-                        <a th:href="@{${link.url}}" ><h3 th:text="${link.name}"></h3></a>
-                        <a th:href="@{${link.url}}" th:text="${link.name}" class="read-more"><i
-                                class="bi bi-arrow-right"></i></a>
-                    </div>
-                </a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-wrap">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                        <tr>
+                            <th>Links</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:block th:each="link : ${wantTo.links}" class="alert" role="alert">
+                            <div  class="d-flex align-items-center">
+                                <th:block th:if="${!link.hidden}">
+                                    <td>
+                                        <div class="pl-3 email">
+                                            <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
+                                        </div>
+                                    </td>
+                                    <td class="status">
+                                        <div class="pl-3 email" th:if="${link.guideStarUrl != ''}">
+                                            <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
+                                        </div>
+                                    </td>
+                                </th:block>
+                            </div>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+</section>
+<!-- ======= Links Section ======= -->
+<!--<section id="services" class="services">-->
+<!--    <div class="container">-->
+<!--        <header class="section-header">-->
+<!--            <h2>Links</h2>-->
+<!--            <p>More information about this topic clicking the links below.</p>-->
+<!--        </header>-->
+<!--        <div class="row gy-4">-->
+<!--            <div class="col-lg-4 col-md-6" th:each="link : ${wantTo.links}">-->
+<!--                    <div th:if="${!link.hidden}" class="service-box blue"  th:onclick="|window.location.href='@{${link.url}}'|">-->
+<!--                        <i class="ri-discuss-line icon"></i>-->
+<!--                        <a th:href="@{${link.url}}" ><h3 th:text="${link.name}"></h3></a>-->
+<!--                        <a th:href="@{${link.url}}" th:text="${link.name}" class="read-more"><i-->
+<!--                                class="bi bi-arrow-right"></i></a>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-</section><!-- End Services Section -->
+<!--</section>-->
+
+<!-- End Services Section -->
 
 <!-- ======= Map Section Section ======= -->
 <!-- Hiding the content of the map, that is not useful right now.
