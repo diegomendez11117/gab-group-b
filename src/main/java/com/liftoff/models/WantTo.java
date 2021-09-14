@@ -13,9 +13,11 @@ public class WantTo extends AbstractEntity{
     @OneToMany (mappedBy = "wantTo", cascade = CascadeType.ALL)
     private List<Link> links = new ArrayList<>();
 
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "description", columnDefinition = "MEDIUMTEXT")
     private String description;
-    private Priority priority;
 
     @Type(type = "org.hibernate.type.NumericBooleanType")
     @Column(columnDefinition = "TINYINT")
@@ -27,8 +29,11 @@ public class WantTo extends AbstractEntity{
         LOW,
      }
 
+    private Priority priority;
+
 
     public WantTo(){}
+
 
     public WantTo(String title, String description, Priority priority,Boolean hidden) {
         this.title = title;
