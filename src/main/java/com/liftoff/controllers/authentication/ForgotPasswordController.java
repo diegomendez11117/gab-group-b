@@ -2,6 +2,7 @@ package com.liftoff.controllers.authentication;
 
 import com.liftoff.controllers.Utility;
 import com.liftoff.models.User;
+import com.liftoff.models.data.UserRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -10,6 +11,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.mail.MessagingException;
@@ -27,6 +29,9 @@ public class ForgotPasswordController {
     @Autowired
     private JavaMailSender mailSender;
 
+    @Autowired
+    private UserRepository userRepository;
+
 
 
     @GetMapping("/forgot_password")
@@ -37,16 +42,10 @@ public class ForgotPasswordController {
 
 
 
-    @PostMapping("/forgot_password")
-    public  String processForgotPasswordForm(HttpServletRequest request, Model model) {
-        String email = "";
-        String email1 = "${email}";
-        String email2  = request.getParameter("email");
-        if ("!${email1}" == null) {
-            email = email1;
-        } else {
-            email = email2;
-        }
+    @PostMapping("/forgot_password")        // User initiated from login form
+    public  String processForgotPasswordFormUserReset(HttpServletRequest request, Model model) {
+
+        String email  = request.getParameter("email");
         String token = RandomString.make(45);
 
         try {
@@ -63,6 +62,29 @@ public class ForgotPasswordController {
         }
         return "forgot_password";
     }
+
+    @GetMapping("/forgot_password/{id}")      // Admin initiated from Admin Tool: User Management
+    public  String processForgotPasswordFormAdminRest(@PathVariable("id") Integer id,
+                                                      HttpServletRequest request, Model model) {
+
+        String email  = userRepository.getById(id).getEmail();
+        String token = RandomString.make(45);
+
+        try {
+            service.updateResetPasswordToken(token, email);
+            String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
+            sendEmail(email, resetPasswordLink);
+            model.addAttribute("message", "An email with a password reset " +
+                    "link has been sent. Please check your e-amil." );
+
+        } catch (Utility.CustomerNotFoundException ex) {
+            model.addAttribute("error", ex.getMessage());
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            model.addAttribute("error", "Error while sending e-mail");
+        }
+        return "forgot_password";
+    }
+
 
 
 
