@@ -45,17 +45,16 @@ public class AdminUserController {
         if (!userRepository.existsById(id)) {
             return "/500";
         } else {
-                List<User> listUsers = userRepository.findAll();
-                List<Role> listRoles = roleRepository.findAll();
-                User user = userRepository.findById(id).get();
-                model.addAttribute("listUsers", listUsers);
-                model.addAttribute("listRoles", listRoles);
-                model.addAttribute("title", "Admin Portal: edit User");
-                model.addAttribute("button", "Save Changes");
-                model.addAttribute("user", user);
-                return "/account/manageUsers/edit";
+            List<User> listUsers = userRepository.findAll();
+            List<Role> listRoles = roleRepository.findAll();
+            User user = userRepository.findById(id).get();
+            model.addAttribute("listUsers", listUsers);
+            model.addAttribute("listRoles", listRoles);
+            model.addAttribute("title", "Admin Portal: edit User");
+            model.addAttribute("button", "Save Changes");
+            model.addAttribute("user", user);
+            return "/account/manageUsers/edit";
         }
-
     }
 
     @GetMapping("reset/{id}")
@@ -63,18 +62,22 @@ public class AdminUserController {
         if (!userRepository.existsById(id)) {
             return "/500";
         }else{
-                User user = userRepository.getById(id);
-                String resetPassword = "welcome";
-                BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-                String encodedPassword = encoder.encode(resetPassword);
-                user.setPassword(encodedPassword);
-                return "redirect:";
+            User user = userRepository.getById(id);
+            String resetPassword = "welcome";
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String encodedPassword = encoder.encode(resetPassword);
+            user.setPassword(encodedPassword);
+            return "redirect:";
         }
     }
 
     @GetMapping ("delete/{id}")
-    public String deleteUser (User user) {
+    public String deleteUser (User user, Model model) {
         userRepository.delete(user);
+        List<User> listUsers = userRepository.findAll();
+        model.addAttribute("title", "Admin Portal: Manage Users");
+        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("user", new User());
         return "/account/manageUsers/index";
     }
 
@@ -83,6 +86,4 @@ public class AdminUserController {
         userRepository.save(user);
         return "redirect:";
     }
-
-
 }

@@ -80,7 +80,6 @@ public class AuthenticationServices {
         helper.setText(content, true);
 
         mailSender.send(message);
-            System.out.println("SENT VERIFICATION EMAIL - authenticationServices.sendVerificationEmail");
     }
 
     public boolean verify(String verificationCode) {
@@ -93,8 +92,6 @@ public class AuthenticationServices {
             user.setVerificationCode(null);
             user.setEnabled(true);
             userRepository.save(user);
-            System.out.println("AuthServices.verify: User has been verified.  user:" + user +
-                    " enabled: " +  " verification code:" + user.getVerificationCode());
             return true;
         }
    }

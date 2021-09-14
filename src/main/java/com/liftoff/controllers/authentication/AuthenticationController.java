@@ -158,8 +158,4 @@ public class AuthenticationController {
             return "/message/verify_fail";
         }
     }
-
-
-
-
 }

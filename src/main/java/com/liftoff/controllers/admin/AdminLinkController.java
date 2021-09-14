@@ -112,17 +112,19 @@ public class AdminLinkController {
         }
     }
 
+    @GetMapping ("delete/{id}")
+    public String deleteLink (Link link,Model model) {
+        linkRepository.delete(link);
+        List<Link> listLinks = linkRepository.findAll();
+        model.addAttribute("title", "Admin Portal: Manage Links");
+        model.addAttribute("listLinks", listLinks);
+        return "/account/manageLinks/index";
+    }
+
     @PostMapping ("save")
     public String saveLink (Link link) {
         linkRepository.save(link);
         return "redirect:/account/manageLinks";
     }
-
-    @GetMapping ("delete/{id}")
-    public String deleteLink (Link link) {
-        linkRepository.delete(link);
-        return "redirect:/account/manageLinks";
-    }
-
 
 }
