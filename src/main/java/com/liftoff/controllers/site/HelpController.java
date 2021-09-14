@@ -3,7 +3,7 @@ package com.liftoff.controllers.site;
 
 import com.liftoff.models.data.FaqRepository;
 import com.liftoff.models.Faq;
-import com.liftoff.models.data.UIRepository;
+import com.liftoff.models.data.UiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ public class HelpController {
     private FaqRepository faqRepository;
 
     @Autowired
-    private UIRepository UIRepository;
+    private UiRepository UIRepository;
 
 
 

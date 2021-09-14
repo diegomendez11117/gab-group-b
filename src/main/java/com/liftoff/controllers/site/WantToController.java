@@ -1,9 +1,9 @@
 package com.liftoff.controllers.site;
 
-import com.liftoff.models.Welcome;
+import com.liftoff.models.Ui;
 import com.liftoff.models.data.WantToRepository;
 import com.liftoff.models.WantTo;
-import com.liftoff.models.data.UIRepository;
+import com.liftoff.models.data.UiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +21,26 @@ public class WantToController {
     private WantToRepository wantToRepository;
 
     @Autowired
-    private UIRepository UIRepository;
+    private UiRepository uiRepository;
 
     @GetMapping ("")
     public String displayAllWantTo (Model model) {
-        Welcome welcome = UIRepository.findById(1).get();
         List<WantTo> listWantTo = wantToRepository.findAll();
         model.addAttribute("title", "What to do Next...");
         model.addAttribute("listWantTo", listWantTo);
-        model.addAttribute("welcome", welcome);
+
+        String lowPriorityTitle = uiRepository.getById(25).getText();
+        String medPriorityTitle = uiRepository.getById(23).getText();;
+        String highPriorityTitle = uiRepository.getById(21).getText();;
+        String lowPriorityDescription = uiRepository.getById(26).getText();
+        String medPriorityDescription= uiRepository.getById(24).getText();
+        String highPriorityDescription= uiRepository.getById(22).getText();
+        model.addAttribute("lowPriorityTitle", lowPriorityTitle);
+        model.addAttribute("medPriorityTitle", medPriorityTitle);
+        model.addAttribute("highPriorityTitle", highPriorityTitle);
+        model.addAttribute("lowPriorityDescription", lowPriorityDescription);
+        model.addAttribute("medPriorityDescription", medPriorityDescription);
+        model.addAttribute("highPriorityDescription", highPriorityDescription);
 
         return "wantTo/index";
     }

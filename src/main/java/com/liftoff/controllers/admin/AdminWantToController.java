@@ -1,9 +1,10 @@
 package com.liftoff.controllers.admin;
 
+import com.liftoff.models.Ui;
 import com.liftoff.models.WantTo;
 import com.liftoff.models.Welcome;
 import com.liftoff.models.data.WantToRepository;
-import com.liftoff.models.data.UIRepository;
+import com.liftoff.models.data.UiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,7 @@ import java.util.List;
 public class AdminWantToController {
 
     @Autowired
-    private UIRepository UIRepository;
+    private UiRepository uiRepository;
 
     @Autowired
     private WantToRepository wantToRepository;
@@ -27,10 +28,21 @@ public class AdminWantToController {
     @GetMapping ("")
     public String displayManageWantTosPage (Model model) {
         List<WantTo> listWantTo = wantToRepository.findAll();
-        Welcome welcome = UIRepository.getById(1);
+        Ui lowPriorityTitle = uiRepository.getById(11);
+        Ui medPriorityTitle = uiRepository.getById(13);
+        Ui highPriorityTitle = uiRepository.getById(15);
+        Ui lowPriorityDescription = uiRepository.getById(12);
+        Ui medPriorityDescription= uiRepository.getById(14);
+        Ui highPriorityDescription= uiRepository.getById(16);
+
         model.addAttribute("title", "Admin Portal: Manage Want-To");
         model.addAttribute("listWantTo", listWantTo);
-        model.addAttribute("welcome", welcome);
+        model.addAttribute("lowPriorityTitle", lowPriorityTitle);
+        model.addAttribute("medPriorityTitle", medPriorityTitle);
+        model.addAttribute("highPriorityTitle", highPriorityTitle);
+        model.addAttribute("lowPriorityDescription", lowPriorityDescription);
+        model.addAttribute("medPriorityDescription", medPriorityDescription);
+        model.addAttribute("highPriorityDescription", highPriorityDescription);
         return "/account/ManageWantTos/index";
     }
 
