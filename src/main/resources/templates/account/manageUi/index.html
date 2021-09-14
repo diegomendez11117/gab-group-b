@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<!--<header th:replace="fragments :: header"></header>-->
+
+
+<section id="priorities" class="align-items-center" th:fragment="TopSection">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-2">
+                <nav th:replace="fragments :: adminNav"></nav>
+            </div>
+
+            <div class="col-6">
+                <table class="table table-bordered">
+                    <th:block th:each="ui : ${uiList}" class="container">
+                        <tr >
+                            <td> <a  th:text="${ui.name}"></a> </td>
+                            <td> <a  th:text="${ui.text}"></a> </td>
+                            <td> <a th:href="@{'/account/manageUi/edit/' + ${ui.id}}"
+                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>
+
