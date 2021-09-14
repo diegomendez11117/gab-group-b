@@ -2,7 +2,6 @@ package com.liftoff.controllers.admin;
 
 import com.liftoff.models.Ui;
 import com.liftoff.models.WantTo;
-import com.liftoff.models.Welcome;
 import com.liftoff.models.data.WantToRepository;
 import com.liftoff.models.data.UiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
