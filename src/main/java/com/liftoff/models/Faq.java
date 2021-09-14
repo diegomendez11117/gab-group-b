@@ -11,7 +11,10 @@ import java.util.Objects;
 @Entity
 public class Faq extends AbstractEntity{
 
+    @Column(name = "question", columnDefinition = "MEDIUMTEXT")
     private String question;
+
+    @Column(name = "answer", columnDefinition = "MEDIUMTEXT")
     private String answer;
 
     @Type(type = "org.hibernate.type.NumericBooleanType")
