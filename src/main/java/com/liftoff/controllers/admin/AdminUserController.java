@@ -55,7 +55,6 @@ public class AdminUserController {
                 model.addAttribute("user", user);
                 return "/account/manageUsers/edit";
         }
-
     }
 
     @GetMapping("reset/{id}")
@@ -73,9 +72,13 @@ public class AdminUserController {
     }
 
     @GetMapping ("delete/{id}")
-    public String deleteUser (User user) {
+    public String deleteUser (User user, Model model) {
         userRepository.delete(user);
-        return "/account/manageUsers/index";
+        List<User> listUsers = userRepository.findAll();
+        model.addAttribute("title", "Admin Portal: Manage Users");
+        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("user", new User());
+        return "/account/manageUsers/edit";
     }
 
     @PostMapping("save")
@@ -83,6 +86,4 @@ public class AdminUserController {
         userRepository.save(user);
         return "redirect:";
     }
-
-
 }
