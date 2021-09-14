@@ -86,12 +86,8 @@
                                    sec:authorize="hasAuthority('ADMIN')">RESET PASSWORD</a>
                             </form>
 
-
                             <a th:href="@{'/account/manageUsers/delete/' + ${user.id}}" class="btn btn-danger"
                                     sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>
-
-<!--                            <a th:href="@{/account/manageUsers/delete/}" class="btn btn-danger"-->
-<!--                               sec:authorize="hasAuthority('ADMIN')">DELETE USER</a>-->
 
                         </div>
                     </div>

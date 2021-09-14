@@ -32,7 +32,6 @@ public class ForgotPasswordController {
     @GetMapping("/forgot_password")
     public String showForgotPasswordForm(Model model){
         model.addAttribute("title", "Forgot Password");
-        System.out.println("LEAVING /forgot_password GetMapping  --->  Forgot Password FORM");
         return "forgot_password";
     }
 
@@ -40,7 +39,6 @@ public class ForgotPasswordController {
 
     @PostMapping("/forgot_password")
     public  String processForgotPasswordForm(HttpServletRequest request, Model model) {
-            System.out.println("ARRIVING  /forgot_password  PostMapping  ---  FORGOT PASSWORD INITIATED");
         String email = "";
         String email1 = "${email}";
         String email2  = request.getParameter("email");
@@ -49,16 +47,11 @@ public class ForgotPasswordController {
         } else {
             email = email2;
         }
-            System.out.println("/forgot_password  PostMapping  ---  request.getParameter('email'): " + email);
         String token = RandomString.make(45);
-            System.out.println("/forgot_password  PostMapping  ---  token = RandomString.make(45): " + token);
 
         try {
             service.updateResetPasswordToken(token, email);
-                System.out.println("/forgot_password  PostMapping  ---  Email: " + email);
-                System.out.println("/forgot_password  PostMapping  ---  Token: " + token);
             String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
-                System.out.println("/forgot_password  PostMapping  ---  Reset Password Link: " + resetPasswordLink);
             sendEmail(email, resetPasswordLink);
             model.addAttribute("message", "An email with a password reset " +
                     "link has been sent. Please check your e-amil." );
@@ -68,10 +61,6 @@ public class ForgotPasswordController {
         } catch (MessagingException | UnsupportedEncodingException e) {
             model.addAttribute("error", "Error while sending e-mail");
         }
-
-
-
-        System.out.println("LEAVING /forgot_password  PostMapping  ---  CHECK EMAIL : CLICK LINK");
         return "forgot_password";
     }
 
@@ -80,18 +69,13 @@ public class ForgotPasswordController {
     @GetMapping("reset_password")
     public String showResetPasswordForm(@Param(value="token") String token,
                                         Model model){
-
-        System.out.println("ARRIVING /reset_password  GetMapping  ---  EMAIL LINK CLICKED");
         User user = service.getByResetPasswordToken(token);
         model.addAttribute("title", "Reset your Password");
         if (user == null) {
             model.addAttribute("message", "Invalid Token - Unknown User");
-            System.out.println("/reset_password  ---  service-getByRestPassword Token : Invalid Token/Unknown User");
             return "/message";
         } else {
             model.addAttribute("token", token);
-                System.out.println("/reset_password  GetMapping  ---  token: " + token);
-                System.out.println("LEAVING /reset_password  GetMapping  --->  Reset Password FORM");
             return ("/reset_password");
         }
     }
@@ -99,25 +83,18 @@ public class ForgotPasswordController {
 
     @PostMapping("reset_password")
     public String processResetPassword(HttpServletRequest request, Model model) {
-                System.out.println("ARRIVING /reset_password PostMapping");
         String token = request.getParameter("token");
-                System.out.println("/reset-password PostMapping --- request.getParameter(token): " + token);
         String password = request.getParameter("password");
-                System.out.println("/reset-password PostMapping --- request.getParameter(password): " + password);
 
         User user = service.getByResetPasswordToken(token);
-                System.out.println("/reset_password PostMapping  ---  service.getByResetPasswordToken(token): " + user);
         model.addAttribute("title", "Resetting Password");
 
         if (user == null) {
             model.addAttribute("message", "Invalid Token - Unknown User");
-                System.out.println("/reset-password PostMapping --- 'Invalid Token'");
         } else {
             service.updatePassword(user, password);
             model.addAttribute("message", "You have successfully changed your password.");
         }
-
-                System.out.println("LEAVING /reset_password PostMapping  --- PASSWORD IS RESET - TEST NOW");
         return "/message";
     }
 
