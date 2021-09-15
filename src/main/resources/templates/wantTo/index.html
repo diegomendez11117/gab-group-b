@@ -8,10 +8,6 @@
 <section id="priorities" class="align-items-center">
     <div class="container">
         <div class="row">
-            <div class="section-title text-center">
-                <span>High Priority</span>
-                <h2>High Priority</h2>
-            </div>
             <h1 th:text="${highPriorityTitle}" class="section-title text-center" ></h1>
             <h2 th:text="${highPriorityDescription}"></h2>
         </div>
@@ -29,7 +25,7 @@
                         <div class="icon"><i class="bi bi-laptop"></i></div>
                         <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
                                              th:text="${wantTo.title}"></a></h4>
-                        <p class="description" th:text="${wantTo.description}"></p>
+                        <p class="description" th:text="${#strings.abbreviate(wantTo.description,200) + '...'}"></p>
                     </div>
                 </div>
             </th:block>
@@ -41,12 +37,8 @@
 <section id="medium" class="align-items-center">
     <div class="container">
         <div class="row">
-            <div class="section-title-blue text-center">
-                <span>Medium Priority</span>
-                <h2>Medium Priority</h2>
-            </div>
-            <h1 th:text="${mediumPriorityTitle}" class="section-title-blue text-center"></h1>
-            <h2 th:text="${mediumPriorityDescription}"></h2>
+            <h1 th:text="${medPriorityTitle}" class="section-title-blue text-center"></h1>
+            <h2 th:text="${medPriorityDescription}"></h2>
         </div>
     </div>
     </div>
@@ -62,7 +54,7 @@
                         <div class="icon"><i class="bi bi-laptop"></i></div>
                         <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
                                              th:text="${wantTo.title}"></a></h4>
-                        <p class="description" th:text="${wantTo.description}"></p>
+                        <p class="description" th:text="${#strings.abbreviate(wantTo.description,150) + '...'}"></p>
                     </div>
                 </div>
             </th:block>
@@ -94,7 +86,7 @@
                         <div class="icon"><i class="bi bi-laptop"></i></div>
                         <h4 class="title"><a th:href="@{'/wantTo/wantTo/' + ${wantTo.id}}"
                                              th:text="${wantTo.title}"></a></h4>
-                        <p class="description" th:text="${wantTo.description}"></p>
+                        <p class="description" th:text="${#strings.abbreviate(wantTo.description,150) + '...'}"></p>
                     </div>
                 </div>
             </th:block>
