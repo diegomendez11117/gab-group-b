@@ -2,43 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
-<body id="body" class="container">
+<body id="body">
 <div class="h-screen bg-gray-50 flex overflow-hidden">
-
-    <div th:replace="fragments :: Narrowsidebar"></div>
-
-    <div th:replace="fragments :: Mobilemenu"></div>
 
     <header th:replace="fragments :: Admin-Header"></header>
 
-    <section id="priorities" class="align-items-center" th:fragment="TopSection">
-        <div class="container">
-            <div class="row">
-                <div class="col-2">
-
-                    <div class="text-center">
-                        <p th:text="${user.username}"></p>
-                        <p th:text="${user.email}"></p>
-                        <p th:text="${user.roles}"></p>
-                    </div>
-                    <div class="text-center">
-                        <a th:href="@{/account/manageUsers}" class="btn btn-primary"
-                           sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">Admin Tools</a>
-                    </div>
-                    <div class="text-center">
-                        <form th:action="@{/logout}" th:object="${user}" th:method="get">
-                            <button type="submit" class="btn btn-danger">logout</button>
-                        </form>
-                    </div>
-
-                </div>
-                <div class="col-4">
-
-
-                </div>
-            </div>
-        </div>
-    </section>
 </div>
 
 </body>
