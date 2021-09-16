@@ -36,7 +36,9 @@
                                 <div class="d-flex align-items-center">
                                     <th:block th:if="${!link.hidden}">
                                         <td class="column1">
-                                            <a th:href="@{${link.url}}" target="_blank" rel="noopener noreferrer"
+                                            <a th:if="${link.url == 'http://localhost:8080/contact'}" th:href="@{${link.url}}" rel="noopener noreferrer"
+                                               th:text="${link.name}"></a>
+                                            <a th:unless="${link.url == 'http://localhost:8080/contact'}" target="_blank" th:href="@{${link.url}}" rel="noopener noreferrer"
                                                th:text="${link.name}"></a>
                                         </td>
                                         <td class="column2">
