@@ -151,24 +151,22 @@
     </ul>
 </nav>
 
-<div th:fragment="Narrowsidebar" class="hidden w-28 bg-indigo-700 overflow-y-auto md:block">
+<div th:fragment="Narrowsidebar" class="hidden w-28 sidebar-color overflow-y-auto md:block">
     <!-- Narrow sidebar -->
     <div class="w-full py-6 flex flex-col items-center">
-        <div class="flex-shrink-0 flex items-center">
-            <a th:href="@{/}">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white"
-                     alt="Workflow">
-            </a>
-        </div>
         <div class="flex-1 mt-6 w-full px-2 space-y-1">
             <!-- Current: "bg-indigo-800 text-white", Default: "text-indigo-100 hover:bg-indigo-800 hover:text-white" -->
-            <a th:href="@{/access/manageUsers}"
-               class="text-indigo-100 hover:bg-indigo-800 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
-                <!--
-                  Heroicon name: outline/home
-
-                  Current: "text-white", Default: "text-indigo-300 group-hover:text-white"
-                -->
+            <a th:href="@{/}"
+               class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                <span class="mt-2">Home</span>
+            </a>
+            <a th:href="@{/account/manageUsers}"
+               class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -177,8 +175,8 @@
                 <span class="mt-2">Users</span>
             </a>
 
-            <a th:href="@{/access/manageWelcome/edit}"
-               class="text-indigo-100 hover:bg-indigo-800 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+            <a th:href="@{/account/manageWelcome/edit}"
+               class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/view-grid -->
                 <svg class="text-indigo-300 group-hover:text-white h-6 w-6" xmlns="http://www.w3.org/2000/svg"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -188,8 +186,8 @@
                 <span class="mt-2">UI</span>
             </a>
 
-            <a th:href="@{/access/manageFaqs}"
-               class="text-indigo-100 hover:bg-indigo-800 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+            <a th:href="@{/account/manageFaqs}"
+               class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/photograph -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
@@ -199,8 +197,8 @@
                 <span class="mt-2">FAQs</span>
             </a>
 
-            <a th:href="@{/access/manageWantTos}"
-               class="text-indigo-100 hover:bg-indigo-800 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+            <a th:href="@{/account/manageWantTos}"
+               class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/user-group -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
@@ -210,8 +208,8 @@
                 <span class="mt-2">IWantTo(s)</span>
             </a>
 
-            <a th:href="@{/access/manageLinks}"
-               class="text-indigo-100 hover:bg-indigo-800 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+            <a th:href="@{/account/manageLinks}"
+               class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/collection -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
@@ -220,6 +218,19 @@
                 </svg>
                 <span class="mt-2">Links</span>
             </a>
+            <form th:action="@{/logout}" th:object="${user}" th:method="get">
+                <a
+                   class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                    <button type="submit" role="menuitem"
+                            tabindex="-1" id="user-menu-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    <span class="mt-2"></span>Logout</button>
+                </a>
+            </form>
         </div>
     </div>
 </div>

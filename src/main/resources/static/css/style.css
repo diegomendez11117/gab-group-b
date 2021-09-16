@@ -2085,3 +2085,11 @@ tbody tr:hover {
   color: #40bfc1; }
   .checkbox-primary input:checked ~ .checkmark:after {
     color: #40bfc1; }
+
+.sidebar-color{
+    background-color: #206bfb;
+}
+
+.sidebar-selection-color{
+    background-color: #f420fb;
+}
