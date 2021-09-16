@@ -72,28 +72,21 @@
     </div>
 </header>
 
-<!-- ======= Section Space Top ====-->
 
-<section id="priorities" class="align-items-center" th:fragment="TopSection">
-    <div class="container">
-        <div class="row">
-
-        </div>
-    </div>
-</section>
 
 <!-- ======= Footer ======= -->
-<footer id="footer" th:fragment="footer">
+<footer id="footer" class="footer" th:fragment="footer">
     <div class="footer-top">
         <div class="container">
             <div class="row gy-3">
-                <div class="col-lg-5 col-md-12 footer-info">
+                <div class="col-lg-6 col-md-12 footer-info">
                     <h1><a th:href="@{/}">WISTL</a></h1>
                     <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
                 </div>
 
-                <div class="col-lg-3 col-6 footer-links">
+                <div class="col-lg-3 col-6 footer-links text-md-start">
                     <h4>Useful Links</h4>
+                    <ul>
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/}">Home</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/wantTo}">I Want To</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/about}">About Us</a></li>
@@ -124,9 +117,10 @@
     </div>
 </footer><!-- End Footer -->
 
+
 <!-- ======= Scripts ======= -->
 
-<section id="scripts" th:fragment="scripts">
+<div id="scripts" th:fragment="scripts">
     <!-- Vendor JS Files -->
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/vendor/glightbox/js/glightbox.min.js"></script>
@@ -138,7 +132,7 @@
 
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
-</section><!-- End Scripts -->
+</div><!-- End Scripts -->
 
 </body>
 <!-- Vendor JS Files -->

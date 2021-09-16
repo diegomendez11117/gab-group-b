@@ -73,7 +73,7 @@
     </div>
 </section>
 
-<section id="normal" class="featured-services">
+<section class="featured-services">
     <div class="container">
         <div class="row">
             <th:block th:each="wantTo : ${listWantTo}" class="container">
@@ -91,7 +91,7 @@
 </section>
 
 <!-- ======= Scripts ======= -->
-<section th:replace="fragments :: scripts"></section>
+<div th:replace="fragments :: scripts"></div>
 
 <!-- ======= Footer ======= -->
 <footer th:replace="fragments :: footer"></footer>
