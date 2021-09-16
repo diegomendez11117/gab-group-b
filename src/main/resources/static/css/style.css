@@ -338,7 +338,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero h1 {
-  margin: 10px 0  10px 0;
+  margin: 0;
+  padding-bottom: 20px;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -347,7 +348,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero h2 {
   color: #858ea1;
-  margin: 10px 0  10px 0;
+  margin: 10px 0  30px 0;
   font-size: 24px;
 }
 
@@ -1222,7 +1223,7 @@ section {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 80px 0;
+  padding: 30px 0;
 }
 
 #footer .footer-top h3 {
@@ -1236,77 +1237,50 @@ section {
 }
 
 #footer .footer-top p {
-  font-size: 15;
-  font-style: italic;
+  font-size: 45;
   margin: 30px 0 0 0;
   padding: 0;
-}
-
-#footer .footer-top .footer-newsletter {
-  text-align: center;
-  font-size: 15px;
-  margin-top: 30px;
-}
-
-#footer .footer-top .footer-newsletter form {
-  background: #fff;
-  padding: 6px 10px;
-  position: relative;
-  border-radius: 4px;
   text-align: left;
-  border: 1px solid #e4e6ea;
 }
 
-#footer .footer-top .footer-newsletter form input[type="email"] {
-  border: 0;
-  padding: 4px 8px;
-  width: calc(100% - 100px);
+.footer-top .footer-links {
+  margin-bottom: 30px;
 }
 
-#footer .footer-top .footer-newsletter form input[type="submit"] {
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  bottom: -1px;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 0 20px;
-  background: #206bfb;
-  color: #fff;
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: #d0d4fc;
+  font-size: 12px;
+  line-height: 0;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  color: #013289;
   transition: 0.3s;
-  border-radius: 0 4px 4px 0;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-#footer .footer-top .footer-newsletter form input[type="submit"]:hover {
-  background: #206bfb;
-}
-
-#footer .footer-top .social-links {
-  margin-top: 30px;
-}
-
-#footer .footer-top .social-links a {
-  font-size: 18px;
   display: inline-block;
-  background: #eaecef;
-  color: #5f687b;
   line-height: 1;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 4px;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
 }
 
-#footer .footer-top .social-links a:hover {
-  background: #206bfb;
-  color: #fff;
-  text-decoration: none;
+#footer .footer-top .footer-links ul a:hover {
+  color: #4154f1;
 }
+
 
 #footer .footer-bottom {
   border-top: 1px solid #d9dce2;
@@ -1315,6 +1289,43 @@ section {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+
+#footer .footer-top .footer-info {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-info h1 {
+  text-align: left;
+}
+
+#footer .footer-top .footer-info .logo {
+  line-height: 0;
+  margin-bottom: 15px;
+}
+
+#footer .footer-top .footer-info .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+#footer .footer-top .footer-info .logo span {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+#footer .footer-top .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+}
+
+
+#footer .footer-top .footer-contact p {
+  line-height: 26px;
+}
+
 
 #footer .copyright {
   float: left;
