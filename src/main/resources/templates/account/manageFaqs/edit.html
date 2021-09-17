@@ -93,7 +93,7 @@
         </header>
         <!-- Main content -->
         <div class="grid grid-flow-col h-full">
-            <div class="flex-1 flex items-stretch overflow-auto col-span-8">
+            <div class="flex-1 flex items-stretch overflow-auto col-span-2">
                 <main class="flex-1 h-full">
                     <!-- Primary column -->
                     <div class="flex items-center justify-center p-3 h-full">
@@ -110,7 +110,7 @@
                                             </p>
                                         </div>
                                         <div class="col-span-2 justify-items-end">
-                                            <form th:action="@{/access/manageFaqs/new}" th:object="${faq}"
+                                            <form th:action="@{/account/manageFaqs/new}" th:object="${faq}"
                                                   th:method="get">
                                                 <button type="submit"
                                                         class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -142,7 +142,7 @@
                                                       class="flex-grow"><a th:text="${faq.answer}"></a></span>
                                             </dt>
                                             <dt class="text-sm font-medium text-gray-500">
-                                                <a th:href="@{'/access/manageFaqs/edit/' + ${faq.id}}"
+                                                <a th:href="@{'/account/manageFaqs/edit/' + ${faq.id}}"
                                                    type="button"
                                                    class="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                     Edit
