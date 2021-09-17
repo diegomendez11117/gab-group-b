@@ -26,39 +26,37 @@
 
 <section id="priorities" class="align-items-center">
     <div class="container">
-         <div class="row">
+        <div class="row">
             <div class="col-md-12">
                 <div class="table-wrap">
-                    <table class="table table-responsive-xl">
-                        <thead>
-                        <tr>
-                            <th>Links</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:block th:each="link : ${faq.links}" class="alert" role="alert">
-                            <div  class="d-flex align-items-center">
-                                <th:block th:if="${!link.hidden}">
-                                    <td>
-                                        <div class="pl-3 email">
-                                            <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
-                                        </div>
-                                    </td>
-                                    <td class="status">
-                                        <div class="pl-3 email" th:if="${link.guideStarUrl != ''}">
-                                            <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
-                                        </div>
-                                    </td>
-                                </th:block>
-                            </div>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="table100">
+                        <table>
+                            <tbody>
+                            <tr th:block th:each="link : ${faq.links}" class="alert" role="alert">
+                                <div class="d-flex align-items-center">
+                                    <th:block th:if="${!link.hidden}">
+                                        <td class="column1">
+                                            <a th:if="${link.url == 'http://localhost:8080/contact'}" th:href="@{${link.url}}" rel="noopener noreferrer"
+                                               th:text="${link.name}"></a>
+                                            <a th:unless="${link.url == 'http://localhost:8080/contact'}" target="_blank" th:href="@{${link.url}}" rel="noopener noreferrer"
+                                               th:text="${link.name}"></a>
+                                        </td>
+                                        <td class="column2">
+                                            <div th:if="${link.guideStarUrl != ''}">
+                                                <a th:href="@{${link.guideStarUrl}}" target="_blank"
+                                                   rel="noopener noreferrer"></a>
+                                            </div>
+                                        </td>
+                                    </th:block>
+                                </div>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-     </div>
+    </div>
 </section>
 
 <!-- ======= Scripts ======= -->

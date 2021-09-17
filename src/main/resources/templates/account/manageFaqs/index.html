@@ -2,56 +2,222 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: head"></head>
-<body class="container">
-<!--<header th:replace="fragments :: header"></header>-->
 
-<section id="priorities" class="align-items-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <nav th:replace="fragments :: adminNav"></nav>
-            </div>
+<body>
+<div class="h-screen bg-gray-50 flex overflow-auto">
 
-            <div class="col-6">
-                <table class="table table-bordered">
-                    <th:block th:each="faq : ${listFaqs}" class="container">
-                        <tr th:unless="${faq.hidden}">
-                            <td> <a  th:text="${faq.question}"></a> </td>
-                            <td> <a  th:text="${faq.columnSetting}"></a> </td>
-                            <td> <a th:href="@{'/account/manageFaqs/edit/' + ${faq.id}}"
-                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
-                        </tr>
-                    </th:block>
-                </table>
+    <div th:replace="fragments :: Narrowsidebar"></div>
 
-                <table class="table table-bordered">
-                    <th:block th:each="faq : ${listFaqs}" class="container">
-                        <tr th:if="${faq.hidden}">
-                            <td style="color:LightGray"> <a  th:text="${'-HIDDEN-  ' +{faq.question}}"></a> </td>
-                            <td style="color:LightGray"> <a  th:text="${faq.columnSetting}"></a> </td>
-                            <td style="color:LightGray"> <a th:href="@{'/account/manageFaqs/edit/' + ${faq.id}}"
-                                   sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">edit</a> </td>
-                        </tr>
-                    </th:block>
-                </table>
-            </div>
+    <div th:replace="fragments :: Mobilemenu"></div>
 
-            <div class="col-4">
-                <form th:action="@{/account/manageFaqs/new}" th:object="${faq}" th:method="get">
-                    <div class="m-3">
-                        <div class="text-center p-3">
-                            <button type="submit" class="btn btn-success"
-                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">Add New FAQ</button>
+    <!-- Content area -->
+    <div class="flex-1 flex flex-col overflow-auto">
+        <header class="w-full">
+            <div class="relative z-10 flex-shrink-0 h-16 bg-white border-b border-gray-200 shadow-sm flex">
+                <button type="button"
+                        class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+                    <span class="sr-only">Open sidebar</span>
+                    <!-- Heroicon name: outline/menu-alt-2 -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
+                    </svg>
+                </button>
+                <div class="flex-1 flex justify-between px-4 sm:px-6">
+                    <div class="flex-1 flex">
+                    </div>
+                    <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
+                        <!-- Profile dropdown -->
+                        <div class="navbar">
+                            <ul>
+                                <li class="dropdown">
+                                    <button type="button"
+                                            class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                        <span class="sr-only">Open user menu</span>
+                                        <img class="h-8 w-8 rounded-full"
+                                             src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+                                             alt="">
+                                    </button>
+                                    <ul>
+                                        <li>
+                                            <a th:href="@{/account/manageUsers}"
+                                               sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+                                                Admin Tools
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <form th:action="@{/logout}" th:object="${user}" th:method="get">
+                                                <button type="submit" role="menuitem"
+                                                        tabindex="-1" id="user-menu-item-1" class="space-between">
+                                                    <a>
+                                                        Sign out
+                                                    </a>
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="relative flex-shrink-0">
+                            <div>
+
+                            </div>
+                            <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                                 id="dropdown">
+
+                            </div>
                         </div>
                     </div>
-                </form>
+                </div>
+            </div>
+            <script>
+        window.addEventListener('DOMContentLoaded', ()=> {
+            const menuBtn = document.querySelector('#user-menu-button')
+            const dropdown = document.querySelector('#dropdown')
+
+            menuBtn.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden')
+                dropdown.classList.toggle('')
+            })
+        })
+
+
+
+
+        </script>
+        </header>
+        <!-- Main content -->
+        <div class="grid grid-flow-col h-full">
+            <div class="flex-1 flex items-stretch overflow-auto col-span-2">
+                <main class="flex-1 h-full">
+                    <!-- Primary column -->
+                    <div class="flex items-center justify-center p-3 h-full">
+                        <div class="w-full h-full bg-white rounded-xl overflow-auto cursor-pointer shadow-md">
+                            <div class="p-4">
+                                <div>
+                                    <div class="grid grid-flow-col">
+                                        <div class="col-span-8">
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                                FAQs information.
+                                            </h3>
+                                            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                                                The next list shows the FAQs saved in the database.
+                                            </p>
+                                        </div>
+                                        <div class="col-span-2 justify-items-end">
+                                            <form th:action="@{/account/manageFaqs/new}" th:object="${faq}"
+                                                  th:method="get">
+                                                <button type="submit"
+                                                        class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                        th:onclick="|window.location.href='@{/access/manageFaqs/save/}'|">
+                                                    Add New FAQ
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="pt-5 sm:grid sm:grid-cols-3 sm:gap-4 grid justify-items-center">
+                                    <h2>Question</h2>
+                                    <h2>Answer</h2>
+                                    <h2>Options</h2>
+                                </div>
+                                <div class="mt-3 border-t border-gray-200">
+                                    <dl class="divide-y divide-gray-200">
+                                        <div th:block th:each="faq : ${listFaqs}"
+                                             class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 grid justify-items-center"
+                                             th:unless="${faq.hidden}">
+
+                                            <dt class="text-sm font-medium text-gray-500">
+                                                <span class="flex-grow"><a th:text="${faq.question}"></a></span>
+                                            </dt>
+                                            <dt class="text-sm font-medium text-gray-500">
+                                                <span style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;"
+                                                      class="flex-grow"><a th:text="${faq.answer}"></a></span>
+                                            </dt>
+                                            <dt class="text-sm font-medium text-gray-500">
+                                                <a th:href="@{'/account/manageFaqs/edit/' + ${faq.id}}"
+                                                   type="button"
+                                                   class="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    Edit
+                                                </a>
+                                            </dt>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div class="pt-10">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                        FAQs Hidden information.
+                                    </h3>
+                                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                                        The next list shows the FAQs saved in the database Hidden.
+                                    </p>
+                                </div>
+                                <div class="pt-5 sm:grid sm:grid-cols-3 sm:gap-4 grid justify-items-center">
+                                    <h2>Question</h2>
+                                    <h2>Answer</h2>
+                                    <h2>Options</h2>
+                                </div>
+                                <div class="mt-3 border-t border-gray-200">
+                                    <dl class="divide-y divide-gray-200">
+                                        <div th:block th:each="faq : ${listFaqs}"
+                                             class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 grid justify-items-center"
+                                             th:if="${faq.hidden}">
+
+                                            <dt class="text-sm font-medium text-gray-500">
+                                                <span class="flex-grow"><a th:text="${faq.question}"></a></span>
+                                            </dt>
+                                            <dt class="text-sm font-medium text-gray-500">
+                                                        <span style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;"
+                                                              class="flex-grow"><a th:text="${faq.answer}"></a></span>
+                                            </dt>
+                                            <dt class="text-sm font-medium text-gray-500">
+                                                <a th:href="@{'/account/manageFaqs/edit/' + ${faq.id}}"
+                                                   type="button"
+                                                   class="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    Edit
+                                                </a>
+                                            </dt>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+            <div class="flex-1 flex items-stretch overflow-auto">
+                <main class="flex-1 h-full">
+                    <!-- Primary column -->
+                    <div class="flex items-center justify-center p-3 h-full">
+                        <div class="w-full h-full bg-white rounded-xl overflow-auto cursor-pointer shadow-md">
+                            <div class="p-4">
+                                <form class="">
+                                    <div>
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                            FAQ Information
+                                        </h3>
+                                        <p class="mt-1 text-sm text-gray-500">
+                                            The form allows to add and update information.
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
         </div>
     </div>
-</section>
-
-
-
+</div>
 
 </body>
 </html>

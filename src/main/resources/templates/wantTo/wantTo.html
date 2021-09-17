@@ -3,6 +3,9 @@
 <head th:replace="fragments :: head"></head>
 <body>
 
+<header th:replace="fragments :: header"></header>
+
+
 <!-- ======= Introduction Section ======= -->
 <section id="features" class="features">
     <div class="container">
@@ -13,7 +16,7 @@
                 <!-- Tab Content -->
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab1">
-                        <p th:text="${wantTo.description}"></p>
+                        <hp th:text="${wantTo.description}"></hp>
                     </div>
                 </div>
             </div><!-- End Feature Tabs -->
@@ -29,82 +32,34 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-wrap">
-                    <table class="table table-responsive-xl">
-                        <thead>
-                        <tr>
-                            <th>Links</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:block th:each="link : ${wantTo.links}" class="alert" role="alert">
-                            <div  class="d-flex align-items-center">
-                                <th:block th:if="${!link.hidden}">
-                                    <td>
-                                        <div class="pl-3 email">
-                                            <span><a th:href="@{${link.url}}" th:text="${link.name}"></a></span>
-                                        </div>
-                                    </td>
-                                    <td class="status">
-                                        <div class="pl-3 email" th:if="${link.guideStarUrl != ''}">
-                                            <span><a th:href="@{${link.guideStarUrl}}">view Guide Star report!</a></span>
-                                        </div>
-                                    </td>
-                                </th:block>
-                            </div>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="table100">
+                        <table>
+                            <tbody>
+                            <tr th:block th:each="link : ${wantTo.links}" class="alert" role="alert">
+                                <div class="d-flex align-items-center">
+                                    <th:block th:if="${!link.hidden}">
+                                        <td class="column1">
+                                            <a th:href="@{${link.url}}" target="_blank" rel="noopener noreferrer"
+                                               th:text="${link.name}"></a>
+                                        </td>
+                                        <td class="column2">
+                                            <div th:if="${link.guideStarUrl != ''}">
+                                                <a th:href="@{${link.guideStarUrl}}" target="_blank"
+                                                   rel="noopener noreferrer"></a>
+                                            </div>
+                                        </td>
+                                    </th:block>
+                                </div>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ======= Links Section ======= -->
-<!--<section id="services" class="services">-->
-<!--    <div class="container">-->
-<!--        <header class="section-header">-->
-<!--            <h2>Links</h2>-->
-<!--            <p>More information about this topic clicking the links below.</p>-->
-<!--        </header>-->
-<!--        <div class="row gy-4">-->
-<!--            <div class="col-lg-4 col-md-6" th:each="link : ${wantTo.links}">-->
-<!--                    <div th:if="${!link.hidden}" class="service-box blue"  th:onclick="|window.location.href='@{${link.url}}'|">-->
-<!--                        <i class="ri-discuss-line icon"></i>-->
-<!--                        <a th:href="@{${link.url}}" ><h3 th:text="${link.name}"></h3></a>-->
-<!--                        <a th:href="@{${link.url}}" th:text="${link.name}" class="read-more"><i-->
-<!--                                class="bi bi-arrow-right"></i></a>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 
-<!--</section>-->
-
-<!-- End Services Section -->
-
-<!-- ======= Map Section Section ======= -->
-<!-- Hiding the content of the map, that is not useful right now.
-
-<section id="contact" class="contact">
-    <div class="container">
-        <div class="section-title">
-            <span>Map</span>
-            <h2>Map</h2>
-            <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-        </div>
-        <div class="info">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                    frameborder="0" style="border:0; width: 100%; height: 350px;" allowfullscreen></iframe>
-        </div>
-    </div>
-</section>
--->
-<!-- End Contact Section -->
-
-
-<header th:replace="fragments :: header"></header>
 
 <!-- ======= Scripts ======= -->
 <section th:replace="fragments :: scripts"></section>
