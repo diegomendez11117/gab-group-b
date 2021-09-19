@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Objects;
 
 @Controller
 public class ContactController {
@@ -58,7 +59,7 @@ public class ContactController {
         helper.addInline("logoImage", resource);
 
         if(!multipartFile.isEmpty()) {
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
             InputStreamSource source = new InputStreamSource() {
                 @Override
