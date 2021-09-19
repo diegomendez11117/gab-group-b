@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns:sec="http:/www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <title>Welcome App</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <!-- Favicons -->
     <link href="/img/favicon.png" rel="icon">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,68 +24,62 @@
     <link href="/vendor/icofont/icofont.css" rel="stylesheet">
     <link href="/vendor/aos/aos.css" rel="stylesheet">
     <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
-
-
     <!-- Template Main CSS File -->
     <link href="/css/style.css" rel="stylesheet">
 </head>
-
 <body>
 <header id="header" class="fixed-top" th:fragment="header">
     <div class="container d-flex align-items-center justify-content-between">
-
         <h1 class="logo"><a th:href="@{/}">WISTL</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo"><img src="/img/logo.png" alt="" class="img-fluid"></a>-->
-
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" th:href="@{/}">Home</a></li>
                 <li><a class="nav-link scrollto" th:href="@{/wantTo}">I Want To</a></li>
                 <li><a class="nav-link scrollto" th:href="@{/about}">About Us</a></li>
                 <li><a class="nav-link scrollto " th:href="@{/help}">Help</a></li>
-
                 <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 2</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                </li>-->
-
+                   <ul>
+                       <li><a href="#">Drop Down 1</a></li>
+                       <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                           <ul>
+                               <li><a href="#">Deep Drop Down 1</a></li>
+                               <li><a href="#">Deep Drop Down 2</a></li>
+                               <li><a href="#">Deep Drop Down 3</a></li>
+                               <li><a href="#">Deep Drop Down 4</a></li>
+                               <li><a href="#">Deep Drop Down 5</a></li>
+                           </ul>
+                       </li>
+                       <li><a href="#">Drop Down 2</a></li>
+                       <li><a href="#">Drop Down 3</a></li>
+                       <li><a href="#">Drop Down 4</a></li>
+                   </ul>
+                   </li>-->
                 <li><a class="nav-link scrollto" th:href="@{/account}">Account</a></li>
-
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-
+        </nav>
+        <!-- .navbar -->
     </div>
 </header>
-
-
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer" th:fragment="footer">
     <div class="footer-top">
         <div class="container">
-            <div class="row gy-3">
+            <div class="row gy-4 justify-content-center">
                 <div class="col-lg-6 col-md-12 footer-info">
                     <h1><a th:href="@{/}">WISTL</a></h1>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
-                        valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                    <p>The objective of this content is to be able to help the entire immigrant community such as ally and refugees,
+                        providing them with all the necessary tools to build a future. Tools such as your personal identification,
+                        education, the search for legal representation in immigration processes, among others.
+                    </p>
+                    <p>Being able to find your way in a new city or in a new country is always difficult for those who do not know the culture,
+                        the language, the customs and the laws. We hope that you can find everything you need to start a new life.
+                    </p>
                 </div>
-
                 <div class="col-lg-3 col-6 footer-links text-md-start">
-                    <h4>Useful Links</h4>
+                    <h4>Site Map</h4>
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/}">Home</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/wantTo}">I Want To</a></li>
@@ -99,19 +88,14 @@
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/account}">Account</a></li>
                     </ul>
                 </div>
-
                 <div class="col-lg-3 col-md-12 footer-contact text-md-start">
                     <h4>Contact Us</h4>
-                    <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> stlwelcomesyou@gmail.com<br>
-                    </p>
-
+                    <button type="submit"
+                            class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            th:onclick="|window.location.href='@{/contact/}'|">
+                        Go to Contact
+                    </button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -120,9 +104,8 @@
             &copy; Copyright <strong><span>WISTL</span></strong>. All Rights Reserved
         </div>
     </div>
-</footer><!-- End Footer -->
-
-
+</footer>
+<!-- End Footer -->
 <!-- ======= Scripts ======= -->
 <div id="scripts" th:fragment="scripts">
     <!-- Vendor JS Files -->
@@ -133,12 +116,10 @@
     <script src="/vendor/purecounter/purecounter.js"></script>
     <script src="/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="/vendor/aos/aos.js"></script>
-
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
-</div><!-- End Scripts -->
-
-
+</div>
+<!-- End Scripts -->
 <nav th:fragment="adminNav" class="navbar bg-light" sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
     <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" th:href="@{/account}">EXIT Admin Tools</a></li>
@@ -147,10 +128,8 @@
         <li class="nav-item"><a class="nav-link" th:href="@{/account/manageFaqs}">FAQs</a></li>
         <li class="nav-item"><a class="nav-link" th:href="@{/account/manageWantTos}">WantTo(s)</a></li>
         <li class="nav-item"><a class="nav-link" th:href="@{/account/manageLinks}">Links</a></li>
-
     </ul>
 </nav>
-
 <div th:fragment="Narrowsidebar" class="hidden w-28 sidebar-color overflow-y-auto md:block">
     <!-- Narrow sidebar -->
     <div class="w-full py-6 flex flex-col items-center">
@@ -174,7 +153,6 @@
                 </svg>
                 <span class="mt-2">Users</span>
             </a>
-
             <a th:href="@{/account/manageUi}"
                class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/view-grid -->
@@ -185,7 +163,6 @@
                 </svg>
                 <span class="mt-2">UI</span>
             </a>
-
             <a th:href="@{/account/manageFaqs}"
                class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/photograph -->
@@ -196,7 +173,6 @@
                 </svg>
                 <span class="mt-2">FAQs</span>
             </a>
-
             <a th:href="@{/account/manageWantTos}"
                class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/user-group -->
@@ -207,7 +183,6 @@
                 </svg>
                 <span class="mt-2">IWantTo(s)</span>
             </a>
-
             <a th:href="@{/account/manageLinks}"
                class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                 <!-- Heroicon name: outline/collection -->
@@ -220,61 +195,60 @@
             </a>
             <form th:action="@{/logout}" th:object="${user}" th:method="get">
                 <a
-                   class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                        class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                     <button type="submit" role="menuitem"
                             tabindex="-1" id="user-menu-item-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                         stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-                    </svg>
-                    <span class="mt-2"></span>Logout</button>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        <span class="mt-2"></span>Logout
+                    </button>
                 </a>
             </form>
         </div>
     </div>
 </div>
-
 <div th:fragment="Mobilemenu" class="md:hidden" role="dialog" aria-modal="true">
     <!--
-  Mobile menu
+       Mobile menu
 
-  Off-canvas menu for mobile, show/hide based on off-canvas menu state.
--->
+       Off-canvas menu for mobile, show/hide based on off-canvas menu state.
+       -->
     <div class="fixed inset-0 z-40 flex">
         <!--
-          Off-canvas menu overlay, show/hide based on off-canvas menu state.
+           Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
-          Entering: "transition-opacity ease-linear duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-          Leaving: "transition-opacity ease-linear duration-300"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
+           Entering: "transition-opacity ease-linear duration-300"
+             From: "opacity-0"
+             To: "opacity-100"
+           Leaving: "transition-opacity ease-linear duration-300"
+             From: "opacity-100"
+             To: "opacity-0"
+           -->
         <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"></div>
-
         <!--
-          Off-canvas menu, show/hide based on off-canvas menu state.
+           Off-canvas menu, show/hide based on off-canvas menu state.
 
-          Entering: "transition ease-in-out duration-300 transform"
-            From: "-translate-x-full"
-            To: "translate-x-0"
-          Leaving: "transition ease-in-out duration-300 transform"
-            From: "translate-x-0"
-            To: "-translate-x-full"
-        -->
+           Entering: "transition ease-in-out duration-300 transform"
+             From: "-translate-x-full"
+             To: "translate-x-0"
+           Leaving: "transition ease-in-out duration-300 transform"
+             From: "translate-x-0"
+             To: "-translate-x-full"
+           -->
         <div class="relative max-w-xs w-full bg-indigo-700 pt-5 pb-4 flex-1 flex flex-col">
             <!--
-              Close button, show/hide based on off-canvas menu state.
+               Close button, show/hide based on off-canvas menu state.
 
-              Entering: "ease-in-out duration-300"
-                From: "opacity-0"
-                To: "opacity-100"
-              Leaving: "ease-in-out duration-300"
-                From: "opacity-100"
-                To: "opacity-0"
-            -->
+               Entering: "ease-in-out duration-300"
+                 From: "opacity-0"
+                 To: "opacity-100"
+               Leaving: "ease-in-out duration-300"
+                 From: "opacity-100"
+                 To: "opacity-0"
+               -->
             <div class="absolute top-1 right-0 -mr-14 p-1">
                 <button type="button"
                         class="h-12 w-12 rounded-full flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white">
@@ -286,7 +260,6 @@
                     <span class="sr-only">Close sidebar</span>
                 </button>
             </div>
-
             <div class="flex-shrink-0 px-4 flex items-center">
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white"
                      alt="Workflow">
@@ -298,10 +271,10 @@
                         <a th:href="@{/access/manageUsers}"
                            class="text-indigo-100 hover:bg-indigo-800 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium">
                             <!--
-                              Heroicon name: outline/home
+                               Heroicon name: outline/home
 
-                              Current: "text-white", Default: "text-indigo-300 group-hover:text-white"
-                            -->
+                               Current: "text-white", Default: "text-indigo-300 group-hover:text-white"
+                               -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -309,7 +282,6 @@
                             </svg>
                             <span>Users</span>
                         </a>
-
                         <a th:href="@{/access/manageWelcome/edit}"
                            class="text-indigo-100 hover:bg-indigo-800 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium">
                             <!-- Heroicon name: outline/view-grid -->
@@ -321,7 +293,6 @@
                             </svg>
                             <span>UI</span>
                         </a>
-
                         <a th:href="@{/access/manageFaqs}"
                            class="text-indigo-100 hover:bg-indigo-800 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium">
                             <!-- Heroicon name: outline/photograph -->
@@ -332,7 +303,6 @@
                             </svg>
                             <span>FAQs</span>
                         </a>
-
                         <a th:href="@{/access/manageWantTos}"
                            class="text-indigo-100 hover:bg-indigo-800 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium">
                             <!-- Heroicon name: outline/user-group -->
@@ -343,7 +313,6 @@
                             </svg>
                             <span>IWantTo(s)</span>
                         </a>
-
                         <a th:href="@{/access/manageLinks}"
                            class="text-indigo-100 hover:bg-indigo-800 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium">
                             <!-- Heroicon name: outline/collection -->
@@ -358,13 +327,10 @@
                 </nav>
             </div>
         </div>
-
         <div class="flex-shrink-0 w-14" aria-hidden="true">
             <!-- Dummy element to force sidebar to shrink to fit close icon -->
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
