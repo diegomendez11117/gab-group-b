@@ -5,92 +5,6 @@
 <body>
 
 <div class="h-screen bg-gray-50 flex overflow-auto">
-
-   <!-- <header th:fragment="Admin-Header" class="w-full">
-        <div class="relative z-10 flex-shrink-0 h-16 bg-white border-b border-gray-200 shadow-sm flex">
-            <button type="button"
-                    class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
-                <span class="sr-only">Open sidebar</span>
-
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
-                </svg>
-            </button>
-            <div class="flex-1 flex justify-between px-4 sm:px-6">
-                <div class="flex-1 flex">
-                </div>
-                <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
-
-                    <a th:if="${user.username != null}" th:text="${user.username}"
-                       class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"></a>
-                    <div class="navbar">
-                        <ul>
-                            <li class="dropdown">
-                                <button type="button"
-                                        class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                        id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                    <span class="sr-only">Open user menu</span>
-                                    <img class="h-8 w-8 rounded-full"
-                                         src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-                                         alt="">
-                                </button>
-                                <ul>
-                                    <li>
-                                        <a th:href="@{/account/manageUsers}"
-                                           sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
-                                            Admin Tools
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <form th:action="@{/logout}" th:object="${user}" th:method="get">
-                                            <button type="submit" role="menuitem"
-                                                    tabindex="-1" id="user-menu-item-1" class="space-between">
-                                                <a>
-                                                    Sign out
-                                                </a>
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <div class="relative flex-shrink-0">
-                        <div>
-
-                        </div>
-                        <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
-                             id="dropdown">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-        window.addEventListener('DOMContentLoaded', ()=> {
-            const menuBtn = document.querySelector('#user-menu-button')
-            const dropdown = document.querySelector('#dropdown')
-
-            menuBtn.addEventListener('click', () => {
-                dropdown.classList.toggle('hidden')
-                dropdown.classList.toggle('')
-            })
-        })
-
-
-
-
-        </script>
-    </header> -->
-
-
-
     <div class="hidden w-28 sidebar-color overflow-y-auto md:block">
         <!-- Narrow sidebar -->
         <div class="w-full py-6 flex flex-col items-center">
@@ -102,21 +16,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                     </svg>
-                    <span class="mt-2">Tools</span>
+                    <span class="mt-2 text-center">Admin Tools</span>
                 </a>
                 <form th:action="@{/logout}" th:object="${user}" th:method="get">
-                    <a
+                    <button
+                            type="submit" role="menuitem"
+                            tabindex="-1" id="user-menu-item-1"
                             class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                              stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                         </svg>
-                        <span class="mt-2"></span>
-                        <button type="submit" role="menuitem"
-                                tabindex="-1" id="user-menu-item-1">Logout
-                            </button>
-                    </a>
+                        <span class="mt-2">Logout</span>
+                    </button>
                 </form>
             </div>
         </div>
@@ -138,12 +51,38 @@
                         <p  th:text="${user.roles}"></p>
                     </div>
                 </div>
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a class="nav-link scrollto active" th:href="@{/}">Home</a></li>
+                        <li><a class="nav-link scrollto" th:href="@{/wantTo}">I Want To</a></li>
+                        <li><a class="nav-link scrollto" th:href="@{/about}">About Us</a></li>
+                        <li><a class="nav-link scrollto " th:href="@{/help}">Help</a></li>
+                        <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                           <ul>
+                               <li><a href="#">Drop Down 1</a></li>
+                               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                   <ul>
+                                       <li><a href="#">Deep Drop Down 1</a></li>
+                                       <li><a href="#">Deep Drop Down 2</a></li>
+                                       <li><a href="#">Deep Drop Down 3</a></li>
+                                       <li><a href="#">Deep Drop Down 4</a></li>
+                                       <li><a href="#">Deep Drop Down 5</a></li>
+                                   </ul>
+                               </li>
+                               <li><a href="#">Drop Down 2</a></li>
+                               <li><a href="#">Drop Down 3</a></li>
+                               <li><a href="#">Drop Down 4</a></li>
+                           </ul>
+                           </li>-->
+                        <li><a class="nav-link scrollto" th:href="@{/account}">Account</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
                 <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
                     <div class="relative flex-shrink-0">
                         <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                              role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
                              id="dropdown">
-
                         </div>
                     </div>
                 </div>

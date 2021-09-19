@@ -244,29 +244,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pt-5 sm:grid sm:grid-cols-3 sm:gap-4 grid justify-items-center">
+                                <div class="pt-5 sm:grid sm:grid-cols-2 sm:gap-4 grid justify-items-center">
                                     <h2>UI Location</h2>
                                     <h2>UI Description</h2>
-                                    <h2>Option</h2>
                                 </div>
-
                                 <div class="mt-5 border-t border-gray-200">
                                     <dl class="divide-y divide-gray-200">
                                         <div th:block th:each="ui : ${uiList}"
-                                             class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 grid justify-items-center">
+                                             class="py-4 sm:py-5 sm:grid sm:grid-cols-2 sm:gap-4 grid justify-items-center">
                                             <dt class="text-sm font-medium text-gray-500">
                                                 <span class="flex-grow"><a th:text="${ui.name}"></a></span>
                                             </dt>
                                             <dt class="text-sm font-medium text-gray-500">
                                                 <span class="flex-grow"><a th:text="${ui.text}"></a></span>
-                                            </dt>
-                                            <dt class="text-sm font-medium text-gray-500">
-                                                <a th:href="@{'/account/manageUi/edit/' + ${ui.id}}"
-                                                   type="button"
-                                                   class="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                   sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
-                                                    Edit
-                                                </a>
                                             </dt>
                                         </div>
                                     </dl>

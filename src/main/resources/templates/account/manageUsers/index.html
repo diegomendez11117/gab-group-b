@@ -229,18 +229,8 @@
                                                 User information.
                                             </h3>
                                             <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                                Personal details about users in the system.
+                                                User Management.
                                             </p>
-                                        </div>
-                                        <div class="col-span-2 justify-items-end">
-                                            <form th:action="@{/register}" th:object="${user}" th:method="get">
-                                                <button type="submit"
-                                                        class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                        th:onclick="|window.location.href='@{/access/manageWantTos/save/}'|"
-                                                        sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
-                                                    Add User
-                                                </button>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -291,16 +281,16 @@
                     <div class="flex items-center justify-center p-3 h-full">
                         <div class="w-full h-full bg-white rounded-xl overflow-hidden cursor-pointer shadow-md">
                             <div class="p-4">
-                                <form class="">
-                                    <div>
-                                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                            Personal Information
-                                        </h3>
-                                        <p class="mt-1 text-sm text-gray-500">
-                                            Use a permanent address where you can receive mail.
-                                        </p>
-                                    </div>
-                                </form>
+                                <div class="col-span-2 justify-items-end">
+                                    <form th:action="@{/register}" th:object="${user}" th:method="get">
+                                        <button type="submit"
+                                                class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                th:onclick="|window.location.href='@{/access/manageWantTos/save/}'|"
+                                                sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+                                            Add User
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
