@@ -67,7 +67,7 @@
 <footer id="footer" class="footer" th:fragment="footer">
     <div class="footer-top">
         <div class="container">
-            <div class="row gy-4 justify-content-center">
+            <div class="row gy-4 space-between">
                 <div class="col-lg-6 col-md-12 footer-info">
                     <h1><a th:href="@{/}">WISTL</a></h1>
                     <p>The objective of this content is to be able to help the entire immigrant community such as ally and refugees, providing them with all the necessary tools to build a future. Tools such as your personal identification, education, the search for legal representation in immigration processes, among others.
@@ -84,14 +84,6 @@
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/help}">Help</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a th:href="@{/account}">Account</a></li>
                     </ul>
-                </div>
-                <div class="col-lg-3 col-md-12 footer-contact text-md-start">
-                    <h4>Contact Us</h4>
-                    <button type="submit"
-                            class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            th:onclick="|window.location.href='@{/contact/}'|">
-                        Go to Contact
-                    </button>
                 </div>
             </div>
         </div>
