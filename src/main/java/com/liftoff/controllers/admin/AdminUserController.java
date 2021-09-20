@@ -29,7 +29,7 @@ public class AdminUserController {
     @GetMapping ("")
     public String displayManageUsersPage (Model model) {
         List<User> listUsers = userRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage Users");
+        model.addAttribute("pageTitle", "User Management");
         model.addAttribute("listUsers", listUsers);
         model.addAttribute("user", new User());
         return "/account/manageUsers/index";
@@ -50,8 +50,9 @@ public class AdminUserController {
             User user = userRepository.findById(id).get();
             model.addAttribute("listUsers", listUsers);
             model.addAttribute("listRoles", listRoles);
-            model.addAttribute("title", "Admin Portal: edit User");
-            model.addAttribute("button", "Save Changes");
+            model.addAttribute("pageTitle", "User Management");
+            model.addAttribute("title", "Editing User");
+            model.addAttribute("button", "Update");
             model.addAttribute("user", user);
             return "/account/manageUsers/edit";
         }
@@ -75,7 +76,7 @@ public class AdminUserController {
     public String deleteUser (User user, Model model) {
         userRepository.delete(user);
         List<User> listUsers = userRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage Users");
+        model.addAttribute("title", "User Management");
         model.addAttribute("listUsers", listUsers);
         model.addAttribute("user", new User());
         return "/account/manageUsers/index";

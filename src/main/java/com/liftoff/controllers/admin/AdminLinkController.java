@@ -32,7 +32,7 @@ public class AdminLinkController {
     @GetMapping ("")
     public String displayManageLinksPage (Model model) {
         List<Link> listLinks = linkRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage Links");
+        model.addAttribute("pageTitle", "Link Management");
         model.addAttribute("listLinks", listLinks);
         return "/account/manageLinks/index";
     }
@@ -45,8 +45,9 @@ public class AdminLinkController {
         model.addAttribute("listLinks", listLinks);
         model.addAttribute("listFaqs", listFaqs);
         model.addAttribute("listWantTos",listWantTos);
-        model.addAttribute("title", "Admin Portal: add link");
-        model.addAttribute("button", "SAVE NEW");
+        model.addAttribute("pageTitle", "Link Management");
+        model.addAttribute("title", "Adding new Link");
+        model.addAttribute("button", "Save");
         model.addAttribute("hide","hide");
         model.addAttribute("link", new Link());
        return "/account/manageLinks/edit";
@@ -60,8 +61,9 @@ public class AdminLinkController {
             WantTo wantTo = wantToRepository.findById(id).get();
             model.addAttribute("listLinks", listLinks);
             model.addAttribute("listWantTos", listWantTos);
-            model.addAttribute("title", "Admin Portal: add link");
-            model.addAttribute("button", "SAVE NEW");
+            model.addAttribute("pageTitle", "Link Management");
+            model.addAttribute("title", "Editing Link");
+            model.addAttribute("button", "Update");
             model.addAttribute("hide", "hide");
             Link newLink = new Link();
             newLink.setWantTo(wantTo);
@@ -80,8 +82,8 @@ public class AdminLinkController {
             Faq faq = faqRepository.findById(id).get();
             model.addAttribute("listLinks", listLinks);
             model.addAttribute("listFaqs", listFaqs);
-            model.addAttribute("title", "Admin Portal: add link");
-            model.addAttribute("button", "SAVE NEW");
+            model.addAttribute("title", "Adding new Link");
+            model.addAttribute("button", "Save");
             model.addAttribute("hide", "hide");
             Link newLink = new Link();
             newLink.setFaq(faq);
@@ -103,8 +105,9 @@ public class AdminLinkController {
             model.addAttribute("listLinks", listLinks);
             model.addAttribute("listFaqs", listFaqs);
             model.addAttribute("listWantTos", listWantTos);
-            model.addAttribute("title", "Admin Portal: edit link");
-            model.addAttribute("button", "SAVE CHANGES");
+            model.addAttribute("pageTitle", "Link Management");
+            model.addAttribute("title", "Editing Link");
+            model.addAttribute("button", "Update");
             model.addAttribute("link", link);
             return "/account/manageLinks/edit";
         } else {
@@ -116,7 +119,8 @@ public class AdminLinkController {
     public String deleteLink (Link link,Model model) {
         linkRepository.delete(link);
         List<Link> listLinks = linkRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage Links");
+        model.addAttribute("title", "Deleting Link");
+        model.addAttribute("pageTitle", "Link Management");
         model.addAttribute("listLinks", listLinks);
         return "/account/manageLinks/index";
     }

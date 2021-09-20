@@ -19,7 +19,7 @@
                     <span class="mt-2">Exit Admin</span>
                 </a>
                 <a th:href="@{/account/manageUsers}"
-                   class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                   class="text-indigo-100 bg-blue-700 text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -224,22 +224,17 @@
                             <div class="p-4">
                                 <div>
                                     <div class="grid grid-flow-col">
-                                        <div class="col-span-8">
-                                            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                                User information.
+                                        <div class="col-span-8 text-center">
+                                            <h3 th:text="${pageTitle}">
                                             </h3>
-                                            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                                User Management.
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pt-5 sm:grid sm:grid-cols-5 sm:gap-4 grid justify-items-center">
-                                    <h4>User Name</h4>
-                                    <h4>Status</h4>
-                                    <h4>Email</h4>
-                                    <h4>Roles</h4>
-                                    <h4>Options</h4>
+                                    <h5>Username</h5>
+                                    <h5>Status</h5>
+                                    <h5>Email</h5>
+                                    <h5>Roles</h5>
                                 </div>
 
                                 <div class="mt-5 border-t border-gray-200">
@@ -261,7 +256,7 @@
                                             </dt>
                                             <dt class="text-sm font-medium text-gray-500">
                                                 <a th:href="@{'/account/manageUsers/edit/' + ${user.id}}" type="button"
-                                                   class="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                   class="bg-white rounded-md text-lg font-bold bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                    sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
                                                     Edit
                                                 </a>
@@ -281,16 +276,14 @@
                     <div class="flex items-center justify-center p-3 h-full">
                         <div class="w-full h-full bg-white rounded-xl overflow-hidden cursor-pointer shadow-md">
                             <div class="p-4">
-                                <div class="col-span-2 justify-items-end">
-                                    <form th:action="@{/register}" th:object="${user}" th:method="get">
-                                        <button type="submit"
-                                                class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                th:onclick="|window.location.href='@{/access/manageWantTos/save/}'|"
-                                                sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
-                                            Add User
-                                        </button>
-                                    </form>
-                                </div>
+                                <form th:action="@{/register}" th:object="${user}" th:method="get">
+                                    <button type="submit"
+                                            class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                            th:onclick="|window.location.href='@{/access/manageWantTos/save/}'|"
+                                            sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+                                        Add New User
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

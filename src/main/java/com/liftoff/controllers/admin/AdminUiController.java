@@ -23,6 +23,7 @@ public class AdminUiController {
     @GetMapping ("")
     public String displayUiSettings(Model model){
         List<Ui> uiList = uiRepository.findAll();
+        model.addAttribute("pageTitle", "UI Management");
         model.addAttribute("uiList", uiList);
         return "/account/manageUi/index";
     }
@@ -31,6 +32,8 @@ public class AdminUiController {
     public String displayUISettings(@PathVariable("id") Integer id, Model model) {
         List<Ui> uiList = uiRepository.findAll();
         model.addAttribute("uiList", uiList);
+        model.addAttribute("pageTitle", "UI Management");
+        model.addAttribute("title", "Editing UI");
         Ui uiToEdit = uiRepository.getById(id);
         model.addAttribute("uiToEdit", uiToEdit);
         return "/account/manageUi/edit";

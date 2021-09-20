@@ -22,7 +22,7 @@ public class AdminFaqController {
     @GetMapping ("")
     public String displayManageFAQPage (Model model) {
         List<Faq> listFaqs = faqRepository.findAll();
-        model.addAttribute("title", "Admin Portal: Manage FAQs");
+        model.addAttribute("pageTitle", "FAQ Management");
         model.addAttribute("listFaqs", listFaqs);
         return "/account/manageFaqs/index";
     }
@@ -30,8 +30,9 @@ public class AdminFaqController {
     @GetMapping ("new")
     public String displayAddNewFAQ (Model model,Faq faq) {
         List<Faq> listFaqs = faqRepository.findAll();
-        model.addAttribute("title", "Admin Portal: add FAQ");
-        model.addAttribute("button", "SAVE");
+        model.addAttribute("pageTitle", "FAQ Management");
+        model.addAttribute("title", "Adding new FAQ");
+        model.addAttribute("button", "Save");
         model.addAttribute("listFaqs", listFaqs);
         model.addAttribute("faq", new Faq());
         return "/account/manageFaqs/edit";
@@ -44,8 +45,9 @@ public class AdminFaqController {
         if (faqRepository.existsById(id)){
             Faq faq = faqRepository.findById(id).get();
             model.addAttribute("listFaqs", listFaqs);
-            model.addAttribute("title", "Admin Portal: edit FAQ");
-            model.addAttribute("button", "Save Changes");
+            model.addAttribute("pageTitle", "FAQ Management");
+            model.addAttribute("title", "Editing FAQ");
+            model.addAttribute("button", "Update");
             model.addAttribute("faq", faq);
             return "/account/manageFaqs/edit";
         } else {

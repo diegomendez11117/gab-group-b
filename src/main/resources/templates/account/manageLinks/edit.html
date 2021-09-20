@@ -62,7 +62,7 @@
                 </a>
 
                 <a th:href="@{/account/manageLinks}"
-                   class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                   class="text-indigo-100 bg-blue-700 text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                     <!-- Heroicon name: outline/collection -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">
@@ -224,36 +224,40 @@
                             <div class="p-4">
                                 <div>
                                     <div class="grid grid-flow-col">
-                                        <div class="col-span-8">
-                                            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                                Links information.
+                                        <div class="col-span-8 text-center">
+                                            <h3 class="text-center" th:text="${pageTitle}">
                                             </h3>
-                                            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                                The next list shows the Links saved in the database.
-                                            </p>
-                                        </div>
-                                        <div class="col-span-2 justify-items-end">
-                                            <form th:action="@{/account/manageLinks/new}" th:object="${link}"
-                                                  th:method="get">
-                                                <button type="submit"
-                                                        class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                        th:onclick="|window.location.href='@{/access/manageWantTos/save/}'|">
-                                                    Add Link
-                                                </button>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pt-5 sm:grid sm:grid-cols-1 sm:gap-4 grid justify-items-center">
-                                    <h2>Link</h2>
-                                </div>
-
                                 <div class="mt-5 border-t border-gray-200">
                                     <dl class="divide-y divide-gray-200">
                                         <div th:block th:each="link : ${listLinks}"
-                                             class="py-4 sm:py-5 sm:grid sm:grid-cols-2 sm:gap-4 grid justify-items-center"
+                                             class="py-4 sm:py-5 sm:grid sm:grid-cols-1 sm:gap-4 grid justify-items-center"
                                              th:if="${!link.hidden}">
                                             <dt class="text-sm font-medium text-gray-500">
+                                                <span class="flex-grow"><a th:text="${link.name}"></a></span>
+                                            </dt>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div>
+                                    <div class="grid grid-flow-col">
+                                        <div class="col-span-8 text-center">
+                                            <h3 th:text="${'Hidden ' + {pageTitle}}">
+                                            </h3>
+                                            <p class="text-center">
+                                                The link in this section are NOT visible on the site, ito change this, edit the link and then uncheck the "hidden" feature.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-5 border-t border-gray-200">
+                                    <dl class="divide-y divide-gray-200">
+                                        <div th:block th:each="link : ${listLinks}"
+                                             class="py-4 sm:py-5 sm:grid sm:grid-cols-1 sm:gap-4 grid justify-items-center"
+                                             th:if="${link.hidden}">
+                                            <dt class="text-sm font-medium text-gray-300">
                                                 <span class="flex-grow"><a th:text="${link.name}"></a></span>
                                             </dt>
                                         </div>
@@ -274,16 +278,12 @@
                                 <form  th:action="@{/account/manageLinks/save}" th:object="${link}" th:method="post">
                                     <input type="hidden" th:field="*{id}" th:value="${link.id}"/>
                                     <div>
-                                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                            Link Information
-                                        </h3>
-                                        <p class="mt-1 text-sm text-gray-500">
-                                            The form allows to add and update information.
-                                        </p>
+                                        <h1 th:text="${title}">
+                                        </h1>
                                     </div>
                                     <div class="mt-11 sm:grid-cols-6">
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 Name:
                                             </label>
                                             <div class="mt-3">
@@ -295,7 +295,7 @@
                                         </div>
 
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 Url:
                                             </label>
                                             <div class="mt-3">
@@ -307,7 +307,7 @@
                                         </div>
 
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 GuideStar Url:
                                             </label>
                                             <div class="mt-3">
@@ -318,7 +318,7 @@
                                         </div>
 
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 Want-To (id):
                                             </label>
                                             <div class="mt-3">
@@ -333,7 +333,7 @@
                                         </div>
 
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 FAQ (id):
                                             </label>
                                             <div class="mt-3">
@@ -348,7 +348,7 @@
                                         </div>
 
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 Hidden:
                                             </label>
                                             <div class="mt-3">
@@ -358,7 +358,7 @@
                                         </div>
 
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 Display On Welcome Page:
                                             </label>
                                             <div class="mt-3">
@@ -371,13 +371,13 @@
                                     <div class="pt-5" sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
                                         <div class="flex justify-end">
                                             <button type="button"
-                                                    class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                     th:onclick="|window.location.href='@{/account/manageLinks/}'|">
                                                 Back
                                             </button>
                                             <button type="submit"
                                                     sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"
-                                                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                 Save
                                             </button>
                                             <button type="button"

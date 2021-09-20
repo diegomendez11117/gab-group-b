@@ -29,7 +29,7 @@
                 </a>
 
                 <a th:href="@{/account/manageUi}"
-                   class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                   class="text-indigo-100 bg-blue-700 text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
                     <!-- Heroicon name: outline/view-grid -->
                     <svg class="text-indigo-300 group-hover:text-white h-6 w-6" xmlns="http://www.w3.org/2000/svg"
                          fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -224,29 +224,16 @@
                             <div class="p-4">
                                 <div>
                                     <div class="grid grid-flow-col">
-                                        <div class="col-span-8">
-                                            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                                UI information.
+                                        <div class="col-span-8 text-center">
+                                            <h3 class="text-center">
+                                                UI Management.
                                             </h3>
-                                            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                                The next list shows the UI elements saved in the database.
-                                            </p>
-                                        </div>
-                                        <div class="col-span-2 justify-items-end">
-                                            <form th:action="@{/account/manageLinks/new}" th:object="${link}"
-                                                  th:method="get">
-                                                <button type="submit"
-                                                        class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                        th:onclick="|window.location.href='@{/access/manageWantTos/save/}'|">
-                                                    Add Link
-                                                </button>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pt-5 sm:grid sm:grid-cols-2 sm:gap-4 grid justify-items-center">
-                                    <h2>UI Location</h2>
-                                    <h2>UI Description</h2>
+                                    <h5>Location</h5>
+                                    <h5>Text</h5>
                                 </div>
                                 <div class="mt-5 border-t border-gray-200">
                                     <dl class="divide-y divide-gray-200">
@@ -276,21 +263,18 @@
                                 <form  th:action="@{/account/manageUi/save}" th:object="${uiToEdit}" th:method="post">
                                     <input type="hidden" th:field="*{id}" th:value="${uiToEdit.id}"/>
                                     <div>
-                                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                            UI information.
-                                        </h3>
-                                        <p class="mt-1 text-sm text-gray-500">
-                                            The next list shows the UI elements saved in the database.
-                                        </p>
+                                        <h1>
+                                            Editing UI
+                                        </h1>
                                     </div>
                                     <div class="mt-11 sm:grid-cols-6">
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 Location:
                                             </label>
                                             <div class="mt-3">
                                                 <textarea
-                                                        rows="6"
+                                                        rows="2"
                                                         cols="100"
                                                         th:field="*{name}"
                                                         class="form-control"
@@ -301,12 +285,12 @@
                                         </div>
 
                                         <div class="sm:col-span-6 mt-3">
-                                            <label class="block text-sm font-large text-gray-700">
+                                            <label class="block text-lg font-bold text-gray-700">
                                                 Text:
                                             </label>
                                             <div class="mt-3">
                                                 <textarea
-                                                        rows="6"
+                                                        rows="10"
                                                         cols="100"
                                                         th:field="*{text}"
                                                         class="form-control"
@@ -319,13 +303,13 @@
                                     <div class="pt-5" sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
                                         <div class="flex justify-end">
                                             <button type="button"
-                                                    class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                    th:onclick="|window.location.href='@{/account/manageLinks/}'|">
+                                                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                    th:onclick="|window.location.href='@{/account/manageUi/}'|">
                                                 Back
                                             </button>
                                             <button type="submit"
                                                     sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"
-                                                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                 Save
                                             </button>
                                         </div>
