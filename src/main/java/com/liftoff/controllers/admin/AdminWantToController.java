@@ -34,7 +34,7 @@ public class AdminWantToController {
         Ui medPriorityDescription= uiRepository.getById(14);
         Ui highPriorityDescription= uiRepository.getById(16);
 
-        model.addAttribute("title", "Admin Portal: Manage Want-To");
+        model.addAttribute("pageTitle", "I Want-To Management");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("lowPriorityTitle", lowPriorityTitle);
         model.addAttribute("medPriorityTitle", medPriorityTitle);
@@ -48,8 +48,9 @@ public class AdminWantToController {
     @GetMapping ("/new")
     public String displayAddNewWantTo (Model model) {
         List<WantTo> listWantTo = wantToRepository.findAll();
-        model.addAttribute("title", "Admin Portal: add wantTo");
-        model.addAttribute("button", "SAVE");
+        model.addAttribute("pageTitle", "I Want-To Management");
+        model.addAttribute("title", "Adding I Want-To");
+        model.addAttribute("button", "Save");
         model.addAttribute("listWantTo", listWantTo);
         model.addAttribute("wantTo", new WantTo());
         return "/account/manageWantTos/edit";
@@ -60,8 +61,9 @@ public class AdminWantToController {
         if (wantToRepository.existsById(id)) {
             List<WantTo> listWantTo = wantToRepository.findAll();
             WantTo wantTo = wantToRepository.findById(id).get();
-            model.addAttribute("title", "Admin Portal: add wantTo");
-            model.addAttribute("button", "SAVE");
+            model.addAttribute("pageTitle", "I Want-To Management");
+            model.addAttribute("title", "Editing I Want-To");
+            model.addAttribute("button", "Update");
             model.addAttribute("listWantTo", listWantTo);
             model.addAttribute("wantTo", wantTo);
             return "/account/manageWantTos/edit";
