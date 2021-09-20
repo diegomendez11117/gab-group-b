@@ -6,29 +6,32 @@
 <!-- ======= Header ======= -->
 <header th:replace="fragments :: header"></header>
 
-
-<section id="contact" class="contact">
-
-    <div class="container">
-        <div class="row">
-            <div class="section-title text-center">
+<section id="priorities" class="align-items-center">
+    <div class="container justify-content-center">
+        <div class="row justify-content-center">
+            <div class="section-title justify-content-center">
                 <h1>Contact Us</h1>
             </div>
         </div>
-
+    </div>
+</section>
+<div class="container">
+    <div class="row justify-content-center">
         <div class="row justify-content-center">
 
             <div class="col-lg-6">
-                    <form th:action="@{/contact}"  method="post" class="php-email-form"
-                          enctype="multipart/form-data">
+                <form th:action="@{/contact}" method="post" class="php-email-form"
+                      enctype="multipart/form-data">
                     <div class="row gy-4">
 
                         <div class="col-md-6">
-                            <input type="text" name="fullname" class="form-control" placeholder="Your Name" required minlength="3" maxlength="45">
+                            <input type="text" name="fullname" class="form-control" placeholder="Your Name" required
+                                   minlength="3" maxlength="45">
                         </div>
 
                         <div class="col-md-6 ">
-                            <input type="email" name="email" class="form-control" required maxlength="45" placeholder="Your Email">
+                            <input type="email" name="email" class="form-control" required maxlength="45"
+                                   placeholder="Your Email">
                         </div>
 
                         <div class="col-md-12">
@@ -36,21 +39,20 @@
                         </div>
 
                         <div class="col-md-12">
-                            <textarea class="form-control" name="subject" type="text" rows="6" placeholder="Subject" minlength="15" maxlength="100"
+                            <textarea class="form-control" name="subject" type="text" rows="6" placeholder="Subject"
+                                      minlength="15" maxlength="100"
                                       required></textarea>
                         </div>
 
                         <div class="col-md-12">
-                            <input class="custom-file-input form-control" type="file" name="attachment">
-                            <label class="custom-file-label form-control">Choose file...</label>
+                            <label for="formFileLg" class="form-label"></label>
+                            <input class="form-control form-control-md" name="attachment" id="formFileLg" type="file">
                         </div>
 
                         <div class="col-md-12 text-center">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                            <button type="submit" value="send">Send Message</button>
+                            <button class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    type="submit" value="send">Send Message
+                            </button>
                         </div>
 
                     </div>
@@ -61,8 +63,7 @@
         </div>
 
     </div>
-
-</section><!-- End Contact Section -->
+</div>
 
 </body>
 </html>
