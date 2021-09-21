@@ -50,8 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         "/account/manageFaqs/**",
                                         "/account/manageWelcome/**").hasAnyAuthority("ADMIN","EDITOR")
                 .antMatchers("/account/**").authenticated()
-                .antMatchers("/","/about","/register","/login","/contact","/verify","/forgot_password","/reset_password","/fragments","/message").permitAll()
-                .antMatchers("/message/**","/help/**","/wantTo/**","/css/*","/img/**","/js/*").permitAll()
+                .antMatchers("/","/about","/register","/login","/contact","/verify","/forgot_password","/reset_password","/fragments","/message","").permitAll()
+                .antMatchers("/message/**","/help/**","/wantTo/**","/css/**","/img/**","/js/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
