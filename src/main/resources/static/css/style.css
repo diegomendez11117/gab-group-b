@@ -148,6 +148,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #206bfb;
 }
 
+.navbar #navbar > .active > a {
+    color: #206bfb;
+}
+
+
+
 .navbar .getstarted {
   padding: 10px 25px;
   margin-left: 30px;
@@ -2092,4 +2098,8 @@ tbody tr:hover {
 
 .sidebar-selection-color{
     background-color: #f420fb;
+}
+
+.contact-background{
+    background-color: gray;
 }

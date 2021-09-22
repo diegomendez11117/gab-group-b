@@ -10,6 +10,7 @@
     <!-- Favicons -->
     <link href="/img/favicon.png" rel="icon">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
@@ -35,10 +36,12 @@
         <!-- <a href="index.html" class="logo"><img src="/img/logo.png" alt="" class="img-fluid"></a>-->
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" th:href="@{/}">Home</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/}">Home</a></li>
                 <li><a class="nav-link scrollto" th:href="@{/wantTo}">I Want To</a></li>
                 <li><a class="nav-link scrollto" th:href="@{/about}">About Us</a></li>
-                <li><a class="nav-link scrollto " th:href="@{/help}">Help</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/help}">Help</a></li>
+
+
                 <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                    <ul>
                        <li><a href="#">Drop Down 1</a></li>
@@ -70,9 +73,14 @@
             <div class="row gy-4 space-between">
                 <div class="col-lg-6 col-md-12 footer-info">
                     <h1><a th:href="@{/}">WISTL</a></h1>
-                    <p>The objective of this content is to be able to help the entire immigrant community such as ally and refugees, providing them with all the necessary tools to build a future. Tools such as your personal identification, education, the search for legal representation in immigration processes, among others.
+                    <p>The objective of this content is to be able to help the entire immigrant community such as ally
+                        and refugees, providing them with all the necessary tools to build a future. Tools such as your
+                        personal identification, education, the search for legal representation in immigration
+                        processes, among others.
                     </p>
-                    <p>Being able to find your way in a new city or in a new country is always difficult for those who do not know the culture, the language, the customs and the laws. We hope that you can find everything you need to start a new life.
+                    <p>Being able to find your way in a new city or in a new country is always difficult for those who
+                        do not know the culture, the language, the customs and the laws. We hope that you can find
+                        everything you need to start a new life.
                     </p>
                 </div>
                 <div class="col-lg-3 col-6 footer-links text-md-start">
@@ -98,15 +106,18 @@
 <!-- ======= Scripts ======= -->
 <div id="scripts" th:fragment="scripts">
     <!-- Vendor JS Files -->
+
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="/vendor/php-email-form/validate.js"></script>
     <script src="/vendor/purecounter/purecounter.js"></script>
     <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/vendor/aos/aos.js"></script>
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
+    <script src="/js/functions.js"></script>
 </div>
 <!-- End Scripts -->
 <nav th:fragment="adminNav" class="navbar bg-light" sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
