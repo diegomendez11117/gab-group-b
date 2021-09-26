@@ -37,6 +37,7 @@ public class ForgotPasswordController {
     @GetMapping("/forgot_password")
     public String showForgotPasswordForm(Model model){
         model.addAttribute("title", "Forgot Password");
+        model.addAttribute("subTitle", "We will be sending a password reset link to this e-mail");
         return "forgot_password";
     }
 
@@ -52,8 +53,10 @@ public class ForgotPasswordController {
             service.updateResetPasswordToken(token, email);
             String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
             sendEmail(email, resetPasswordLink);
-            model.addAttribute("message", "An email with a password reset " +
-                    "link has been sent. Please check your e-amil." );
+            model.addAttribute("title", "Password reset has been initiated.");
+            model.addAttribute("message1", "A link to reset your password has just been sent to you.");
+            model.addAttribute("message2", "Please check your e-mail" );
+            return "message";
 
         } catch (Utility.CustomerNotFoundException ex) {
             model.addAttribute("error", ex.getMessage());
@@ -74,8 +77,10 @@ public class ForgotPasswordController {
             service.updateResetPasswordToken(token, email);
             String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
             sendEmail(email, resetPasswordLink);
-            model.addAttribute("message", "An email with a password reset " +
-                    "link has been sent. Please check your e-amil." );
+            model.addAttribute("title", "Password reset has been initiated.");
+            model.addAttribute("message1", "A link to reset your password has just been sent to you.");
+            model.addAttribute("message2", "Please check your e-mail" );
+            return "message";
 
         } catch (Utility.CustomerNotFoundException ex) {
             model.addAttribute("error", ex.getMessage());
@@ -92,7 +97,7 @@ public class ForgotPasswordController {
     public String showResetPasswordForm(@Param(value="token") String token,
                                         Model model){
         User user = service.getByResetPasswordToken(token);
-        model.addAttribute("title", "Reset your Password");
+        model.addAttribute("title", "Reset Password");
         if (user == null) {
             model.addAttribute("message", "Invalid Token - Unknown User");
             return "/message";
@@ -115,9 +120,10 @@ public class ForgotPasswordController {
             model.addAttribute("message", "Invalid Token - Unknown User");
         } else {
             service.updatePassword(user, password);
-            model.addAttribute("message", "You have successfully changed your password.");
+            model.addAttribute("message", "You have successfully changed your password! " +
+                    "Enter your credentials to login.");
         }
-        return "/message";
+        return "redirect:/login";
     }
 
 
