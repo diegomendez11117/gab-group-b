@@ -55,7 +55,7 @@ public class ContactController {
         helper.setSubject(mailSubject);
         helper.setText(mailContent, true);
 
-        ClassPathResource resource = new ClassPathResource("/static/img/about.png");
+        ClassPathResource resource = new ClassPathResource("/static/img/message/contactUsImage.png");
         helper.addInline("logoImage", resource);
 
         if(!multipartFile.isEmpty()) {
