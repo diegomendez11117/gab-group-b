@@ -104,7 +104,10 @@ public class AuthenticationController {
 
         service.register(newUser, Utility.getSiteURL(request));
         setUserInSession(request.getSession(), newUser);
-        return "/message/register_success";
+        model.addAttribute("title", "Registration Success!");
+        model.addAttribute("message1", "A link to validate your e-mail has just been sent to you.");
+        model.addAttribute("message2", "Please check your e-mail" );
+        return "message";
     }
 
     @GetMapping("/login")
@@ -151,11 +154,14 @@ public class AuthenticationController {
     }
 
     @GetMapping("/verify")
-    public String verifyUser(@Param("code") String code) {
+    public String verifyUser(@Param("code") String code,Model model) {
         if (service.verify(code)) {
-            return "/message/verify_success";
+            return "redirect/login";
         } else {
-            return "/message/verify_fail";
+            model.addAttribute("title", "Verification Failed!");
+            model.addAttribute("message1", "It may have already been verified, or the verification code is incorrect.");
+            model.addAttribute("message2", "Either login again, or check your email to ensure you're using the correct email." );
+            return "/message";
         }
     }
 }
