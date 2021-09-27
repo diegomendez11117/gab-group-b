@@ -4,75 +4,46 @@
 <head th:replace="fragments :: head"></head>
 <body>
 
-<div class="h-screen bg-gray-50 flex overflow-auto">
-    <div class="hidden w-28 sidebar-color overflow-y-auto md:block">
-        <!-- Narrow sidebar -->
-        <div class="w-full py-6 flex flex-col items-center">
-            <div class="flex-1 mt-6 w-full px-2 space-y-1">
-                <!-- Current: "bg-indigo-800 text-white", Default: "text-indigo-100 hover:bg-indigo-800 hover:text-white" -->
-                <a th:href="@{/account/manageUsers}"
-                   sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"
-                   class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                    </svg>
-                    <span class="mt-2 text-center">Admin Tools</span>
-                </a>
-                <form th:action="@{/logout}" th:object="${user}" th:method="get">
-                    <button
-                            type="submit" role="menuitem"
-                            tabindex="-1" id="user-menu-item-1"
-                            class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+
+<header th:replace="fragments :: header"></header>
+<section id="priorities" class="align-items-center">
+    <div class="h-screen bg-gray-50 flex overflow-auto">
+        <div class="hidden w-28 sidebar-color overflow-y-auto md:block">
+            <!-- Narrow sidebar -->
+            <div class="w-full py-6 flex flex-col items-center">
+                <div class="flex-1 mt-6 w-full px-2 space-y-1">
+                    <!-- Current: "bg-indigo-800 text-white", Default: "text-indigo-100 hover:bg-indigo-800 hover:text-white" -->
+                    <a th:href="@{/account/manageUsers}"
+                       sec:authorize="hasAnyAuthority('ADMIN','EDITOR')"
+                       class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                         </svg>
-                        <span class="mt-2">Logout</span>
-                    </button>
-                </form>
+                        <span class="mt-2 text-center">Admin Tools</span>
+                    </a>
+                    <form th:action="@{/logout}" th:object="${user}" th:method="get">
+                        <button
+                                type="submit" role="menuitem"
+                                tabindex="-1" id="user-menu-item-1"
+                                class="text-indigo-100 hover:bg-blue-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                            </svg>
+                            <span class="mt-2">Logout</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
+
     </div>
-    <header class="w-full">
-        <div class="relative z-10 flex-shrink-0 h-16 bg-white border-b border-gray-200 shadow-sm flex">
-            <div class="flex-1 flex justify-between px-4 sm:px-6 ">
-                <div class="flex-1 flex gap-12">
-                    <div class="d-flex align-items-center gap-3">
-                        <h5 >User Name:</h5>
-                        <p  th:text="${user.username}"></p>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
-                        <h5 >User Email:</h5>
-                        <p  th:text="${user.email}"></p>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
-                        <h5 >User Roles:</h5>
-                        <p  th:text="${user.roles}"></p>
-                    </div>
-                </div>
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <li><a class="nav-link scrollto" th:href="@{/}">Home</a></li>
-                        <li><a class="nav-link scrollto" th:href="@{/wantTo}">I Want To</a></li>
-                        <li><a class="nav-link scrollto" th:href="@{/about}">About Us</a></li>
-                        <li><a class="nav-link scrollto " th:href="@{/help}">Help</a></li>
-                        <li><a class="nav-link scrollto active" th:href="@{/account}">Account</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-                <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
-                    <div class="relative flex-shrink-0">
-                        <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
-                             id="dropdown">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-</div>
+
+</section>
+
+<!-- ======= Scripts ======= -->
+<section th:replace="fragments :: scripts"></section>
 
 </body>
 </html>

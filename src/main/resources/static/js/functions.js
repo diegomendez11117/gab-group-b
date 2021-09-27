@@ -14,6 +14,9 @@
         } else if(window.location.href.indexOf('/help') > -1){
            $('#navbar a').removeClass('active');
            $('a[href="/help"]').addClass('active');
-        }
 
+        } else if(window.location.href.indexOf('/account') > -1){
+           $('#navbar a').removeClass('active');
+           $('a[href="/account"]').addClass('active');
+        }
      });
